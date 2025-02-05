@@ -24,7 +24,6 @@ These are the features of an IANode along with the flavours as more features are
 | Output     |
 |            | RDF (for SPARQL queries)    | y       |
 |            | JSON (for GraphQL queries   | y       |
-|            | Kafka                       |         | y      |
 
 ## Input
 ### Configuration
