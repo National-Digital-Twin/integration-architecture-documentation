@@ -5,7 +5,6 @@ These are the features of an IANode along with the flavours as more features are
 |------------|-----------------------------|---------|--------|-------------|
 | Input      |                             |         |        |             |
 |            | configuration               | y       |        |
-|            | configuration               | y       |
 |            | upload file                 | y       |
 |            | SPARQL                      | y       |
 |            | GraphQL                     | y       |
