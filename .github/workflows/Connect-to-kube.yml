@@ -1,4 +1,4 @@
-name: Deploy to kube
+name: Connect to kube
 on:
   workflow_dispatch:
     inputs:
@@ -24,7 +24,7 @@ permissions:
   contents: read
         
 jobs:
-  build-tag-push-docker-image-to-ecr:
+  connect-to-kube:
     runs-on: ubuntu-latest
     steps: 
       - name: Checkout repo
@@ -50,18 +50,36 @@ jobs:
       - name: Get kube cluster API server endpoint
         run: |
             ENDPOINT=$(aws eks describe-cluster --name ${{ github.event.inputs.eks_cluster_name }} --query "cluster.endpoint" --output text | sed 's|https://||')
-            echo "KUBE_ENDPOINT=$ENDPOINT" >> "GITHUB_ENV"
+            echo "Resolved EKS Endpoint: $ENDPOINT"
+            echo "KUBE_ENDPOINT=$ENDPOINT" >> "$GITHUB_ENV"
+
+      - name: Debug Environment Variable
+        env:
+            KUBE_ENDPOINT: ${{ env.KUBE_ENDPOINT }}  
+        run: |
+          echo "Checking KUBE_ENDPOINT value: $KUBE_ENDPOINT"         
 
       - name: Start tunnel to kube
+        env: 
+          KUBE_ENDPOINT: ${{ env.KUBE_ENDPOINT }}
         run: |
-            aws ssm start-session --region ${{ github.event.inputs.instance_id }} --target ${{ github.event.inputs.aws_region }} --document-name AWS-StartPortForwardingSessionToRemoteHost --parameters '{"host":["$KUBE_ENDPOINT"],"portNumber":["443"],"localPortNumber":["9999"]}' &
+            aws ssm start-session --region ${{ github.event.inputs.aws_region }} \
+              --target ${{ github.event.inputs.instance_id }} \
+              --document-name AWS-StartPortForwardingSessionToRemoteHost \
+              --parameters "{\"host\":[\"$KUBE_ENDPOINT\"],\"portNumber\":[\"443\"],\"localPortNumber\":[\"9999\"]}" &
 
       - name: Create kube config
         run: |
             aws eks update-kubeconfig --region ${{ github.event.inputs.aws_region }} --name ${{ github.event.inputs.eks_cluster_name }}
 
       - name: Update kube config to use tunnel
+        env: 
+          KUBE_ENDPOINT: ${{ env.KUBE_ENDPOINT }}
         run: |
             currentContext=$(kubectl config current-context)
             kubectl config set clusters.$currentContext.server "https://localhost:9999"
-            kubectl config set clusters.$currentContext.tls-server-name $KUBE_ENDPOINT
+            kubectl config set clusters.$currentContext.tls-server-name "$KUBE_ENDPOINT"
+
+      - name: Test connectivity to Kube cluster
+        run: |
+            kubectl get svc
