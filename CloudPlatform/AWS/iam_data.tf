@@ -43,6 +43,17 @@ data "aws_iam_policy_document" "github_actions_ecr_perms" {
   }
 
   statement {
+    sid    = "EKSAccess"
+    effect = "Allow"
+    actions = [
+      "eks:Describe*",
+      "eks:AccessKubernetesApi",
+      "eks:List*"
+    ]
+    resources = [module.eks_ianode.cluster_arn]
+  }
+
+  statement {
     sid    = "EcrTokenAccess"
     effect = "Allow"
     actions = [
