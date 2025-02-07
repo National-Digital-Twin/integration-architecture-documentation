@@ -79,3 +79,18 @@ resource "aws_eks_access_policy_association" "eks_policy_association" {
     type = "cluster"
   }
 }
+
+resource "aws_eks_access_entry" "github_actions_entry" {
+  cluster_name  = module.eks_ianode.cluster_name
+  principal_arn = aws_iam_role.github_actions_role.arn
+}
+
+resource "aws_eks_access_policy_association" "github_actions_policy_association" {
+  cluster_name  = module.eks_ianode.cluster_name
+  policy_arn    = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy"
+  principal_arn = aws_iam_role.github_actions_role.arn
+
+  access_scope {
+    type = "cluster"
+  }
+}

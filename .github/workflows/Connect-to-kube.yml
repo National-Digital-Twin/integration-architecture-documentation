@@ -1,4 +1,4 @@
-name: Deploy to kube
+name: Connect to kube
 on:
   workflow_dispatch:
     inputs:
@@ -24,7 +24,7 @@ permissions:
   contents: read
         
 jobs:
-  build-tag-push-docker-image-to-ecr:
+  connect-to-kube:
     runs-on: ubuntu-latest
     steps: 
       - name: Checkout repo
@@ -64,4 +64,8 @@ jobs:
         run: |
             currentContext=$(kubectl config current-context)
             kubectl config set clusters.$currentContext.server "https://localhost:9999"
-            kubectl config set clusters.$currentContext.tls-server-name $KUBE_ENDPOINT
+            kubectl config set clusters.$currentContext.tls-server-name "https://$KUBE_ENDPOINT"
+
+      - name: Test connectivity to Kube cluster
+        run: |
+            kubectl get svc
