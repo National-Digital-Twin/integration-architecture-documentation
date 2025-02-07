@@ -50,7 +50,14 @@ jobs:
       - name: Get kube cluster API server endpoint
         run: |
             ENDPOINT=$(aws eks describe-cluster --name ${{ github.event.inputs.eks_cluster_name }} --query "cluster.endpoint" --output text | sed 's|https://||')
+            echo "Resolved EKS Endpoint: $ENDPOINT"
             echo "KUBE_ENDPOINT=$ENDPOINT" >> "$GITHUB_ENV"
+
+      - name: Debug Environment Variable
+        env:
+            KUBE_ENDPOINT: ${{ env.KUBE_ENDPOINT }}  
+        run: |
+          echo "Checking KUBE_ENDPOINT value: $KUBE_ENDPOINT"         
 
       - name: Start tunnel to kube
         env: 
