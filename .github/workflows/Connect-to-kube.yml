@@ -63,7 +63,10 @@ jobs:
         env: 
           KUBE_ENDPOINT: ${{ env.KUBE_ENDPOINT }}
         run: |
-            aws ssm start-session --region ${{ github.event.inputs.aws_region }} --target ${{ github.event.inputs.instance_id }} --document-name AWS-StartPortForwardingSessionToRemoteHost --parameters '{"host":["$KUBE_ENDPOINT"],"portNumber":["443"],"localPortNumber":["9999"]}' &
+            aws ssm start-session --region ${{ github.event.inputs.aws_region }} \
+              --target ${{ github.event.inputs.instance_id }} \
+              --document-name AWS-StartPortForwardingSessionToRemoteHost \
+              --parameters '{"host":[\"$KUBE_ENDPOINT\"],"portNumber":["443"],"localPortNumber":["9999"]}' &
 
       - name: Create kube config
         run: |
