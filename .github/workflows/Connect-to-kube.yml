@@ -78,7 +78,7 @@ jobs:
         run: |
             currentContext=$(kubectl config current-context)
             kubectl config set clusters.$currentContext.server "https://localhost:9999"
-            kubectl config set clusters.$currentContext.tls-server-name "https://$KUBE_ENDPOINT"
+            kubectl config set clusters.$currentContext.tls-server-name "$KUBE_ENDPOINT"
 
       - name: Test connectivity to Kube cluster
         run: |
