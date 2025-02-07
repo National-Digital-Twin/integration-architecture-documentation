@@ -1,0 +1,289 @@
+{
+  "info": {
+    "_postman_id": "58071b83-7ab5-40b8-b936-1e222fb70e1f",
+    "name": "IANode",
+    "description": "A collection of scripts for testing NDTP IANode\n\n[https://ndtp.co.uk/](https://ndtp.co.uk/)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "25359695"
+  },
+  "item": [
+    {
+      "name": "local-smoke-tests",
+      "item": [
+        {
+          "name": "local-cognito",
+          "item": [
+            {
+              "name": "get-well-known-jwks",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:9229/local_6GLuhxhD/.well-known/jwks.json",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "9229",
+                  "path": [
+                    "local_6GLuhxhD",
+                    ".well-known",
+                    "jwks.json"
+                  ]
+                },
+                "description": "Generated from cURL: curl http://localhost:9229/local_6GLuhxhD/.well-known/jwks.json "
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "ianode-access",
+          "item": [
+            {
+              "name": "get-admin-details",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      ""
+                    ],
+                    "type": "text/javascript",
+                    "packages": {}
+                  }
+                }
+              ],
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "bearer "
+                  }
+                ],
+                "url": {
+                  "raw": "localhost:8091/whoami",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8091",
+                  "path": [
+                    "whoami"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "secure-agent-graph",
+          "item": [
+            {
+              "name": "post-testing-data-(use-admin-token)",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-type",
+                    "value": "text/trig"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "bearer ",
+                    "disabled": true
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs:    <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX ies:     <http://ies.data.gov.uk/ontology/ies4#>\nPREFIX authz:  <http://ndtp.co.uk/security#>\nPREFIX :        <http://example/>\n\n:person4321 rdf:type ies:Person;\n    :phone \"0400 111 222\" ;\n    :phone \"0400 111 333\" ;\n    :empId  4321 ;\n    rdfs:label \"Jones\" ;\n    .\n\n:person9876 rdf:type ies:Person;\n   :phone \"0777 11 11 11\" ;\n   :phone \"0777 22 22 22\" ;\n   :empId 9876 ;\n   rdfs:label \"Smith\" ;\n   .\n\nGRAPH authz:labels {\n    [ authz:pattern ':person4321 :phone \"0400 111 333\"' ;  authz:label \"*\" ] .\n    [ authz:pattern ':person4321 :phone \"0400 111 444\"' ;  authz:label \"employee | contractor\" ] .\n    [ authz:pattern ':person9876 :empId 9876' ;  authz:label \"employee\" ] .\n    [ authz:pattern ':person4321 :empId 321' ;  authz:label \"employee\" ] .\n}\n",
+                  "options": {
+                    "raw": {
+                      "language": "text"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3030/ds/upload",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "3030",
+                  "path": [
+                    "ds",
+                    "upload"
+                  ]
+                },
+                "description": "Uploads data, no text response\n"
+              },
+              "response": []
+            },
+            {
+              "name": "get-data-test+user+admin",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "bearer ",
+                    "disabled": true
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "key": "query",
+                      "value": "select ?s ?p ?o where { ?s ?p ?o . }",
+                      "type": "text"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "http://localhost:3030/ds",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "3030",
+                  "path": [
+                    "ds"
+                  ]
+                },
+                "description": "Generated from cURL: \ncurl -X POST -H \"Authorization: bearer <id token from previous step> \" -d \"query=select ?s ?p ?o where { ?s ?p ?o . }\" http://localhost:3030/ds "
+              },
+              "response": []
+            },
+            {
+              "name": "get-data-test+admin",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "bearer ",
+                    "disabled": true
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "key": "query",
+                      "value": "select ?s ?p ?o where { ?s ?p ?o . }",
+                      "type": "text"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "http://localhost:3030/ds",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "3030",
+                  "path": [
+                    "ds"
+                  ]
+                },
+                "description": "Generated from cURL: \ncurl -X POST -H \"Authorization: bearer <id token from previous step> \" -d \"query=select ?s ?p ?o where { ?s ?p ?o . }\" http://localhost:3030/ds "
+              },
+              "response": []
+            },
+            {
+              "name": "graphql",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "bearer ",
+                    "disabled": true
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "graphql",
+                  "graphql": {
+                    "query": "query { node(uri: \"http://example/person4321\") {id properties { predicate value }} }",
+                    "variables": ""
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3030/ds/graphql",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "3030",
+                  "path": [
+                    "ds",
+                    "graphql"
+                  ]
+                },
+                "description": "Generated from cURL: curl -XPOST  -H \"Authorization: bearer <id token>\" -H \"Content-Type: application/json\" --data '{\"query\": \"query { node(uri: \\\"http://example/person4321\\\\\") {id properties { predicate value }} }\" }' http://localhost:3030/ds/graphql"
+              },
+              "response": []
+            }
+          ]
+        }
+      ],
+      "description": "Smoke tests to run locally"
+    }
+  ]
+}
