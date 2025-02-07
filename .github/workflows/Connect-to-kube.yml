@@ -48,11 +48,14 @@ jobs:
             sudo dpkg -i session-manager-plugin.deb
 
       - name: Get kube cluster API server endpoint
+        id: KUBE_ENDPOINT
         run: |
             ENDPOINT=$(aws eks describe-cluster --name ${{ github.event.inputs.eks_cluster_name }} --query "cluster.endpoint" --output text | sed 's|https://||')
             echo "KUBE_ENDPOINT=$ENDPOINT" >> "GITHUB_ENV"
 
       - name: Start tunnel to kube
+        env: 
+          KUBE_ENDPOINT: ${{ steps.KUBE_ENDPOINT.outputs.KUBE_ENDPOINT }}
         run: |
             aws ssm start-session --region ${{ github.event.inputs.aws_region }} --target ${{ github.event.inputs.instance_id }} --document-name AWS-StartPortForwardingSessionToRemoteHost --parameters '{"host":["$KUBE_ENDPOINT"],"portNumber":["443"],"localPortNumber":["9999"]}' &
 
@@ -61,6 +64,8 @@ jobs:
             aws eks update-kubeconfig --region ${{ github.event.inputs.aws_region }} --name ${{ github.event.inputs.eks_cluster_name }}
 
       - name: Update kube config to use tunnel
+        env: 
+          KUBE_ENDPOINT: ${{ steps.KUBE_ENDPOINT.outputs.KUBE_ENDPOINT }}
         run: |
             currentContext=$(kubectl config current-context)
             kubectl config set clusters.$currentContext.server "https://localhost:9999"
