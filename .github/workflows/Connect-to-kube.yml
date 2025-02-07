@@ -51,7 +51,7 @@ jobs:
         id: KUBE_ENDPOINT
         run: |
             ENDPOINT=$(aws eks describe-cluster --name ${{ github.event.inputs.eks_cluster_name }} --query "cluster.endpoint" --output text | sed 's|https://||')
-            echo "KUBE_ENDPOINT=$ENDPOINT" >> "GITHUB_ENV"
+            echo "KUBE_ENDPOINT=$ENDPOINT" >> "$GITHUB_ENV"
 
       - name: Start tunnel to kube
         env: 
