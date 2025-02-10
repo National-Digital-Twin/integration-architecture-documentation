@@ -31,7 +31,7 @@ metadata:
 spec:
   accessModes:
   - ReadWriteOnce
-  storageClassName: gp3
+  storageClassName: gp2
   resources:
     requests:
       storage: 100Mi
@@ -46,7 +46,7 @@ metadata:
 spec:
   accessModes:
   - ReadWriteOnce
-  storageClassName: gp3
+  storageClassName: gp2
   resources:
     requests:
       storage: 100Mi
@@ -61,7 +61,7 @@ metadata:
 spec:
   accessModes:
   - ReadWriteOnce
-  storageClassName: gp3
+  storageClassName: gp2
   resources:
     requests:
       storage: 100Mi
