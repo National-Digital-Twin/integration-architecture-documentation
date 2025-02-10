@@ -23,7 +23,7 @@ data "aws_iam_policy_document" "github_actions_trust" {
   }
 }
 
-data "aws_iam_policy_document" "github_actions_ecr_perms" {
+data "aws_iam_policy_document" "github_actions_perms" {
   statement {
     sid    = "EcrRepoAccess"
     effect = "Allow"
@@ -70,6 +70,16 @@ data "aws_iam_policy_document" "github_actions_ecr_perms" {
       "s3:Put*"
     ]
     resources = ["arn:aws:s3:::ia-node-config", "arn:aws:s3:::ia-node-config/*"] #TODO Bucket needs creating in terraform
+  }
+
+  statement {
+    sid    = "Ec2Access"
+    effect = "Allow"
+    actions = [
+      "ec2:Get*",
+      "ec2:Describe*"
+    ]
+    resources = ["*"]
   }
 }
 
