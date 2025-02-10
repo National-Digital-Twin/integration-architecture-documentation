@@ -18,6 +18,9 @@ on:
         description: 'Environment name'
         required: true
         default: 'testing'
+        type: choice
+        options: 
+          - testing
 
 permissions:
   id-token: write
@@ -84,3 +87,12 @@ jobs:
       - name: Test connectivity to Kube cluster
         run: |
             kubectl get svc
+
+      - name: Output Kubernetes manifest
+        run: |
+          kubectl kustomize ${{ github.workspace }}/CICD/overlay/${{ github.event.inputs.env_name }}
+
+      - name: Apply Kubernetes manifest
+        run: |
+          kubectl apply -k ${{ github.workspace }}/CICD/overlay/${{ github.event.inputs.env_name }}
+          

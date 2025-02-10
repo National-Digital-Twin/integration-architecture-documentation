@@ -2,4 +2,4 @@ apiVersion: v1
 kind: Namespace
 
 metadata:
-  name: name.override.required # name to be patched within overlays
+  name: name.override.required # name is replaced within overlay/<env>
