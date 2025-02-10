@@ -90,9 +90,9 @@ jobs:
 
       - name: Output Kubernetes manifest
         run: |
-          kubectl kustomize ${{ github.workspace }}/CICD/overlay/${{ github.event.inputs.env_name }}
+          kubectl kustomize ${{ github.workspace }}/CICD/overlay/${{ github.event.inputs.env_name }}/
 
       - name: Apply Kubernetes manifest
         run: |
-          kubectl apply -k ${{ github.workspace }}/CICD/overlay/${{ github.event.inputs.env_name }}
+          kubectl apply -k ${{ github.workspace }}/CICD/overlay/${{ github.event.inputs.env_name }}/
           
