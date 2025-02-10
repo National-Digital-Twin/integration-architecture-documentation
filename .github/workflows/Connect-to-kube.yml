@@ -1,4 +1,4 @@
-name: Connect to kube
+name: Deploy to kube using Kustomize
 on:
   workflow_dispatch:
     inputs:
@@ -27,7 +27,7 @@ permissions:
   contents: read
         
 jobs:
-  connect-to-kube:
+  deploy-to-kube:
     runs-on: ubuntu-latest
     steps: 
       - name: Checkout repo
