@@ -31,7 +31,6 @@ metadata:
 spec:
   accessModes:
   - ReadWriteOnce
-  storageClassName: gp2
   resources:
     requests:
       storage: 100Mi
@@ -46,7 +45,6 @@ metadata:
 spec:
   accessModes:
   - ReadWriteOnce
-  storageClassName: gp2
   resources:
     requests:
       storage: 100Mi
@@ -61,7 +59,6 @@ metadata:
 spec:
   accessModes:
   - ReadWriteOnce
-  storageClassName: gp2
   resources:
     requests:
       storage: 100Mi
@@ -115,6 +112,7 @@ spec:
         - mountPath: /fuseki/config
           name: secure-agent-graph-container-claim2
       restartPolicy: Always
+      serviceAccountName: secure-agent-graph-sa
       volumes:
       - name: secure-agent-graph-container-claim0
         persistentVolumeClaim:
