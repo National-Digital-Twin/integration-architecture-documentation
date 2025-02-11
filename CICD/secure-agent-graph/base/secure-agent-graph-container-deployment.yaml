@@ -22,6 +22,7 @@ spec:
       labels:
         io.kompose.service: secure-agent-graph-container
     spec:
+      serviceAccountName: secure-agent-graph-sa
       containers:
         - args:
             - --config
