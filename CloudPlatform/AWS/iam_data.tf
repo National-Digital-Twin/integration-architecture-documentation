@@ -251,8 +251,7 @@ resource "kubernetes_service_account" "secure_agent_graph_sa" {
    }
 }
 
-# Create a ClusterRole with permissions to mount volumes and create
-resources
+# Create the Cluster Role for the ServiceAccount
 resource "kubernetes_cluster_role" "secure_agent_graph_role" {
    metadata {
      name = "secure-agent-graph-role"
@@ -286,14 +285,12 @@ resource "kubernetes_cluster_role_binding" "secure_agent_graph_binding" {
    role_ref {
      api_group = "rbac.authorization.k8s.io"
      kind      = "ClusterRole"
-     name      =
-kubernetes_cluster_role.secure_agent_graph_role.metadata[0].name
+     name      = kubernetes_cluster_role.secure_agent_graph_role.metadata[0].name
    }
 
    subject {
      kind      = "ServiceAccount"
-     name      =
-kubernetes_service_account.secure_agent_graph_sa.metadata[0].name
+     name      = kubernetes_service_account.secure_agent_graph_sa.metadata[0].name
      namespace = kubernetes_namespace.ndtp.metadata[0].name
    }
 }
