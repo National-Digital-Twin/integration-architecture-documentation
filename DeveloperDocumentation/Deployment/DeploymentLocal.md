@@ -39,13 +39,13 @@ cd ..
 . ./token_env.sh [Sets some environment variables for local running with tokens]
 export SCIM_ENABLED=true [So that cognito-local is used]
 npm install
-DEPLOYED_DOMAIN="http://localhost:3000" yarn dev [Run server providing API]
+OPENID_PROVIDER_URL=development DEPLOYED_DOMAIN="http://localhost:3000" yarn dev [Run server providing API]
 ```
 (leave that running)
 
 Check it's running and account is in place
 ```
-aws --endpoint http://0.0.0.0:9229 cognito-idp initiate-auth --client-id 6967e8jkb0oqcm9brjkrbcrhj --auth-flow USER_PASSWORD_AUTH --auth-parameters USERNAME=test+admin@ndtia.dbt.gov.uk,PASSWORD=password
+aws --endpoint http://0.0.0.0:9229 cognito-idp initiate-auth --client-id 6967e8jkb0oqcm9brjkrbcrhj --auth-flow USER_PASSWORD_AUTH --auth-parameters USERNAME=test+admin@ndtp.co.uk,PASSWORD=password
 ```
 and note the token id from the output
 ```
@@ -75,6 +75,9 @@ git clone https://github.com/National-Digital-Twin/rdf-abac
 cd rdf-abac
 mvn clean install
 cd ..
+git clone https://github.com/National-Digital-Twin/jwt-servlet-auth
+cd jwt-servlet-auth
+mvn clean install
 git clone https://github.com/National-Digital-Twin/secure-agents-core.git
 cd secure-agents-core
 (Ensure Docker is running as the tests use it)
@@ -122,7 +125,7 @@ Adjust sag-docker/docker-run.sh
 * Add USER_ATTRIBUTES_URL ``` -e USER_ATTRIBUTES_URL="http://host.docker.internal:8091" \```
 * Restart docker container
 ```
-sag-docker/docker-run.sh --config config/config-abac-local.ttl
+sag-docker/docker-run.sh --config config/dev-server-sag.ttl
 ```
 
 Try to upload file, should fail as unauthenticated
