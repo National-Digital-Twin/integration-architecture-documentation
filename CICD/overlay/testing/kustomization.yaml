@@ -5,7 +5,10 @@ resources:
   - ../../resources/
 
 patches:
-  - target: 
+  - target:
       kind: Namespace
       name: default.change
-    path: namespace_patch.yaml
+    patch: |-
+      - op: replace
+        path: /metadata/name
+        value: ndtp-testing
