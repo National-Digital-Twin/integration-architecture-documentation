@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    io.kompose.service: access-api
+  name: access-api
+  namespace: input.a.namespace
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: access-api
+  template:
+    metadata:
+      labels:
+        io.kompose.service: access-api
+    spec:
+      containers:
+        - args:
+            - /app/wait-for.sh
+            - mongo:27017
+            - --
+            - node
+            - dist/index.js
+          env:
+            - name: DEBUG
+              value: '"true"'
+            - name: DEPLOYED_DOMAIN
+              value: http://localhost:3000
+            - name: GROUPS_KEY
+              value: cognito:groups
+            - name: MONGO_COLLECTION
+              value: access
+            - name: MONGO_PROTOCOL
+              value: mongodb
+            - name: MONGO_PWD
+              value: password
+            - name: MONGO_URL
+              value: mongo:27017
+            - name: MONGO_USER
+              value: ianode-access
+            - name: OPENID_PROVIDER_URL
+              value: https://cognito-idp.eu-west-2.amazonaws.com/eu-west-2_oGJ7rFJsw
+            - name: PORT
+              value: "8091"
+            - name: SCIM_ENABLED
+              value: "true"
+          image: 127214183387.dkr.ecr.eu-west-2.amazonaws.com/ianode-access:latest
+          name: access-api-ianode
+          ports:
+            - containerPort: 8091
+              protocol: TCP
+      restartPolicy: Always

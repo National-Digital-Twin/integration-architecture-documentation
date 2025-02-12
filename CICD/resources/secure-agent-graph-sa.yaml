@@ -1,0 +1,7 @@
+apiVersion: v1 
+kind: ServiceAccount 
+metadata:
+  name: secure-agent-graph-sa
+  namespace: input.a.namespace
+  # annotations:
+  #   eks.amazonawk.com/role-arn: <some_role_arn_here>
