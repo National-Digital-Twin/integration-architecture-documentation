@@ -4,6 +4,7 @@ metadata:
   labels:
     io.kompose.service: secure-agent-graph-container-claim1
   name: secure-agent-graph-container-claim1
+  namespace: input.a.namespace
 spec:
   accessModes:
     - ReadWriteOnce

@@ -4,10 +4,12 @@ kind: Kustomization
 resources:
   - ../../resources/
 
+namespace: ndtp-testing
+
 patches:
   - target:
       kind: Namespace
-      name: default.change
+      name: input.name
     patch: |-
       - op: replace
         path: /metadata/name

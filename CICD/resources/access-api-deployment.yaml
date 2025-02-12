@@ -4,6 +4,7 @@ metadata:
   labels:
     io.kompose.service: access-api
   name: access-api
+  namespace: input.a.namespace
 spec:
   replicas: 1
   selector:

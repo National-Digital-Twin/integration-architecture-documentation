@@ -4,6 +4,7 @@ metadata:
   labels:
     io.kompose.service: secure-agent-graph-container
   name: secure-agent-graph-container
+  namespace: input.a.namespace
 spec:
   ports:
     - name: "3030"
