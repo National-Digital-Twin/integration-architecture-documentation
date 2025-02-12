@@ -113,6 +113,8 @@ data "aws_iam_policy_document" "aws-ebs-csi-driver_policy" {
     sid    = "Ec2Access"
     effect = "Allow"
     actions = [
+      "ec2:CreateVolume",
+      "ec2:DeleteVolume",
       "ec2:ModifyVolume",
       "ec2:DetachVolume",
       "ec2:DescribeVolumes",
@@ -122,7 +124,8 @@ data "aws_iam_policy_document" "aws-ebs-csi-driver_policy" {
       "ec2:DescribeInstances",
       "ec2:DescribeAvailabilityZones",
       "ec2:CreateSnapshot",
-      "ec2:AttachVolume"
+      "ec2:AttachVolume",
+      "ec2:CreateTags"
     ]
     resources = ["*"]
   }
