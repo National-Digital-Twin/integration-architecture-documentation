@@ -24,7 +24,7 @@ spec:
           env:
             - name: DEBUG
               value: '"true"'
-            - name: 'DEPLOYED_DOMAIN '
+            - name: DEPLOYED_DOMAIN
               value: http://localhost:3000
             - name: GROUPS_KEY
               value: cognito:groups
