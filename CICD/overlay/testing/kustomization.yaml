@@ -4,5 +4,8 @@ kind: Kustomization
 resources:
   - ../../resources/
 
-patchesStrategicMerge:
-  - namespace_patch.yaml
+patches:
+  - target: 
+      kind: Namespace
+      name: ndtp-testing
+    path: namespace_patch.yaml
