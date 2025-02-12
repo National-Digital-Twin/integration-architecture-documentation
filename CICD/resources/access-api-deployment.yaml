@@ -1,9 +1,6 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  annotations:
-    kompose.cmd: kompose --file docker-compose-github.yaml convert
-    kompose.version: 1.35.0 (HEAD)
   labels:
     io.kompose.service: access-api
   name: access-api
@@ -14,9 +11,6 @@ spec:
       io.kompose.service: access-api
   template:
     metadata:
-      annotations:
-        kompose.cmd: kompose --file docker-compose-github.yaml convert
-        kompose.version: 1.35.0 (HEAD)
       labels:
         io.kompose.service: access-api
     spec:

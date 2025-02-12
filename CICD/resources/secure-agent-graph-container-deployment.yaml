@@ -1,9 +1,6 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  annotations:
-    kompose.cmd: kompose --file docker-compose-github.yaml convert
-    kompose.version: 1.35.0 (HEAD)
   labels:
     io.kompose.service: secure-agent-graph-container
   name: secure-agent-graph-container
@@ -16,9 +13,6 @@ spec:
     type: Recreate
   template:
     metadata:
-      annotations:
-        kompose.cmd: kompose --file docker-compose-github.yaml convert
-        kompose.version: 1.35.0 (HEAD)
       labels:
         io.kompose.service: secure-agent-graph-container
     spec:

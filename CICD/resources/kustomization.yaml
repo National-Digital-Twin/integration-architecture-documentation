@@ -1,8 +1,13 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
+
 resources:
+  - namespace.yaml
   - secure-agent-graph-container-claim0-persistentvolumeclaim.yaml
   - secure-agent-graph-container-claim1-persistentvolumeclaim.yaml
   - secure-agent-graph-container-claim2-persistentvolumeclaim.yaml
   - secure-agent-graph-container-deployment.yaml
   - secure-agent-graph-container-service.yaml
+  - access-api-deployment.yaml
+  - access-api-service.yaml
+  
