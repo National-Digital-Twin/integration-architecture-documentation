@@ -11,4 +11,3 @@ resources:
   - access-api-deployment.yaml
   - access-api-service.yaml
   - secure-agent-graph-sa.yaml
-  
