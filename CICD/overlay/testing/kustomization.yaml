@@ -7,5 +7,5 @@ resources:
 patches:
   - target: 
       kind: Namespace
-      name: ndtp-testing
+      name: default.change
     path: namespace_patch.yaml
