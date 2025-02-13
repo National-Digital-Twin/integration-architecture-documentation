@@ -19,3 +19,5 @@ resources:
   - statefulset.yaml
   - service.yaml
   - serviceaccount.yaml
+  - secure-agent-graph-data-pvc.yaml
+  - secure-agent-graph-label-pvc.yaml
