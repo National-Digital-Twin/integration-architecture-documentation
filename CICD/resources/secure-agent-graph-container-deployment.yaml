@@ -21,7 +21,7 @@ spec:
       containers:
           args:
             - "--config"
-            - "/fuseki/config/config.ttl"
+            - "config/config-abac-local.ttl"
           env:
             - name: JAVA_OPTIONS
               value: -Xmx2048m -Xms2048m
