@@ -6,7 +6,7 @@ spec:
   template:
     spec:
       containers:
-        - args:
+        - name: secure-agent-graph-container
           env:
             - name: JWKS_URL
               value: https://cognito-idp.eu-west-2.amazonaws.com/eu-west-2_oGJ7rFJsw/.well-known/jwks.json

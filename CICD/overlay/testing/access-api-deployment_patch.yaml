@@ -6,7 +6,7 @@ spec:
   template:
     spec:
       containers:
-        - args:
+        - name: access-api-ianode
           env:
             - name: MONGO_PWD
               value: password
