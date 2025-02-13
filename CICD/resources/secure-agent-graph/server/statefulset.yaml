@@ -37,13 +37,13 @@ spec:
           args:
             - "--config"
             - "/fuseki/config/config.ttl"
-          resources:
-            requests:
-              memory: 8000Mi
-              cpu: 500m
-            limits:
-              cpu: 1500m
-              memory: 12000Mi
+          # resources:
+          #   requests:
+          #     memory: 8000Mi
+          #     cpu: 500m
+          #   limits:
+          #     cpu: 1500m
+          #     memory: 12000Mi
           volumeMounts:
             - name: secure-agent-graph-config-volume
               mountPath: /fuseki/config
