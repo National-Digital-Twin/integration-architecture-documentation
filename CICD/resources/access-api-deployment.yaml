@@ -17,11 +17,11 @@ spec:
     spec:
       containers:
         - args:
-            - /app/wait-for.sh
-            - $MONGO_URL:27017
-            - --
-            - node
-            - dist/index.js
+            - "/app/wait-for.sh"
+            - "$MONGO_URL"
+            - "--"
+            - "node"
+            - "dist/index.js"
           env:
             - name: DEBUG
               value: '"true"'
