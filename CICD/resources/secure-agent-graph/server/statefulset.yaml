@@ -69,8 +69,12 @@ spec:
             timeoutSeconds: 2
       volumes:
         - name: secure-agent-graph-config-volume
-          configMap:
-            name: secure-agent-graph-server-fuseki
+          projected:
+            sources: 
+              - configMap:
+                  name: secure-agent-graph-server-fuseki-config
+              - configMap:
+                  name: secure-agent-graph-server-fuseki-attribute
         - name: secure-agent-graph-data-volume
           persistentVolumeClaim:
             claimName: secure-agent-graph-data-pvc
