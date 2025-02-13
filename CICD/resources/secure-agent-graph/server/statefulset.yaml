@@ -71,19 +71,9 @@ spec:
         - name: secure-agent-graph-config-volume
           configMap:
             name: secure-agent-graph-server-fuseki
-
-  volumeClaimTemplates:
-    - metadata:
-        name: secure-agent-graph-data-volume
-      spec:
-        accessModes: ["ReadWriteOnce"]
-        resources:
-          requests:
-            storage: 100Gi
-    - metadata:
-        name: secure-agent-graph-label-volume
-      spec:
-        accessModes: ["ReadWriteOnce"]
-        resources:
-          requests:
-            storage: 100Gi
+        - name: secure-agent-graph-data-volume
+          persistentVolumeClaim:
+            claimName: secure-agent-graph-data-pvc
+        - name: secure-agent-graph-label-volume
+          persistentVolumeClaim:
+            claimName: secure-agent-graph-label-pvc

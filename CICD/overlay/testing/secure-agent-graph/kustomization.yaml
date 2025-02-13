@@ -7,13 +7,6 @@ resources:
   - ../../../resources/secure-agent-graph
 
 patches:
-  - patch: |-
-      - op: replace
-        path: /spec/storageClassName
-        value: gp2
-    target:
-      kind: PersistentVolumeClaim
-
   - path: server/patches/statefulset.yaml
     target:
       kind: StatefulSet
