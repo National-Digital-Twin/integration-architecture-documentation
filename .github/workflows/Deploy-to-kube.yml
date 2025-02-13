@@ -21,6 +21,14 @@ on:
         type: choice
         options: 
           - testing
+      deployment_item:
+        description: 'What do you want to deploy?'
+        required: true
+        default: 'namespace'
+        type: choice
+        options: 
+          - namespace
+          - secure-agent-graph
 
 permissions:
   id-token: write
@@ -84,15 +92,11 @@ jobs:
             kubectl config set clusters.$currentContext.server "https://localhost:9999"
             kubectl config set clusters.$currentContext.tls-server-name "$KUBE_ENDPOINT"
 
-      - name: Test connectivity to Kube cluster
-        run: |
-            kubectl get svc
-
       - name: Output Kubernetes manifest
         run: |
-          kubectl kustomize ${{ github.workspace }}/CICD/overlay/${{ github.event.inputs.env_name }}/
+          kubectl kustomize ${{ github.workspace }}/CICD/overlay/${{ github.event.inputs.env_name }}/${{ github.event.inputs.deployment_item }}
 
       - name: Apply Kubernetes manifest
         run: |
-          kubectl apply -k ${{ github.workspace }}/CICD/overlay/${{ github.event.inputs.env_name }}/
+          kubectl apply -k ${{ github.workspace }}/CICD/overlay/${{ github.event.inputs.env_name }}/${{ github.event.inputs.deployment_item }}
           

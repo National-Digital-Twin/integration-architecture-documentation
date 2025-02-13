@@ -1,0 +1,89 @@
+apiVersion: apps/v1
+kind: StatefulSet
+
+metadata:
+  name: secure-agent-graph-server
+  namespace: input.a.namespace
+
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: secure-agent-graph-server
+  replicas: 1
+  revisionHistoryLimit: 3
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: secure-agent-graph-server
+    spec:
+      serviceAccountName: secure-agent-graph-sa
+      containers:
+        - name: secure-agent-graph-server
+          image: input.image
+          imagePullPolicy: Always
+          ports:
+            - name: http
+              containerPort: 3030
+              protocol: TCP
+            - name: metrics
+              containerPort: 9464
+              protocol: TCP
+          envFrom:
+            - configMapRef:
+                name: secure-agent-graph-server
+            - secretRef:
+                name: secure-agent-graph-server
+                optional: true
+          args:
+            - "--config"
+            - "/fuseki/config/config.ttl"
+          resources:
+            requests:
+              memory: 8000Mi
+              cpu: 500m
+            limits:
+              cpu: 1500m
+              memory: 12000Mi
+          volumeMounts:
+            - name: secure-agent-graph-config-volume
+              mountPath: /fuseki/config
+            - name: secure-agent-graph-data-volume
+              mountPath: /fuseki/databases
+            - name: secure-agent-graph-label-volume
+              mountPath: /fuseki/labels
+          readinessProbe:
+            httpGet:
+              path: /$/ping
+              port: 3030
+              scheme: HTTP
+            initialDelaySeconds: 120
+            periodSeconds: 30
+            timeoutSeconds: 2
+          livenessProbe:
+            httpGet:
+              path: /$/ping
+              port: 3030
+              scheme: HTTP
+            initialDelaySeconds: 120
+            periodSeconds: 30
+            timeoutSeconds: 2
+      volumes:
+        - name: secure-agent-graph-config-volume
+          configMap:
+            name: secure-agent-graph-server-fuseki
+
+  volumeClaimTemplates:
+    - metadata:
+        name: secure-agent-graph-data-volume
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        resources:
+          requests:
+            storage: 100Gi
+    - metadata:
+        name: secure-agent-graph-label-volume
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        resources:
+          requests:
+            storage: 100Gi

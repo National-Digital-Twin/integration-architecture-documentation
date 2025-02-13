@@ -1,0 +1,7 @@
+spec:
+  template:
+    spec:
+      serviceAccountName: secure-agent-graph-server
+      containers:
+        - name: secure-agent-graph-server
+          image: 127214183387.dkr.ecr.eu-west-2.amazonaws.com/secure-agent-graph:latest

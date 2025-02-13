@@ -2,4 +2,4 @@ apiVersion: v1
 kind: Namespace
 
 metadata:
-  name: input.name
+  name: input.namespace.name
