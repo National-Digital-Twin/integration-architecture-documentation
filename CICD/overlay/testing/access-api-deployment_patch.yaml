@@ -3,6 +3,7 @@ kind: Deployment
 metadata:
   name: access-api
 spec:
+  template:
     spec:
       containers:
           env:
