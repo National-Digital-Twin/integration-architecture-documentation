@@ -2,14 +2,12 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-  - ../../resources/
-
-namespace: ndtp-testing
+  - ../../../resources/namespace
 
 patches:
   - target:
       kind: Namespace
-      name: input.name
+      name: input.namespace.name
     patch: |-
       - op: replace
         path: /metadata/name

@@ -1,0 +1,28 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: ndtp-testing
+
+resources:
+  - ../../../resources/secure-agent-graph
+
+patches:
+  - path: server/patches/statefulset.yaml
+    target:
+      kind: StatefulSet
+      name: secure-agent-graph-server
+
+configMapGenerator:
+  # secure-agent-graph-server config patches.
+  - name: secure-agent-graph-server
+    behavior: merge
+    envs:
+      - server/patches/config/server.env
+  # secure-agent-graph-server fuseki config patches.
+  - name: secure-agent-graph-server-fuseki-config
+    files:
+      - server/patches/config/config.ttl
+  # secure-agent-graph-server fuseki attribute patches.
+  - name: secure-agent-graph-server-fuseki-attribute
+    files:
+      - server/patches/config/attribute-store.ttl
