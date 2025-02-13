@@ -18,7 +18,7 @@ patches:
     target: 
       kind: Deployment
       name: secure-agent-graph-container
-  - path: secure-agent-graph-container-deployment_patch.yaml
+  - path: access-api-deployment_patch.yaml
     target: 
       kind: Deployment
-      name: access-api  
+      name: access-api
