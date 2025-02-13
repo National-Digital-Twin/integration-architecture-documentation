@@ -14,3 +14,11 @@ patches:
       - op: replace
         path: /metadata/name
         value: ndtp-testing
+  - path: secure-agent-graph-container-deployment_patch.yaml
+    target: 
+      kind: Deployment
+      name: secure-agent-graph-container
+  - path: secure-agent-graph-container-deployment_patch.yaml
+    target: 
+      kind: Deployment
+      name: access-api  

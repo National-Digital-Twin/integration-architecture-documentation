@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: access-api
+spec:
+    spec:
+      containers:
+          env:
+            - name: MONGO_PWD
+              value: password
+            - name: MONGO_URL
+              value: mongo:27017
+            - name: MONGO_USER
+              value: ianode-access
+            - name: OPENID_PROVIDER_URL
+              value: https://cognito-idp.eu-west-2.amazonaws.com/eu-west-2_oGJ7rFJsw
+          image: 127214183387.dkr.ecr.eu-west-2.amazonaws.com/ianode-access:latest

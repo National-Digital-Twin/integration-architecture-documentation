@@ -19,17 +19,17 @@ spec:
     spec:
       serviceAccountName: secure-agent-graph-sa
       containers:
-        - args:
-            - --config
-            - config/config-abac-local.ttl
+          args:
+            - "--config"
+            - "/fuseki/config/config.ttl"
           env:
             - name: JAVA_OPTIONS
               value: -Xmx2048m -Xms2048m
             - name: JWKS_URL
-              value: https://cognito-idp.eu-west-2.amazonaws.com/eu-west-2_oGJ7rFJsw/.well-known/jwks.json
+              value: input.JWKS_URL
             - name: USER_ATTRIBUTES_URL
               value: http://access-api:8091
-          image: 127214183387.dkr.ecr.eu-west-2.amazonaws.com/secure-agent-graph:latest
+          image: input.image
           name: secure-agent-graph-container
           ports:
             - containerPort: 3030

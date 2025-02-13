@@ -16,12 +16,6 @@ spec:
         io.kompose.service: access-api
     spec:
       containers:
-        - args:
-            - /app/wait-for.sh
-            - mongo:27017
-            - --
-            - node
-            - dist/index.js
           env:
             - name: DEBUG
               value: '"true"'
@@ -34,18 +28,18 @@ spec:
             - name: MONGO_PROTOCOL
               value: mongodb
             - name: MONGO_PWD
-              value: password
+              value: input.MONGO_PWD
             - name: MONGO_URL
-              value: mongo:27017
+              value: input.MONGO_URL
             - name: MONGO_USER
-              value: ianode-access
+              value: input.MONGO_USER
             - name: OPENID_PROVIDER_URL
-              value: https://cognito-idp.eu-west-2.amazonaws.com/eu-west-2_oGJ7rFJsw
+              value: input.OPENID_PROVIDER_URL
             - name: PORT
               value: "8091"
             - name: SCIM_ENABLED
               value: "true"
-          image: 127214183387.dkr.ecr.eu-west-2.amazonaws.com/ianode-access:latest
+          image: input.image
           name: access-api-ianode
           ports:
             - containerPort: 8091
