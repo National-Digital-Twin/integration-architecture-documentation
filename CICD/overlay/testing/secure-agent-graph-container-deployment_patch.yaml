@@ -10,3 +10,4 @@ spec:
             - name: JWKS_URL
               value: https://cognito-idp.eu-west-2.amazonaws.com/eu-west-2_oGJ7rFJsw/.well-known/jwks.json
           image: 127214183387.dkr.ecr.eu-west-2.amazonaws.com/secure-agent-graph:latest
+          name: secure-agent-graph-container

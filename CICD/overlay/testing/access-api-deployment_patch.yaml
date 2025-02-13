@@ -16,3 +16,4 @@ spec:
             - name: OPENID_PROVIDER_URL
               value: https://cognito-idp.eu-west-2.amazonaws.com/eu-west-2_oGJ7rFJsw
           image: 127214183387.dkr.ecr.eu-west-2.amazonaws.com/ianode-access:latest
+          name: access-api-ianode
