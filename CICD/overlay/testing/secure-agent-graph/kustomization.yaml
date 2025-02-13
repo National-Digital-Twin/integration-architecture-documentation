@@ -20,11 +20,9 @@ configMapGenerator:
       - server/patches/config/server.env
   # secure-agent-graph-server fuseki config patches.
   - name: secure-agent-graph-server-fuseki-config
-    behavior: replace
     files:
       - server/patches/config/config.ttl
   # secure-agent-graph-server fuseki attribute patches.
   - name: secure-agent-graph-server-fuseki-attribute
-    behavior: replace
     files:
       - server/patches/config/attribute-store.ttl
