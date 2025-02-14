@@ -44,7 +44,6 @@ export SCIM_ENABLED=true [So that cognito-local is used]
 yarn install
 OPENID_PROVIDER_URL=development DEPLOYED_DOMAIN="http://localhost:3000" GROUPS_KEY="cognito:groups" yarn dev [Run server providing API]
 ```
-(leave that running)
 
 Check it's running and account is in place
 ```
