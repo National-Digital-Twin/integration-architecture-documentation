@@ -37,7 +37,7 @@ docker compose up mongo -d
 ```
 (and leave that running)
 
-Start up access support mechanism 
+Start up access support mechanism
 ```
 source ./token_env.sh [Sets some environment variables for local running with tokens]
 export SCIM_ENABLED=true [So that cognito-local is used]
