@@ -33,16 +33,15 @@ Wait for script to complete and window to say "Added users to groups when requir
 Start up mongo for ianode-access to use
 ```
 cd ianode-access
-docker compose up mongo
+docker compose up mongo -d
 ```
 (and leave that running)
 
-Start up access support mechanism
+Start up access support mechanism 
 ```
-cd ..
-. ./token_env.sh [Sets some environment variables for local running with tokens]
+source ./token_env.sh [Sets some environment variables for local running with tokens]
 export SCIM_ENABLED=true [So that cognito-local is used]
-npm install
+yarn install
 OPENID_PROVIDER_URL=development DEPLOYED_DOMAIN="http://localhost:3000" GROUPS_KEY="cognito:groups" yarn dev [Run server providing API]
 ```
 (leave that running)
