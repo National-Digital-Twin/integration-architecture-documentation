@@ -7,7 +7,9 @@
 * Postman/Curl
 * Git cli
 
-## Start up identity provider and access control
+## Minimal IANode
+
+### Start up identity provider and access control
 
 Fetch source code
 ```
@@ -57,10 +59,10 @@ curl -H "Authorization: bearer <id token>" http://localhost:8091/whoami
 ```
 and some details about that user should be shown.
 
-## Prepare authentication for fetching GitHub packages
+### Prepare authentication for fetching GitHub packages
 https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-apache-maven-registry#authenticating-to-github-packages
 
-## Fetch source code and build packages
+### Fetch source code and build packages
 ```
 git clone https://github.com/National-Digital-Twin/rdf-abac
 cd rdf-abac
@@ -91,11 +93,11 @@ cd secure-agent-graph
 mvn clean install
 ```
 
-## Start up secure-agent-graph
+### Start up secure-agent-graph
 
 Start in-memory secure agent graph with dev config TODO Indicate anything different for production in config file
 ```
-USER_ATTRIBUTES_URL=http://localhost:8091 JWKS_URL=http://localhost:9229/local_6GLuhxhD/.well-known/jwks.json \
+USER_ATTRIBUTES_URL=http://localhost:8091 JWKS_URL=disabled \
 java \
 -Dfile.encoding=UTF-8 \
 -Dsun.stdout.encoding=UTF-8 \
@@ -105,11 +107,11 @@ uk.gov.dbt.ndtp.secure.agent.graph.SecureAgentGraph \
 --config sag-docker/mnt/config/dev-server-vanilla.ttl
 ```
 
-## Run basic test for minimal IANode functionality
+### Run basic test for minimal IANode functionality
 
 Upload knowledge and fetch data
 ```
-curl -XPOST -T /Users/martin.willitts/Projects/NDTP/IA/secure-agent-graph/sag-docker/Test/data1.trig --header "Content-type: text/trig" http://localhost:3030/ds/upload
+curl -XPOST -T <path-to>/secure-agent-graph/sag-docker/Test/data1.trig --header "Content-type: text/trig" http://localhost:3030/ds/upload
 curl http://localhost:3030/ds # Fetches both records
 ```
 
@@ -118,7 +120,7 @@ Check local JWKS keys accessible
 curl http://localhost:9229/local_6GLuhxhD/.well-known/jwks.json # Should output data
 ```
 
-## Run access control test
+### Run access control test
 
 Start up IANode with GraphQL and ABAC
 ```
@@ -134,13 +136,13 @@ uk.gov.dbt.ndtp.secure.agent.graph.SecureAgentGraph \
 
 Try to upload file, should fail as unauthenticated
 ```
-curl -XPOST -T /Users/martin.willitts/Projects/NDTP/IA/secure-agent-graph/sag-docker/Test/data1.trig --header "Content-type: text/trig" http://localhost:3030/ds/upload
+curl -XPOST -T <path-to>/secure-agent-graph/sag-docker/Test/data1.trig --header "Content-type: text/trig" http://localhost:3030/ds/upload
 ```
 
 Obtain token and try again (replace id token placeholder in second step). This should show person4321 and phone number ending 333.
 ```
 aws --endpoint http://0.0.0.0:9229 cognito-idp initiate-auth --client-id 6967e8jkb0oqcm9brjkrbcrhj --auth-flow USER_PASSWORD_AUTH --auth-parameters USERNAME=test+user+admin@ndtp.co.uk,PASSWORD=password
-curl -XPOST -T /Users/martin.willitts/Projects/NDTP/IA/secure-agent-graph/sag-docker/Test/data1.trig --header "Content-type: text/trig" -H "Authorization: bearer <id token from previous step>" http://localhost:3030/ds/upload
+curl -XPOST -T <path-to>/secure-agent-graph/sag-docker/Test/data1.trig --header "Content-type: text/trig" -H "Authorization: bearer <id token from previous step>" http://localhost:3030/ds/upload
 curl -X POST -H "Authorization: bearer <id token from previous step>" -d "query=select ?s ?p ?o where { ?s ?p ?o . }" http://localhost:3030/ds
 ```
 
@@ -155,3 +157,65 @@ Run a GraphQL query
 curl -XPOST  -H "Authorization: bearer <id token from previous step>" -H "Content-Type: application/json" --data '{"query": "query { node(uri: \"http://example/person4321\") {id properties { predicate value }} }" }' http://localhost:3030/ds/graphql
 ```
 should output ```{"data":{"node":{"id":"http://example/person4321","properties":[{"predicate":"http://example/phone","value":"0400 111 333"}]}}}```
+
+## Modest IANode
+
+### Start up Kafka
+(based on https://kafka.apache.org/quickstart)
+```
+docker pull apache/kafka:3.9.0
+docker run -p 9092:9092 apache/kafka:3.9.0
+```
+
+Download tools from Apache Kafka via https://www.apache.org/dyn/closer.cgi?path=/kafka/3.9.0/kafka_2.13-3.9.0.tgz
+```
+tar -xzf ~/Downloads/kafka_2.13-3.9.0.tgz
+cd kafka_2.13-3.9.0
+```
+
+Create a Kafka topic
+```
+bin/kafka-topics.sh --create --topic RDF --bootstrap-server localhost:9092
+```
+
+Build command line tool to push messages to Kafka queue
+```
+cd <your IA root>
+git clone https://github.com/National-Digital-Twin/jena-fuseki-kafka.git
+cd jena-kafka-client
+mvn dependency:build-classpath -DincludeScope=runtime -Dmdep.outputFile=fk.classpath
+Adjust script called 'fk', changing ```CPJ="$(echo target/jena-kafka-client-*.jar)"``` to ```CPJ="$(echo target/jena-kafka-client-*.jar | sed 's/ /\:/g')"```
+```
+
+Restart the IANode but with dev-server-kafka.ttl and create somewhere to store topic meta data
+```
+cd <your IA root>/secure-agent-graph
+mkdir databases
+USER_ATTRIBUTES_URL=http://localhost:8091 JWKS_URL=http://localhost:9229/local_6GLuhxhD/.well-known/jwks.json \
+java \
+-Dfile.encoding=UTF-8 \
+-Dsun.stdout.encoding=UTF-8 \
+-Dsun.stderr.encoding=UTF-8 \
+-classpath "sag-server/target/classes:sag-system/target/classes:sag-docker/target/dependency/*" \
+uk.gov.dbt.ndtp.secure.agent.graph.SecureAgentGraph \
+--config sag-docker/mnt/config/dev-server-kafka.ttl
+```
+
+```
+./fk dump --topic RDF
+```
+should show no entries ```"offset": -1```
+
+Now push a message into Kafka
+```
+./fk send --topic RDF <path-to>/secure-agent-graph/sag-docker/Test/data1.trig
+./fk dump --topic RDF
+```
+show should show the data is in Kafka
+
+Also, the secure-agent-graph app should have picked up the message and the log files show ```Initial sync : Offset = 0```.
+
+Running the queries should fetch the data as before e.g.
+```
+curl -XPOST  -H "Authorization: bearer <token-id>" -H "Content-Type: application/json" --data '{"query": "query { node(uri: \"http://example/person4321\") {id properties { predicate value }} }" }' http://localhost:3030/ds/graphql
+```
