@@ -9,7 +9,7 @@ github_allowed_repos = ["repo:National-Digital-Twin/*"]
 vpc_cidr = "10.0.0.0/16"
 
 ## EKS
-eks_cluster_version = "1.31"
+eks_cluster_version = "1.32"
 eks_access = {
   AmazonEKSClusterAdminPolicy = [
     "kyle.southworth",
