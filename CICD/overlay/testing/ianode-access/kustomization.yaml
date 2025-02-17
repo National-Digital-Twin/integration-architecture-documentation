@@ -7,18 +7,18 @@ resources:
   - ../../../resources/ianode-access
 
 patches:
-  - path: api/patches/deployment.yaml
+  - path: patches/deployment.yaml
     target:
       kind: Deployment
-      name: ianode-access-api
+      name: ianode-access
 
 configMapGenerator:
 - envs:
-  - api/patches/config/api.env
-  name: ianode-access-api
+  - patches/config/api.env
+  name: ianode-access
 
 labels:
 - includeTemplates: true
   pairs:
-    app: ianode-access-api
-    app.kubernetes.io/name: ianode-access-api
+    app: ianode-access
+    app.kubernetes.io/name: ianode-access

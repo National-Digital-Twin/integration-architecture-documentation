@@ -4,10 +4,11 @@ kind: Kustomization
 labels:
   - includeTemplates: true
     pairs:
-      app: ianode-access-api
-      app.kubernetes.io/name: ianode-access-api
+      app: ianode-access
+      app.kubernetes.io/name: ianode-access
 
 resources:
   - deployment.yaml
   - service.yaml
   - serviceaccount.yaml
+  - secret.yaml

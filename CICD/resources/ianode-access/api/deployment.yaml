@@ -2,13 +2,13 @@ apiVersion: apps/v1
 kind: Deployment
 
 metadata:
-  name: ianode-access-api
+  name: ianode-access
   namespace: input.a.namespace
 
 spec:
   selector:
     matchLabels:
-      app.kubernetes.io/name: ianode-access-api
+      app.kubernetes.io/name: ianode-access
   replicas: 1
   revisionHistoryLimit: 3
   strategy:
@@ -19,12 +19,12 @@ spec:
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: ianode-access-api
+        app.kubernetes.io/name: ianode-access
         app.kubernetes.io/version: "1.2.0"
     spec:
-      serviceAccountName: ianode-access-api-sa
+      serviceAccountName: ianode-access-sa
       containers:
-        - name: ianode-access-api
+        - name: ianode-access
           image: input.image
           imagePullPolicy: Always
           ports:
@@ -33,13 +33,13 @@ spec:
               protocol: TCP
           envFrom:
             - configMapRef:
-                name: ianode-access-api
+                name: ianode-access
           env:
             - name: MONGO_PWD
               valueFrom:
                 secretKeyRef:
-                  name: ianode-access-api-db-password
-                  key: password
+                  name: ianode-access-db-password
+                  key: input.password
           resources:
             requests:
               memory: 512Mi
