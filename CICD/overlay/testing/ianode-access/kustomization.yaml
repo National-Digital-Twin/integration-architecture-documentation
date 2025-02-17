@@ -14,7 +14,7 @@ patches:
 
 configMapGenerator:
 - envs:
-  - api/patches/api.env
+  - api/patches/config/api.env
   name: ianode-access-api
 
 labels:
