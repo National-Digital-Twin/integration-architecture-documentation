@@ -29,6 +29,7 @@ on:
         options: 
           - namespace
           - secure-agent-graph
+          - ianode-access
 
 permissions:
   id-token: write
@@ -99,4 +100,3 @@ jobs:
       - name: Apply Kubernetes manifest
         run: |
           kubectl apply -k ${{ github.workspace }}/CICD/overlay/${{ github.event.inputs.env_name }}/${{ github.event.inputs.deployment_item }}
-          

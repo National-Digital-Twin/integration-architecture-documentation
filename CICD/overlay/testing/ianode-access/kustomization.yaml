@@ -1,0 +1,24 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: ndtp-testing
+
+resources:
+  - ../../../resources/ianode-access
+
+patches:
+  - path: api/patches/deployment.yaml
+    target:
+      kind: Deployment
+      name: ianode-access
+
+configMapGenerator:
+- envs:
+  - api/patches/api.env
+  name: ianode-access
+
+labels:
+- includeTemplates: true
+  pairs:
+    app: ianode-access
+    app.kubernetes.io/name: ianode-access

@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+
+metadata:
+  name: ianode-access
+  namespace: input.a.namespace
+
+spec:
+  selector:
+    app.kubernetes.io/name: ianode-access
+  ports:
+    - name: http
+      protocol: TCP
+      port: 8091
+      targetPort: 8091
