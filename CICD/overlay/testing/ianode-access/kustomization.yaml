@@ -10,15 +10,15 @@ patches:
   - path: api/patches/deployment.yaml
     target:
       kind: Deployment
-      name: ianode-access
+      name: ianode-access-api
 
 configMapGenerator:
 - envs:
   - api/patches/api.env
-  name: ianode-access
+  name: ianode-access-api
 
 labels:
 - includeTemplates: true
   pairs:
-    app: ianode-access
-    app.kubernetes.io/name: ianode-access
+    app: ianode-access-api
+    app.kubernetes.io/name: ianode-access-api
