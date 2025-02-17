@@ -182,10 +182,10 @@ cd <your IA root>
 git clone https://github.com/National-Digital-Twin/jena-fuseki-kafka.git
 cd jena-kafka-client
 mvn dependency:build-classpath -DincludeScope=runtime -Dmdep.outputFile=fk.classpath
-Adjust script called 'fk', changing ```CPJ="$(echo target/jena-kafka-client-*.jar)"``` to ```CPJ="$(echo target/jena-kafka-client-*.jar | sed 's/ /\:/g')"```
 ```
+Adjust script called 'fk', changing ```CPJ="$(echo target/jena-kafka-client-*.jar)"``` to ```CPJ="$(echo target/jena-kafka-client-*.jar | sed 's/ /\:/g')"```
 
-Restart the IANode but with dev-server-kafka.ttl and create somewhere to store topic meta data
+Then, restart the IANode but with dev-server-kafka.ttl and create somewhere to store topic meta data.
 ```
 cd <your IA root>/secure-agent-graph
 mkdir databases
@@ -200,6 +200,7 @@ uk.gov.dbt.ndtp.secure.agent.graph.SecureAgentGraph \
 ```
 
 ```
+cd <directory containing 'fk' script>
 ./fk dump --topic RDF
 ```
 should show no entries ```"offset": -1```
@@ -209,7 +210,7 @@ Now push a message into Kafka
 ./fk send --topic RDF <path-to>/secure-agent-graph/sag-docker/Test/data1.trig
 ./fk dump --topic RDF
 ```
-show should show the data is in Kafka
+show should the data is in Kafka
 
 Also, the secure-agent-graph app should have picked up the message and the log files show ```Initial sync : Offset = 0```.
 
