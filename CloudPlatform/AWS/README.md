@@ -1,4 +1,4 @@
-# aws-platform-terraform
+# CloudPlatform/AWS
 AWS Platform Terraform codebase 
 
 ## Critical Path Design
