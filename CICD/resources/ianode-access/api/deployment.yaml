@@ -48,5 +48,10 @@ spec:
               memory: 512Mi
               cpu: 250m
           volumeMounts: []
-
-      volumes: []
+      volumes:
+        - name: secrets-store-inline
+          csi:
+            driver: secrets-store.csi.k8s.io
+            readOnly: true
+            volumeAttributes:
+              secretProviderClass: "aws-secrets-manager"
