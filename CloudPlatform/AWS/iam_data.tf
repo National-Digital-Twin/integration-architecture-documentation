@@ -83,6 +83,8 @@ data "aws_iam_policy_document" "github_actions_perms" {
   }
 }
 
+###############################################################################################
+
 data "aws_iam_policy_document" "aws-ebs-csi-driver_trust-policy" {
   statement {
     sid     = "CSIDriverAssume"
@@ -131,6 +133,46 @@ data "aws_iam_policy_document" "aws-ebs-csi-driver_policy" {
   }
 }
 
+###############################################################################################
+
+data "aws_iam_policy_document" "ianode-access-role_trust-policy" {
+  statement {
+    sid     = "ianodeAccessSaAssume"
+    effect  = "Allow"
+    actions = ["sts:AssumeRoleWithWebIdentity"]
+
+    condition {
+      test     = "StringEquals"
+      variable = "${trimprefix(module.eks_ianode.cluster_oidc_issuer_url, "https://")}:sub"
+      values   = ["system:serviceaccount:${local.resource_prefix}:ianode-access-sa"]
+    }
+
+    condition {
+      test     = "StringEquals"
+      variable = "${trimprefix(module.eks_ianode.cluster_oidc_issuer_url, "https://")}:aud"
+      values   = ["sts.amazonaws.com"]
+    }
+
+    principals {
+      type        = "Federated"
+      identifiers = ["${module.eks_ianode.oidc_provider_arn}"]
+    }
+  }
+}
+
+data "aws_iam_policy_document" "ianode-access-role_policy" {
+  statement {
+    sid    = "SecretsManagerAccess"
+    effect = "Allow"
+    actions = [
+      "secretsmanager:GetSecretValue",
+      "secretsmanager:DescribeSecret"
+    ]
+    resources = [aws_secretsmanager_secret.docdb_cluster_root_password.arn]
+  }
+}
+
+###############################################################################################
 data "aws_iam_policy_document" "ianode_role_policy" {
   statement {
     sid    = "S3Access"
@@ -222,6 +264,8 @@ data "aws_iam_policy_document" "ianode_role_policy" {
     ]
   }
 }
+
+###############################################################################################
 
 data "aws_iam_policy_document" "bastion_role_policy" {
   statement {
