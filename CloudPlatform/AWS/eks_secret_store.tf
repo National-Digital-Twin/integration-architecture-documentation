@@ -6,6 +6,11 @@ resource "helm_release" "secrets-store-csi-driver" {
   namespace  = "kube-system"
 
   set {
+    name  = "syncSecret.enabled"
+    value = "true"
+  }
+
+  set {
     name  = "linux.image.repository"
     value = "${local.account_id}.dkr.ecr.${var.region}.amazonaws.com/public-k8s/csi-secrets-store/driver"
   }
