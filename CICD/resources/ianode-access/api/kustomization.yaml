@@ -9,6 +9,6 @@ labels:
 
 resources:
   - deployment.yaml
+  - secret.yaml
   - service.yaml
   - serviceaccount.yaml
-  - secret.yaml
