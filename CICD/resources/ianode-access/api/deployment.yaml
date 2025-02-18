@@ -47,7 +47,10 @@ spec:
             limits:
               memory: 512Mi
               cpu: 250m
-          volumeMounts: []
+          volumeMounts:
+            - name: secrets-store-inline
+              mountPath: "/mnt/secrets-store"
+              readOnly: true
       volumes:
         - name: secrets-store-inline
           csi:
