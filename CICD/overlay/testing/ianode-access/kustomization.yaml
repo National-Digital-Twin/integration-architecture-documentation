@@ -11,6 +11,10 @@ patches:
     target:
       kind: Deployment
       name: ianode-access
+  - path: patches/secret.yaml
+    target:
+      kind: SecretProviderClass
+      name: ianode-access-db-password
 
 configMapGenerator:
 - envs:

@@ -39,7 +39,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: ianode-access-db-password
-                  key: input.password
+                  key: password
           resources:
             requests:
               memory: 512Mi

@@ -10,9 +10,3 @@ spec:
       containers:
         - name: ianode-access
           image: 127214183387.dkr.ecr.eu-west-2.amazonaws.com/ianode-access:latest
-          env:
-            - name: MONGO_PWD
-              valueFrom:
-                secretKeyRef:
-                  name: ianode-access-db-password
-                  key: ndtp-testing-docdb-cluster-root-password
