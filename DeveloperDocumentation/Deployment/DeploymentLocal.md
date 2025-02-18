@@ -35,16 +35,14 @@ Wait for script to complete and window to say "Added users to groups when requir
 Start up mongo for ianode-access to use
 ```
 cd ianode-access
-docker compose up mongo
+docker compose up mongo -d
 ```
-(and leave that running)
 
 Start up access support mechanism
 ```
-cd ..
-. ./token_env.sh [Sets some environment variables for local running with tokens]
+source ./token_env.sh [Sets some environment variables for local running with tokens]
 export SCIM_ENABLED=true [So that cognito-local is used]
-npm install
+yarn install
 OPENID_PROVIDER_URL=development DEPLOYED_DOMAIN="http://localhost:3000" GROUPS_KEY="cognito:groups" yarn dev [Run server providing API]
 ```
 (leave that running)
@@ -184,10 +182,10 @@ cd <your IA root>
 git clone https://github.com/National-Digital-Twin/jena-fuseki-kafka.git
 cd jena-kafka-client
 mvn dependency:build-classpath -DincludeScope=runtime -Dmdep.outputFile=fk.classpath
-Adjust script called 'fk', changing ```CPJ="$(echo target/jena-kafka-client-*.jar)"``` to ```CPJ="$(echo target/jena-kafka-client-*.jar | sed 's/ /\:/g')"```
 ```
+Adjust script called 'fk', changing ```CPJ="$(echo target/jena-kafka-client-*.jar)"``` to ```CPJ="$(echo target/jena-kafka-client-*.jar | sed 's/ /\:/g')"```
 
-Restart the IANode but with dev-server-kafka.ttl and create somewhere to store topic meta data
+Then, restart the IANode but with dev-server-kafka.ttl and create somewhere to store topic meta data.
 ```
 cd <your IA root>/secure-agent-graph
 mkdir databases
@@ -202,6 +200,7 @@ uk.gov.dbt.ndtp.secure.agent.graph.SecureAgentGraph \
 ```
 
 ```
+cd <directory containing 'fk' script>
 ./fk dump --topic RDF
 ```
 should show no entries ```"offset": -1```
@@ -211,7 +210,7 @@ Now push a message into Kafka
 ./fk send --topic RDF <path-to>/secure-agent-graph/sag-docker/Test/data1.trig
 ./fk dump --topic RDF
 ```
-show should show the data is in Kafka
+show should the data is in Kafka
 
 Also, the secure-agent-graph app should have picked up the message and the log files show ```Initial sync : Offset = 0```.
 
