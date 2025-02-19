@@ -1,0 +1,116 @@
+name: terraform-destroy-rebuild
+on:
+  schedule:
+    - cron: '0 18 * * *'  # 18:00 UTC every day
+    - cron: '0 8 * * *'   # 08:00 UTC every day
+  workflow_dispatch:
+    inputs:
+      aws_account_id:
+        description: 'AWS Account ID'
+        required: true
+        default: '127214183387'
+      aws_region:
+        description: 'AWS region'
+        required: true
+        default: eu-west-2
+      project_name:
+        description: 'Name of the project'
+        required: true
+        default: 'ndtp'
+      env_name:
+        description: 'Environment name'
+        required: true
+        default: 'testing'
+        type: choice
+        options: 
+          - testing
+
+permissions:
+  id-token: write
+  contents: read
+        
+jobs:
+  terraform:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+    
+    - name: Configure AWS Creds
+      uses: aws-actions/configure-aws-credentials@v4
+      with: 
+        role-to-assume: arn:aws:iam::${{ github.event.inputs.aws_account_id || inputs.aws_account_id }}:role/github_actions_role
+        aws-region: ${{ github.event.inputs.aws_region || inputs.aws_region }}
+        role-skip-session-tagging: true
+        role-duration-seconds: 3600
+    
+    - name: Login to ECR
+      id: login-ecr
+      uses: aws-actions/amazon-ecr-login@v2
+    
+    - name: Install AWS Session Manager Plugin
+      run: | 
+          curl "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/ubuntu_64bit/session-manager-plugin.deb" -o "session-manager-plugin.deb"
+          sudo dpkg -i session-manager-plugin.deb
+
+    - name: Get Bastion instance Id
+      run: |
+            BASTION=$(aws ec2 describe-instances --filters Name=tag:Name,Values=${{ github.event.inputs.project_name }}-${{ github.event.inputs.env_name }}-bastion --query "Reservations[].Instances[].{Instance:InstanceId}" --output text)
+            echo "Resolved Bastion Id: $BASTION"
+            echo "BASTION_ID=$BASTION" >> "$GITHUB_ENV"
+
+    - name: Get kube cluster API server endpoint
+      run: |
+          ENDPOINT=$(aws eks describe-cluster --name ${{ github.event.inputs.project_name }}-${{ github.event.inputs.env_name }}-ianode --query "cluster.endpoint" --output text | sed 's|https://||')
+          echo "Resolved EKS Endpoint: $ENDPOINT"
+          echo "KUBE_ENDPOINT=$ENDPOINT" >> "$GITHUB_ENV"
+
+    - name: Start tunnel to kube
+      env: 
+        KUBE_ENDPOINT: ${{ env.KUBE_ENDPOINT }}
+        BASTION_ID: ${{ env.BASTION_ID }}
+      run: |
+          aws ssm start-session --region ${{ github.event.inputs.aws_region }} \
+            --target $BASTION_ID \
+            --document-name AWS-StartPortForwardingSessionToRemoteHost \
+            --parameters "{\"host\":[\"$KUBE_ENDPOINT\"],\"portNumber\":[\"443\"],\"localPortNumber\":[\"9999\"]}" &
+
+    - name: Create kube config
+      run: |
+          aws eks update-kubeconfig --region ${{ github.event.inputs.aws_region }} --name ${{ github.event.inputs.project_name }}-${{ github.event.inputs.env_name }}-ianode
+
+    - name: Update kube config to use tunnel
+      env: 
+        KUBE_ENDPOINT: ${{ env.KUBE_ENDPOINT }}
+      run: |
+          currentContext=$(kubectl config current-context)
+          kubectl config set clusters.$currentContext.server "https://localhost:9999"
+          kubectl config set clusters.$currentContext.tls-server-name "$KUBE_ENDPOINT"
+
+    - name: Set up Terraform
+      uses: hashicorp/setup-terraform@v2
+      with:
+        terraform_version: 1.5.7  # Specify your desired Terraform version
+    - name: Terraform Init
+      run: terraform init
+
+    - name: Check the time to decide whether to destroy or apply
+      id: check_time
+      run: |
+        CURRENT_HOUR=$(date -u +%H)
+        if [ $CURRENT_HOUR -eq 18 ]; then
+          echo "::set-output name=action::destroy"
+        elif [ $CURRENT_HOUR -eq 8 ]; then
+          echo "::set-output name=action::apply"
+        else
+          echo "::set-output name=action::none"
+        fi
+
+    - name: Terraform Destroy
+      if: steps.check_time.outputs.action == 'destroy'
+      run: terraform destroy -auto-approve
+
+    - name: Terraform Apply
+      if: steps.check_time.outputs.action == 'apply'
+      run: terraform apply -auto-approve
