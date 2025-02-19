@@ -63,5 +63,5 @@ spec:
             volumeAttributes:
               secretProviderClass: "ianode-access-db-password"
         - name: certs-volume
-            configMap:
-              name: aws-global-certs-bundle
+          configMap:
+            name: aws-global-certs-bundle
