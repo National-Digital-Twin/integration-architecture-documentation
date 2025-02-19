@@ -23,9 +23,15 @@ module "eks_ianode" {
   }
 
   cluster_addons = {
-    coredns    = {}
-    vpc-cni    = {}
-    kube-proxy = {}
+    coredns = {
+      most_recent = true
+    }
+    vpc-cni = {
+      most_recent = true
+    }
+    kube-proxy = {
+      most_recent = true
+    }
   }
 
   eks_managed_node_groups = {

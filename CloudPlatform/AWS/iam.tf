@@ -28,6 +28,8 @@ resource "aws_iam_role_policy_attachment" "github_actions_role_perms" {
   policy_arn = aws_iam_policy.github_actions_role_perms.arn
 }
 
+#############################################################################################
+
 resource "aws_iam_role" "aws-ebs-csi-driver" {
   name               = "${local.resource_prefix}-aws-ebs-csi-driver-role"
   description        = "AWS IAM Role for the aws-ebs-csi-driver Kubernetes service account."
@@ -44,10 +46,31 @@ resource "aws_iam_role_policy_attachment" "aws-ebs-csi-driver" {
   role       = aws_iam_role.aws-ebs-csi-driver.name
 }
 
+#############################################################################################
+
+resource "aws_iam_role" "ianode-access-role" {
+  name               = "${local.resource_prefix}-ianode-access-role"
+  description        = "AWS IAM Role for the ianode-access-sa Kubernetes service account."
+  assume_role_policy = data.aws_iam_policy_document.ianode-access-role_trust-policy.json
+}
+
+resource "aws_iam_policy" "ianode-access-role" {
+  name   = "${local.resource_prefix}-ianode-access-role_policy"
+  policy = data.aws_iam_policy_document.ianode-access-role_policy.json
+}
+
+resource "aws_iam_role_policy_attachment" "ianode-access-role" {
+  policy_arn = aws_iam_policy.ianode-access-role.arn
+  role       = aws_iam_role.ianode-access-role.name
+}
+
+#############################################################################################
 resource "aws_iam_policy" "ianode_role" {
   name   = "${local.resource_prefix}-ianode_ec2_role_policy"
   policy = data.aws_iam_policy_document.ianode_role_policy.json
 }
+
+#############################################################################################
 
 resource "aws_iam_policy" "bastion_role" {
   name   = "${local.resource_prefix}-bastion_ec2_role_policy"

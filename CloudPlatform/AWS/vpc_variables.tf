@@ -6,5 +6,5 @@ variable "vpc_cidr" {
 variable "vpc_endpoints" {
   type        = list(string)
   description = "VPC endpoint names"
-  default     = ["autoscaling", "api.ecr", "dkr.ecr", "ssm", "ssmmessages", "ec2", "ec2messages", "logs", "s3", "elasticloadbalancing", "sts", "kms"]
+  default     = ["autoscaling", "api.ecr", "dkr.ecr", "ssm", "ssmmessages", "ec2", "ec2messages", "logs", "s3", "elasticloadbalancing", "sts", "kms", "secretsmanager"]
 }

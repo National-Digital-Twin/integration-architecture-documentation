@@ -12,14 +12,16 @@ terraform {
       source  = "hashicorp/aws"
       version = "~> 5.83.0"
     }
+    
     # kubernetes = {
     #   source  = "hashicorp/kubernetes"
     #   version = "~> 2.35"
     # }
-     helm = {
-       source  = "hashicorp/helm"
-       version = "~> 2.17"
-     }
+    
+    helm = {
+      source  = "hashicorp/helm"
+      version = "~> 2.17"
+    }
   }
 }
 
@@ -33,12 +35,12 @@ provider "aws" {
   }
 }
 
- provider "kubernetes" {
-   config_path = "~/.kube/config"
- }
+#  provider "kubernetes" {
+#    config_path = "~/.kube/config"
+#  }
 
- provider "helm" {
-   kubernetes {
-     config_path = "~/.kube/config"
-   }
- }
+provider "helm" {
+  kubernetes {
+    config_path = "~/.kube/config"
+  }
+}
