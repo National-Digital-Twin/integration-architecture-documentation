@@ -40,6 +40,8 @@ spec:
                 secretKeyRef:
                   name: "ianode-access-db-password"
                   key: password
+            - name: NODE_EXTRA_CA_CERTS
+              value: "/certs/global-bundle.pem"
           resources:
             requests:
               memory: 512Mi
@@ -51,6 +53,8 @@ spec:
             - name: secrets-store
               mountPath: "/mnt/secrets-store"
               readOnly: true
+            - name: certs-volume
+              mountPath: "/certs"
       volumes:
         - name: secrets-store
           csi:
@@ -58,3 +62,6 @@ spec:
             readOnly: true
             volumeAttributes:
               secretProviderClass: "ianode-access-db-password"
+        - name: certs-volume
+            configMap:
+              name: aws-global-certs-bundle

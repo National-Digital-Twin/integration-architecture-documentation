@@ -7,6 +7,11 @@ labels:
       app: ianode-access
       app.kubernetes.io/name: ianode-access
 
+configMapGenerator:
+  - files:
+    - global-bundle.pem
+    name: aws-global-certs-bundle
+
 resources:
   - deployment.yaml
   - secret.yaml
