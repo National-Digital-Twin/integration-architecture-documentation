@@ -38,7 +38,7 @@ spec:
             - name: MONGO_PWD
               valueFrom:
                 secretKeyRef:
-                  name: ianode-access-db-password
+                  name: "ianode-access-db-password"
                   key: password
           resources:
             requests:
