@@ -3,9 +3,9 @@ PREFIX fuseki:  <http://jena.apache.org/fuseki#>
 PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs:    <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX ja:      <http://jena.hpl.hp.com/2005/11/Assembler#>
-PREFIX authz:   <http://telicent.io/security#>
-PREFIX cqrs:    <http://telicent.io/cqrs#>
-PREFIX graphql: <https://telicent.io/fuseki/modules/graphql#>
+PREFIX authz:   <http://ndtp.dbt.gov.uk/security#>
+PREFIX cqrs:    <http://ndtp.dbt.gov.uk/cqrs#>
+PREFIX graphql: <https://ndtp.dbt.gov.uk/fuseki/modules/graphql#>
 ## ---- Fuseki-Kafka connector
 PREFIX fk:      <http://jena.apache.org/fuseki/kafka#>
 PREFIX tdb2:    <http://jena.apache.org/2016/tdb#>
@@ -70,7 +70,7 @@ PREFIX tdb2:    <http://jena.apache.org/2016/tdb#>
         fuseki:operation graphql:graphql ;
         ja:context [
             ja:cxtName "graphql:executor" ;
-            ja:cxtValue "io.telicent.jena.graphql.execution.telicent.graph.TelicentGraphExecutor"
+            ja:cxtValue "io.ianode.jena.graphql.execution.ianode.graph.TelicentGraphExecutor"
         ] ;
         fuseki:name "graphql"
     ];
@@ -180,7 +180,7 @@ PREFIX tdb2:    <http://jena.apache.org/2016/tdb#>
         fuseki:operation graphql:graphql ;
         ja:context [
             ja:cxtName "graphql:executor" ;
-            ja:cxtValue "io.telicent.jena.graphql.execution.telicent.graph.TelicentGraphExecutor"
+            ja:cxtValue "io.ianode.jena.graphql.execution.ianode.graph.TelicentGraphExecutor"
         ] ;
         fuseki:name "graphql"
     ];
@@ -295,7 +295,7 @@ PREFIX tdb2:    <http://jena.apache.org/2016/tdb#>
         fuseki:operation graphql:graphql ;
         ja:context [
             ja:cxtName "graphql:executor" ;
-            ja:cxtValue "io.telicent.jena.graphql.execution.telicent.graph.TelicentGraphExecutor"
+            ja:cxtValue "io.ianode.jena.graphql.execution.ianode.graph.TelicentGraphExecutor"
         ] ;
         fuseki:name "graphql"
     ];
