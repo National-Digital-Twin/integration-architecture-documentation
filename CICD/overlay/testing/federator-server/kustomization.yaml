@@ -20,6 +20,9 @@ configMapGenerator:
 - files:
   - patches/config/server.properties
   name: federator-server-properties
+- files:
+  - access.json
+  name: federator-server-access
 
 labels:
 - includeTemplates: true

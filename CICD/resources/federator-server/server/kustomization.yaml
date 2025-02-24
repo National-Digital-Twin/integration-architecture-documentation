@@ -11,9 +11,6 @@ configMapGenerator:
 - envs:
   - config.env
   name: federator-server-config.env
-- files:
-  - access.json
-  name: federator-server-access
 
 resources:
 - deployment.yaml

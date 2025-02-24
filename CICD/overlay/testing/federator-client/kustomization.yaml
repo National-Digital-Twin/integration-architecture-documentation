@@ -20,6 +20,9 @@ configMapGenerator:
 - files:
   - patches/config/client.properties
   name: federator-client-properties
+- files:
+  - patches/config/connection-configuration.json
+  name: federator-client-connection-configuration
 
 labels:
 - includeTemplates: true

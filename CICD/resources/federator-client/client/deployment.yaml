@@ -55,9 +55,13 @@ spec:
           #   periodSeconds: 30
           #   timeoutSeconds: 2
           volumeMounts:
-            - name: config-volume
+            - name: federator-client-config-volume
               mountPath: /config
       volumes:
-        - name: config-volume
-          configMap:
-            name: federator-client-properties
+        - name: federator-client-config-volume
+          projected:
+            sources: 
+              - configMap:
+                  name: federator-client-properties
+              - configMap:
+                  name: federator-client-connection-configuration
