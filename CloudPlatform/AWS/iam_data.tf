@@ -39,7 +39,7 @@ data "aws_iam_policy_document" "github_actions_perms" {
       "ecr:StartImageScan",
       "ecr:UploadLayerPart"
     ]
-    resources = concat([aws_ecr_repository.ndtp.arn], [for ecr_repo in aws_ecr_repository.repos : ecr_repo.arn])
+    resources = [for ecr_repo in aws_ecr_repository.repos : ecr_repo.arn]
   }
 
   statement {
@@ -311,7 +311,7 @@ data "aws_iam_policy_document" "ianode_role_policy" {
   statement {
     sid       = "EcrRepoNdtpAccess"
     effect    = "Allow"
-    resources = concat([aws_ecr_repository.ndtp.arn], [for ecr_repo in aws_ecr_repository.repos : ecr_repo.arn])
+    resources = [for ecr_repo in aws_ecr_repository.repos : ecr_repo.arn]
 
     actions = [
       "ecr:GetDownloadUrlForLayer",
