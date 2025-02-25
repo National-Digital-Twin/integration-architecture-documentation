@@ -42,7 +42,7 @@ TDB is a native storage component of Apache Jena for RDF (Resource Description F
 - Improved performance
 - Enhanced scalability
 
-Secure Agent Graph can be ran using in-memory or filesystem datasets. Here we assume that the dataset is filesystem based.
+Secure Agent Graph can be run using in-memory or filesystem datasets. Here we assume that the dataset is filesystem based.
 
 In many examples, e.g. https://github.com/National-Digital-Twin/secure-agent-graph/blob/pre/sag-docker/mnt/config/config-abac-local.ttl an in-memory option is used.
 
@@ -53,7 +53,7 @@ In many examples, e.g. https://github.com/National-Digital-Twin/secure-agent-gra
 # :datasetBase rdf:type ja:MemoryDataset .
 ```
 
-The above however needs to be replaced with filestystem setup:
+The above however  can be replaced with filestystem setup to run with persisted storage:
 ```
 # fragment of new config-abac-local.ttl
 
