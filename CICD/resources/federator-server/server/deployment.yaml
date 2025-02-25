@@ -43,8 +43,6 @@ spec:
           volumeMounts:
             - name: config-volume
               mountPath: /config
-            - name: access-map-volume
-              mountPath: /access-map
       volumes:
         - name: config-volume
           projected:
@@ -53,9 +51,6 @@ spec:
                   name: federator-server-properties
               - configMap:
                   name: federator-server-access
-        - name: access-map-volume
-          secret:
-            secretName: federator-server-access-map
           # readinessProbe:
           #   httpGet:
           #     path: /access/health
