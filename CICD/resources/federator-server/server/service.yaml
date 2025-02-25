@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+
+metadata:
+  name: federator-server
+  namespace: input.a.namespace
+
+spec:
+  selector:
+    app.kubernetes.io/name: federator-server
+  ports:
+    - name: grpc
+      port: 8080

@@ -30,6 +30,8 @@ on:
           - namespace
           - secure-agent-graph
           - ianode-access
+          - federator-server
+          - federator-client
 
 permissions:
   id-token: write

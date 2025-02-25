@@ -32,7 +32,7 @@ resource "aws_iam_role_policy_attachment" "github_actions_role_perms" {
 
 resource "aws_iam_role" "aws-ebs-csi-driver" {
   name               = "${local.resource_prefix}-aws-ebs-csi-driver-role"
-  description        = "AWS IAM Role for the aws-ebs-csi-driver Kubernetes service account."
+  description        = "AWS IAM Role for the aws-ebs-csi-driver Kubernetes service account to assume"
   assume_role_policy = data.aws_iam_policy_document.aws-ebs-csi-driver_trust-policy.json
 }
 
@@ -50,7 +50,7 @@ resource "aws_iam_role_policy_attachment" "aws-ebs-csi-driver" {
 
 resource "aws_iam_role" "ianode-access-role" {
   name               = "${local.resource_prefix}-ianode-access-role"
-  description        = "AWS IAM Role for the ianode-access-sa Kubernetes service account."
+  description        = "AWS IAM Role for the ianode-access-sa Kubernetes service account to assume"
   assume_role_policy = data.aws_iam_policy_document.ianode-access-role_trust-policy.json
 }
 
@@ -62,6 +62,42 @@ resource "aws_iam_policy" "ianode-access-role" {
 resource "aws_iam_role_policy_attachment" "ianode-access-role" {
   policy_arn = aws_iam_policy.ianode-access-role.arn
   role       = aws_iam_role.ianode-access-role.name
+}
+
+#############################################################################################
+
+resource "aws_iam_role" "federator-server-role" {
+  name               = "${local.resource_prefix}-federator-server-role"
+  description        = "AWS IAM Role for the federator-server-sa Kubernetes service account to assume"
+  assume_role_policy = data.aws_iam_policy_document.federator-server-role_trust-policy.json
+}
+
+resource "aws_iam_policy" "federator-server-role" {
+  name   = "${local.resource_prefix}-federator-server-role_policy"
+  policy = data.aws_iam_policy_document.federator-server-role_policy.json
+}
+
+resource "aws_iam_role_policy_attachment" "federator-server-role" {
+  policy_arn = aws_iam_policy.federator-server-role.arn
+  role       = aws_iam_role.federator-server-role.name
+}
+
+#############################################################################################
+
+resource "aws_iam_role" "federator-client-role" {
+  name               = "${local.resource_prefix}-federator-client-role"
+  description        = "AWS IAM Role for the federator-client-sa Kubernetes service account to assume"
+  assume_role_policy = data.aws_iam_policy_document.federator-client-role_trust-policy.json
+}
+
+resource "aws_iam_policy" "federator-client-role" {
+  name   = "${local.resource_prefix}-federator-client-role_policy"
+  policy = data.aws_iam_policy_document.federator-client-role_policy.json
+}
+
+resource "aws_iam_role_policy_attachment" "federator-client-role" {
+  policy_arn = aws_iam_policy.federator-client-role.arn
+  role       = aws_iam_role.federator-client-role.name
 }
 
 #############################################################################################

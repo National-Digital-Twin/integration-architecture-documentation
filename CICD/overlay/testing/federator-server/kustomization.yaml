@@ -1,0 +1,31 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: ndtp-testing
+
+resources:
+  - ../../../resources/federator-server
+
+patches:
+  - path: patches/deployment.yaml
+    target:
+      kind: Deployment
+      name: federator-server
+  - path: patches/serviceaccount.yaml
+    target:
+      kind: ServiceAccount
+      name: federator-server
+
+configMapGenerator:
+- files:
+  - patches/config/server.properties
+  name: federator-server-properties
+- files:
+  - patches/config/access.json
+  name: federator-server-access
+
+labels:
+- includeTemplates: true
+  pairs:
+    app: federator-server
+    app.kubernetes.io/name: federator-server

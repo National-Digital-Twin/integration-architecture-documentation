@@ -39,7 +39,7 @@ data "aws_iam_policy_document" "github_actions_perms" {
       "ecr:StartImageScan",
       "ecr:UploadLayerPart"
     ]
-    resources = concat([aws_ecr_repository.ndtp.arn], [for ecr_repo in aws_ecr_repository.repos : ecr_repo.arn])
+    resources = [for ecr_repo in aws_ecr_repository.repos : ecr_repo.arn]
   }
 
   statement {
@@ -173,6 +173,126 @@ data "aws_iam_policy_document" "ianode-access-role_policy" {
 }
 
 ###############################################################################################
+
+data "aws_iam_policy_document" "federator-server-role_trust-policy" {
+  statement {
+    sid     = "ianodeAccessSaAssume"
+    effect  = "Allow"
+    actions = ["sts:AssumeRoleWithWebIdentity"]
+
+    condition {
+      test     = "StringEquals"
+      variable = "${trimprefix(module.eks_ianode.cluster_oidc_issuer_url, "https://")}:sub"
+      values   = ["system:serviceaccount:${local.resource_prefix}:federator-server-sa"]
+    }
+
+    condition {
+      test     = "StringEquals"
+      variable = "${trimprefix(module.eks_ianode.cluster_oidc_issuer_url, "https://")}:aud"
+      values   = ["sts.amazonaws.com"]
+    }
+
+    principals {
+      type        = "Federated"
+      identifiers = ["${module.eks_ianode.oidc_provider_arn}"]
+    }
+  }
+}
+
+data "aws_iam_policy_document" "federator-server-role_policy" {
+  statement {
+    sid       = "MSKClusterAccess"
+    effect    = "Allow"
+    resources = [aws_msk_cluster.ndtp.arn]
+
+    actions = [
+      "kafka-cluster:Connect",
+      "kafka-cluster:AlterCluster",
+      "kafka-cluster:DescribeCluster",
+      "kafka-cluster:WriteDataIdempotently",
+    ]
+  }
+
+  statement {
+    sid       = "MSKTopicAccess"
+    effect    = "Allow"
+    resources = ["${replace(aws_msk_cluster.ndtp.arn, "cluster", "topic")}/*"]
+
+    actions = [
+      "kafka-cluster:*Topic*",
+      "kafka-cluster:WriteData",
+      "kafka-cluster:ReadData",
+    ]
+  }
+}
+
+###############################################################################################
+
+data "aws_iam_policy_document" "federator-client-role_trust-policy" {
+  statement {
+    sid     = "ianodeAccessSaAssume"
+    effect  = "Allow"
+    actions = ["sts:AssumeRoleWithWebIdentity"]
+
+    condition {
+      test     = "StringEquals"
+      variable = "${trimprefix(module.eks_ianode.cluster_oidc_issuer_url, "https://")}:sub"
+      values   = ["system:serviceaccount:${local.resource_prefix}:federator-client-sa"]
+    }
+
+    condition {
+      test     = "StringEquals"
+      variable = "${trimprefix(module.eks_ianode.cluster_oidc_issuer_url, "https://")}:aud"
+      values   = ["sts.amazonaws.com"]
+    }
+
+    principals {
+      type        = "Federated"
+      identifiers = ["${module.eks_ianode.oidc_provider_arn}"]
+    }
+  }
+}
+
+data "aws_iam_policy_document" "federator-client-role_policy" {
+  statement {
+    sid       = "MSKClusterAccess"
+    effect    = "Allow"
+    resources = [aws_msk_cluster.ndtp.arn]
+
+    actions = [
+      "kafka-cluster:Connect",
+      "kafka-cluster:AlterCluster",
+      "kafka-cluster:DescribeCluster",
+      "kafka-cluster:WriteDataIdempotently",
+    ]
+  }
+
+  statement {
+    sid       = "MSKTopicAccess"
+    effect    = "Allow"
+    resources = ["${replace(aws_msk_cluster.ndtp.arn, "cluster", "topic")}/*"]
+
+    actions = [
+      "kafka-cluster:*Topic*",
+      "kafka-cluster:WriteData",
+      "kafka-cluster:ReadData",
+    ]
+  }
+
+  statement {
+    sid       = "ElasticacheAccess"
+    effect    = "Allow"
+    resources = [aws_elasticache_serverless_cache.ndtp.arn]
+
+    actions = [
+      "elasticache:Connect",
+      "elasticache:Describe*",
+    ]
+  }
+}
+
+###############################################################################################
+
 data "aws_iam_policy_document" "ianode_role_policy" {
   statement {
     sid    = "S3Access"
@@ -191,7 +311,7 @@ data "aws_iam_policy_document" "ianode_role_policy" {
   statement {
     sid       = "EcrRepoNdtpAccess"
     effect    = "Allow"
-    resources = concat([aws_ecr_repository.ndtp.arn], [for ecr_repo in aws_ecr_repository.repos : ecr_repo.arn])
+    resources = [for ecr_repo in aws_ecr_repository.repos : ecr_repo.arn]
 
     actions = [
       "ecr:GetDownloadUrlForLayer",
