@@ -21,7 +21,7 @@ configMapGenerator:
   - patches/config/server.properties
   name: federator-server-properties
 - files:
-  - access.json
+  - patches/config/access.json
   name: federator-server-access
 
 labels:
