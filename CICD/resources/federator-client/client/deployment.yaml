@@ -29,8 +29,6 @@ spec:
           envFrom:
             - configMapRef:
                 name: federator-client-config
-            - secretRef:
-                name: federator-client-secret-config
           resources:
             requests:
               memory: 1024Mi
