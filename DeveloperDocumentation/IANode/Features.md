@@ -1,4 +1,4 @@
-# IANode features
+# IA Node features
 These are the features of an IANode along with the flavours as more features are included.
 
 |            |                             | Minimal | Single | Distributed |
@@ -37,7 +37,6 @@ These are the features of an IANode along with the flavours as more features are
 * Ability to POST a GraphQL formatted query to fetch data from locally held information
 ### Kafka
 * Ability to receive messages from Kafka stream for processing within the IANode
-  [Pipeline](IANode/Pipeline.md)
 
 ## Processing
 ### Validation of input
@@ -54,9 +53,9 @@ These are the features of an IANode along with the flavours as more features are
 ### Fine-grained access control
 * Handling access at individual field level based on JWT attributes
 ### Mapping and transformation
-* TBD
+* Support for mapping and transformation of the data as per the requirements
 ### Redaction
-* TBD
+* Filter the data where labels don't match the user attributes
 ### Storage
 * Standard Apache Jena in-memory storage of information
 * Standard Apache Jena persistent storage called "TDB2" use local file store
@@ -70,62 +69,3 @@ These are the features of an IANode along with the flavours as more features are
 * Support for pagination
 ### Kafka
 * Ability to send out information in response to a query (??) as a message in a Kafka stream
-
-## Aspects
-
-## Deployment
-This is about the mechanisms available for deploying software to a cloud environment.
-1. Docker
-1. CI/CD
-1. Kubernetes
-
-## Platform
-This is the design and scripts for setting up IANodes in cloud environments.
-1. Local (shell script, written instructions)
-1. AWS Terraform - scripts to configure an instance in AWS
-1. Feature set support
-  1. Support for Minimal feature set
-  1. Support for Single feature set
-  1. Support for Distributed feature set
-1. Scale
-  1. Minimal arrangement, single instance of server, no load balancing, no public access
-  1. Load balanced, no public access
-  1. Load balanced with access by Demonstrator apps across internet
-1. Azure - ditto for Azure
-
-## Test instance
-This is the existence of instances running in cloud environments and available for testing purposes.
-1. Local
-1. AWS EC2
-1. Cognito
-1. Support for Kubernetes
-1. Support for Kafka (EKS)
-1. Azure
-1. AD
-1. Support for Kubernetes
-1. Support for Kafka
-
-## Automated testing
-1. IANode
-1. Unit
-1. System
-1. Load
-1. NodeNet
-1. IANodes in AWS only
-1. IANodes in AWS and Azure
-
-## Developer documentation
-1. Platform decided and available
-1. Running IANode content
-1. Content on running locally
-1. Content on running in AWS
-1. Content on running in Azure
-1. ...
-
-## Management
-1. Git repositories private
-1. Change request management
-1. Git repositories public
-1. Governance
-1. ...
-
