@@ -156,7 +156,7 @@ curl -XPOST  -H "Authorization: bearer <id token from previous step>" -H "Conten
 ```
 should output ```{"data":{"node":{"id":"http://example/person4321","properties":[{"predicate":"http://example/phone","value":"0400 111 333"}]}}}```
 
-## Modest IANode
+## Single IANode
 
 ### Start up Kafka
 (based on https://kafka.apache.org/quickstart)
@@ -218,3 +218,5 @@ Running the queries should fetch the data as before e.g.
 ```
 curl -XPOST  -H "Authorization: bearer <token-id>" -H "Content-Type: application/json" --data '{"query": "query { node(uri: \"http://example/person4321\") {id properties { predicate value }} }" }' http://localhost:3030/ds/graphql
 ```
+
+...more to follow regarding other aspects of Single IANode.

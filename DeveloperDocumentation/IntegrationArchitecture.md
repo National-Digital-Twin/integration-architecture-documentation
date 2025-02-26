@@ -15,7 +15,7 @@ An [IANode](IANode/IANode.md) can be run in many ways and can be part of a NodeN
 ### Level 0
 This is running an [IANode](IANode/IANode.md) on a developer's computer.
 1. Minimal IANode 
-1. Modest IANode
+1. Single IANode
 1. Distributed IANode
 
 ### Level 1
