@@ -213,6 +213,15 @@ resource "aws_vpc_security_group_ingress_rule" "allow_msk_access_from_app" {
   to_port           = 9098
 }
 
+resource "aws_vpc_security_group_ingress_rule" "allow_msk_zookeeper_access_from_app" {
+  count             = local.azs_count
+  security_group_id = aws_security_group.msk.id
+  cidr_ipv4         = local.app_subnet_cidrs[count.index]
+  from_port         = 2182
+  ip_protocol       = "tcp"
+  to_port           = 2182
+}
+
 resource "aws_vpc_security_group_ingress_rule" "allow_msk_access_from_self" {
   security_group_id            = aws_security_group.msk.id
   referenced_security_group_id = aws_security_group.msk.id
