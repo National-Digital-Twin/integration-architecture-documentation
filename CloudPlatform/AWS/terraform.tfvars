@@ -24,7 +24,11 @@ eks_access = {
     "apurva.jhunjhunwala",
     "radoslaw.przybysz",
     "vijay.babu",
-    "eric.kennedy"
+    "eric.kennedy", 
+    "conaill.oneill",
+    "maher.askary",
+    "joe.hoy",
+    "ibrahim.adekanmi"
   ]
 }
 
