@@ -23,7 +23,8 @@ eks_access = {
     "ajith.thomas",
     "apurva.jhunjhunwala",
     "radoslaw.przybysz",
-    "vijay.babu"
+    "vijay.babu",
+    "eric.kennedy"
   ]
 }
 
