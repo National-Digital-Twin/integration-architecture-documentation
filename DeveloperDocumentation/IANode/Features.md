@@ -1,7 +1,7 @@
 # IANode features
 These are the features of an IANode along with the flavours as more features are included.
 
-|            |                             | Minimal | Modest | Distributed |
+|            |                             | Minimal | Single | Distributed |
 |------------|-----------------------------|---------|--------|-------------|
 | Input      |                             |         |        |             |
 |            | configuration               | y       |        |
@@ -85,7 +85,7 @@ This is the design and scripts for setting up IANodes in cloud environments.
 1. AWS Terraform - scripts to configure an instance in AWS
 1. Feature set support
   1. Support for Minimal feature set
-  1. Support for Modest feature set
+  1. Support for Single feature set
   1. Support for Distributed feature set
 1. Scale
   1. Minimal arrangement, single instance of server, no load balancing, no public access
