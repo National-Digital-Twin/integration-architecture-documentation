@@ -3,11 +3,11 @@
 ## Data ingest pipeline sequence
 ```mermaid
 sequenceDiagram
-    box Core Platform
+    box Lib Platform
         participant D as "Data Pipeline"
         participant K as "Knowledge"
     end
-    box Smart Cache Graph
+    box Secure Agent Graph
         participant J as "Jena Fuseki Module"
         participant I as "Jena TDB"
         participant L as "Label Store"
@@ -37,8 +37,8 @@ flowchart
     subgraph User
         authenticatedUser[Authenticated User]
     end
-    subgraph Core platform
-        subgraph Smart Cache Graph
+    subgraph Lib platform
+        subgraph Secure Agent Graph
             subgraph API
                 sparqlUpdate[SPARQL Update]
                 graphQLRequest[GraphQL Request]
