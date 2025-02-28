@@ -8,15 +8,15 @@ The table of content below is organised a such a way to help you get to the rele
 
     1.1	[Introduction](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/IANode/IANode.md#ianode)
 
-    1.2 [Overview of IA Nodes](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/IntegrationArchitecture.md#integration-architecture) 
+    1.2 [Overview of IA Node](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/IntegrationArchitecture.md#integration-architecture) 
 
 	1.3 [Core functional components](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/IANode/Components.md#ianode-components) 
 
     1.4 [IA Node Features](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/IANode/Features.md#ianode-features)
 
-	1.5 [IA Nodes networks](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/NodeNet.md#nodenet)
+	1.5 [IA Node networks](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/NodeNet.md#nodenet)
 
-    1.6 [Managemant Node](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/NodeNet.md#nodenet)
+    1.6 [Management Node](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/NodeNet.md#nodenet)
 
 	1.7 [Code repositories](#ia-node-repositories)
 
@@ -68,11 +68,11 @@ The table of content below is organised a such a way to help you get to the rele
 
     6.1	[Introduction](https://github.com/National-Digital-Twin/integration-architecture/tree/main/CloudPlatform/AWS#cloudplatformaws)
 
-    6.2	[AWS Development Environment Overview](https://github.com/National-Digital-Twin/integration-architecture/blob/main/CloudPlatform/AWS/README.md)
+    6.2	[AWS development environment overview](https://github.com/National-Digital-Twin/integration-architecture/blob/main/CloudPlatform/AWS/README.md)
 
     6.3	[Building IA Node pipeline](https://github.com/National-Digital-Twin/secure-agents-lib/blob/pre/README.md#secure-agents-lib-java)
 
-    6.4 [Testing IA Node AWS Pipeline Integration](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/Deployment/DeploymentAWS.md#deploy-to-aws)
+    6.4 [Testing IA Node AWS pipeline Integration](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/Deployment/DeploymentAWS.md#deploy-to-aws)
 
     6.5	[Docker Image to EC2](https://github.com/National-Digital-Twin/aws-integration-testing/blob/main/README.md#build-tag-push-docker-image-to-ecr)
 
