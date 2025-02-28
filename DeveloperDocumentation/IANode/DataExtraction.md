@@ -67,7 +67,7 @@ docker run -d --rm -p 3030:3030 \
            secure-agent-graph:latest --config config/config-abac-local.ttl 
 ```
 
-If the Secure Agent Graph application is configured using an AWS Cognito emulator, refer to the [Running an IA Node Locally](../Deployment/DeploymentLocal.md) document for retrieving the JWT token (`aws --endpoint http://0.0.0.0:9229 cognito-idp initiate-auth` call):
+If the Secure Agent Graph application is configured using an [AWS Cognito emulator](https://github.com/National-Digital-Twin/ianode-access/tree/main/cognito-local), refer to the [Running an IA Node Locally](../Deployment/DeploymentLocal.md) document for retrieving the JWT token (`aws --endpoint http://0.0.0.0:9229 cognito-idp initiate-auth` call):
 ```
 aws --endpoint http://0.0.0.0:9229 cognito-idp initiate-auth \
     --client-id 6967e8jkb0oqcm9brjkrbcrhj --auth-flow USER_PASSWORD_AUTH \
@@ -78,7 +78,16 @@ For requests to Secure Agent Graph hosted on AWS, replace `localhost` with the a
 
 ---
 
-### **2. Extracting Data via Tuple Database (TDB) Command-Line Interface (CLI)**  
+### 2. Extracting Data via GraphQL query
+
+For the details of setup of GraphQL endpoint and authorisation instructions, refer to [Running an IA Node Locally](../Deployment/DeploymentLocal.md).
+```
+curl -X POST -H "Content-Type: application/json" \
+    --data '{"query":"query {node(uri: \"http://example/person4321\") {id properties { predicate value }}}"}' \
+    http://localhost:3030/ds/graphql
+```
+
+### 3. Extracting Data via Tuple Database (TDB) Command-Line Interface (CLI)  
 
 TDB is a native storage component of **Apache Jena** for **RDF (Resource Description Framework)** data, optimized for efficient disk-based indexing and querying.  
 
