@@ -1,8 +1,8 @@
 # Getting Started
 ## Outlines what you can expect with IA Node.
-Getting Started will guide you through the different repositories and the process of integrating, configuring and using IA Node. It will help you with understanding and getting started with spinning up your own IA Node. 
+Getting Started will guide you through the different repositories and the process of integrating, configuring and using an IA Node. It will help you with understanding and getting started with spinning up your own IA Node. 
 
-The table of content below is organised a such a way to help you get to the relevant information and repository you need to get you started with your IA Node.
+The table of content below is organised in such a way to help you get to the relevant information and repository you need to get you started with your IA Node.
 
 1. [AI Node Background](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/IANode/Context.md#ianode-context)
 
@@ -88,7 +88,7 @@ The table of content below is organised a such a way to help you get to the rele
 [Glossary of terms, definitions and abbreviations](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/glossary.md)
 
 ## IA Node Repositories
-Here is a list of repositories related to the IA Node that you will find useful for setting up your IA Node.
+Here is a list of repositories you will find useful for setting up your own IA Node.
  |   Repository         |     Description                        | Additional Information | 
 |------------|-----------------------------|---------|
 | [aws-integration-testing](https://github.com/National-Digital-Twin/aws-integration-testing)    |      This repository contains the codebase for testing integration between AWS and GitHub.                 |      -   |        |             |
@@ -97,11 +97,11 @@ Here is a list of repositories related to the IA Node that you will find useful 
 |            [fuseki-yaml-config](https://github.com/National-Digital-Twin/fuseki-yaml-config)| This repository contains the codebase for a tool for translating Yaml files to standard Fuseki config files - consists of a Yaml parser and RDF generator.               | -     |        |
 |            [graphql-jena](https://github.com/National-Digital-Twin/graphql-jena)| This repository contains the codebase for an Apache Jena extension that provides GraphQL query capabilities.               | -    |        |
 |            [ianode-access](https://github.com/National-Digital-Twin/ianode-access)| This repository contains the codebase for IA Node APIs and services for mapping identity to user attributes for ABAC (Attribute Based Access Control) purposes.               | -     |        |
-|            [integration-architecture](https://github.com/National-Digital-Twin/integration-architecture)| This repository contains Integration Architecture comprising of IANodes, associated tools and their interactions. It represents the overall product - which has parts within in other repositories listed here.               | It also contains workflows to deploy kubenetes objects that make up an IANode into AWS EKS (kubernetes cluster) using Kustomize.    |        |
-|            [jena-fuseki-kafka](https://github.com/National-Digital-Twin/jena-fuseki-kafka)| Provides integration with Kafka streams. This allows RDF (Resource Description Framework) data to received and manipulated via messages on the Kafta streams.               | -     |        |
+|            [integration-architecture](https://github.com/National-Digital-Twin/integration-architecture)| This repository contains Integration Architecture comprising of IANodes, associated tools and their interactions. It represents the overall product - stored within the other repositories listed here.               | Workflows for deploying container images into an AWS EKS (kubernetes cluster) using Kustomize can also be found within this repository.   |        |
+|            [jena-fuseki-kafka](https://github.com/National-Digital-Twin/jena-fuseki-kafka)| Provides integration with Kafka streams. This allows RDF (Resource Description Framework) data to be received and manipulated via messages on the Kafta streams.               | -     |        |
 |            [jwt-servlet-auth](https://github.com/National-Digital-Twin/jwt-servlet-auth)| This repository contains a set of libraries that allows the addition of JSON Web Token (JWT) Bearer authentication into Java Servlet applications.               | -     |        |
 |            [label-builder](https://github.com/National-Digital-Twin/label-builder)| This repository contains supports for adding labels for ABAC (Attribute Based Access Control) use on RDF (Resource Description Framework) data via a REST API.               | -     |        |
-|            [label-builder-service](https://github.com/National-Digital-Twin/label-builder-service)| This repository contains a web service for adding a “security label” to knowledge model for ABAC (Attribute Based Access Control) purposes.               | label-builder-service integrates with label-builder to allow wrapping a model in a rest-api.   |        |
+|            [label-builder-service](https://github.com/National-Digital-Twin/label-builder-service)| This repository contains a web service for adding a 'security label' to knowledge model for ABAC (Attribute Based Access Control) purposes.               | label-builder-service integrates with label-builder to allow wrapping a model in a rest-api.   |        |
 |            [node-lib](https://github.com/National-Digital-Twin/node-lib)| This repository contains helper libraries for building adaptors, mappers and projectors.               | -     |        |
 |            [rdf-abac](https://github.com/National-Digital-Twin/rdf-abac)| This repository contains the codebase that provides the mechanism for fine-grained ABAC (Attribute Based Access Control) to RDF (Resource Description Framework) data as a plug-in for use by secure-agent-graph.             | -     |        |
 |            [rdf-abac-evaluator](https://github.com/National-Digital-Twin/rdf-abac-evaluator)| This repository contains the codebase that provides a REST service encompassing the RDF (Resource Description Framework) ABAC (Attribute Based Access Control) label evaluation service.              | The evaluator calls the Access Service to retrieve user and hierarchy information, which is cached in an age-off manner. It then makes use of the 'rdf-abac evaluator' to establish whether the given request evaluates to true or false.    |        |
