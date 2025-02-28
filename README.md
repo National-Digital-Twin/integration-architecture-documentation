@@ -10,13 +10,13 @@ The table of content below is organised in such a way to help you get to the rel
 
     1.2 [Overview of IA Node](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/IntegrationArchitecture.md#integration-architecture) 
 
-	1.3 [Core functional components](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/IANode/Components.md#key-functional-components-of-an-ia-node) 
+	1.3 [Key functional components](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/IANode/Components.md#key-functional-components-of-an-ia-node) 
 
     1.4 [IA Node features](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/IANode/Features.md#ianode-features)
 
-	1.5 [IA Node networks](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/toc/DeveloperDocumentation/NodeNet.md#nodenet)
+	1.5 [IA Node networks](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/NodeNet.md#nodenet)
 
-    1.6 [Management Node](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/toc/DeveloperDocumentation/ManagementNode.md#managementnode)
+    1.6 [Management Node](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/ManagementNode.md#managementnode)
 
 	1.7 [Code repositories](#ia-node-repositories)
 
@@ -27,8 +27,6 @@ The table of content below is organised in such a way to help you get to the rel
     2.2 [Data ingestion approaches](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/IANode/DataIngestion.md#data-ingestion-methods)
 
     2.2 [Data ingestion with REST API](https://github.com/National-Digital-Twin/node-lib/blob/pre/docs/adapters.md#adapters) 
-
-    2.3 [Data ingestion with Federators](https://github.com/National-Digital-Twin/federator/blob/main/README.md#overview-of-approach-to-ia-nodes-exchanging-data)
  
 3. [Exchanging Data between IA Nodes](https://github.com/National-Digital-Twin/federator/blob/main/README.md#overview-of-approach-to-ia-nodes-exchanging-data) 
 
