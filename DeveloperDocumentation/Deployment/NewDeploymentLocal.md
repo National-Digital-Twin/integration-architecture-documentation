@@ -13,6 +13,7 @@
 
 Fetch source code (Ensure Docker is running as some of the tests use it)
 ```
+git clone https://github.com/National-Digital-Twin/integration-architecture.git
 git clone https://github.com/National-Digital-Twin/ianode-access
 cd ianode-access
 mvn clean install
