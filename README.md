@@ -4,19 +4,19 @@ Getting Started will guide you through the different repositories and the proces
 
 The table of content below is organised in such a way to help you get to the relevant information and repository you need to get you started with your IA Node.
 
-1. [AI Node Background](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/IANode/Context.md#ianode-context)
+1. [AI Node Background](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/IANode/IANode.md#ianode)
 
-    1.1	[Introduction](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/IANode/IANode.md#ianode)
+    1.1	[Introduction](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/IANode/Context.md#ianode-context)
 
     1.2 [Overview of IA Node](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/IntegrationArchitecture.md#integration-architecture) 
 
-	1.3 [Core functional components](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/IANode/Components.md#ianode-components) 
+	1.3 [Core functional components](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/IANode/Components.md#key-functional-components-of-an-ia-node) 
 
     1.4 [IA Node features](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/IANode/Features.md#ianode-features)
 
-	1.5 [IA Node networks](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/NodeNet.md#nodenet)
+	1.5 [IA Node networks](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/toc/DeveloperDocumentation/NodeNet.md#nodenet)
 
-    1.6 [Management Node](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/NodeNet.md#nodenet)
+    1.6 [Management Node](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/toc/DeveloperDocumentation/ManagementNode.md#managementnode)
 
 	1.7 [Code repositories](#ia-node-repositories)
 
@@ -24,11 +24,11 @@ The table of content below is organised in such a way to help you get to the rel
 
     2.1 [Introduction](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/IANode/InAction.md#ianode-in-action) 
 
-    2.2 [Data ingestion approaches](https://github.com/National-Digital-Twin/federator/blob/main/docs/design.md#federation-service-design)
+    2.2 [Data ingestion approaches](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/IANode/DataIngestion.md#data-ingestion-methods)
 
     2.2 [Data ingestion with REST API](https://github.com/National-Digital-Twin/node-lib/blob/pre/docs/adapters.md#adapters) 
 
-    2.3 [Data ingestion with Federators](https://github.com/National-Digital-Twin/federator/blob/main/README.md#table-of-contents)
+    2.3 [Data ingestion with Federators](https://github.com/National-Digital-Twin/federator/blob/main/README.md#overview-of-approach-to-ia-nodes-exchanging-data)
  
 3. [Exchanging Data between IA Nodes](https://github.com/National-Digital-Twin/federator/blob/main/README.md#overview-of-approach-to-ia-nodes-exchanging-data) 
 
@@ -48,7 +48,7 @@ The table of content below is organised in such a way to help you get to the rel
 
     4.2	[Data extraction API](https://github.com/National-Digital-Twin/graphql-jena?tab=readme-ov-file#graphql-extensions-for-apache-jena)
 
-    4.3	[IA Node Access Control API](https://github.com/National-Digital-Twin/ianode-access?tab=readme-ov-file#integrating-with-other-ianode-applications)
+    4.3	[IA Node Access Control API](https://github.com/National-Digital-Twin/ianode-access?tab=readme-ov-file#ianode-access)
 
     4.4	[Data extraction tool](https://github.com/National-Digital-Twin/data-extractor?tab=readme-ov-file#data-extractor)
  
