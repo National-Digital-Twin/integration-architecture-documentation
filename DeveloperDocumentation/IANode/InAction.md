@@ -73,6 +73,3 @@ flowchart
     graphQLRequest --> fusekiServer
     sparqlRequest --> fusekiServer
 ```
-
----
-TODO
