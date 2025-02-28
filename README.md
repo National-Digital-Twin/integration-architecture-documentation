@@ -40,7 +40,7 @@ The table of content below is organised in such a way to help you get to the rel
 
 	3.4 [Consumer configuration](https://github.com/National-Digital-Twin/federator/blob/main/README.md#client-consumer)
 
-	3.5 [Consumer & producer authentication](https://github.com/National-Digital-Twin/federator/blob/main/authentication.md#authentication-configuration)
+	3.5 [Consumer & producer authentication](https://github.com/National-Digital-Twin/federator/blob/main/docs/authentication.md#authentication-configuration)
  
 4. [Getting data out of an IA node](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/IANode/DataExtraction.md#data-extraction-from-the-integration-architecture-node-ia-node)
 
