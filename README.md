@@ -12,7 +12,7 @@ The table of content below is organised a such a way to help you get to the rele
 
 	1.3 [Core functional components](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/IANode/Components.md#ianode-components) 
 
-    1.4 [IA Node Features](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/IANode/Features.md#ianode-features)
+    1.4 [IA Node features](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/IANode/Features.md#ianode-features)
 
 	1.5 [IA Node networks](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/NodeNet.md#nodenet)
 
@@ -34,7 +34,7 @@ The table of content below is organised a such a way to help you get to the rele
 
     3.1 [Introduction](https://github.com/National-Digital-Twin/federator/tree/doc/ia-360-Federator-ducmentation-exchange-of-data-between-ia-nodes?tab=readme-ov-file#introduction)
 
-    3.2 [Overview of approach to IA Nodes exchanging data](https://github.com/National-Digital-Twin/federator/tree/doc/ia-360-Federator-ducmentation-exchange-of-data-between-ia-nodes?tab=readme-ov-file#overview-of-approach-to-ia-nodes-exchanging-data)
+    3.2 [Overview of approach to data exchange between IA Nodes](https://github.com/National-Digital-Twin/federator/tree/doc/ia-360-Federator-ducmentation-exchange-of-data-between-ia-nodes?tab=readme-ov-file#overview-of-approach-to-ia-nodes-exchanging-data)
 
     3.3 [Producer configuration](https://github.com/National-Digital-Twin/federator/tree/doc/ia-360-Federator-ducmentation-exchange-of-data-between-ia-nodes?tab=readme-ov-file#server-producer)
 
@@ -58,7 +58,7 @@ The table of content below is organised a such a way to help you get to the rele
 
 	5.2 [Running an IA Node locally](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/Deployment/DeploymentLocal.md#running-an-ianode-locally)
 
-    5.3 [Creating an IA Node development environment in AWS](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/Deployment/DeploymentAWS.md#deploy-to-aws)
+    5.3 [Creating an AWS IA Node development environment](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/Deployment/DeploymentAWS.md#deploy-to-aws)
 
     5.4 [Deploying an IA Node to AWS](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/Deployment/DeploymentAWS.md#deploy-to-aws)
 
@@ -68,13 +68,13 @@ The table of content below is organised a such a way to help you get to the rele
 
     6.1	[Introduction](https://github.com/National-Digital-Twin/integration-architecture/tree/main/CloudPlatform/AWS#cloudplatformaws)
 
-    6.2	[AWS development environment overview](https://github.com/National-Digital-Twin/integration-architecture/blob/main/CloudPlatform/AWS/README.md)
+    6.2	[Overview on AWS development environment](https://github.com/National-Digital-Twin/integration-architecture/blob/main/CloudPlatform/AWS/README.md)
 
     6.3	[Building IA Node pipeline](https://github.com/National-Digital-Twin/secure-agents-lib/blob/pre/README.md#secure-agents-lib-java)
 
-    6.4 [Testing IA Node AWS pipeline Integration](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/Deployment/DeploymentAWS.md#deploy-to-aws)
+    6.4 [Testing IA Node AWS pipeline integration](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/Deployment/DeploymentAWS.md#deploy-to-aws)
 
-    6.5	[Docker Image to EC2](https://github.com/National-Digital-Twin/aws-integration-testing/blob/main/README.md#build-tag-push-docker-image-to-ecr)
+    6.5	[Docker image to EC2](https://github.com/National-Digital-Twin/aws-integration-testing/blob/main/README.md#build-tag-push-docker-image-to-ecr)
 
     6.6	[Container registry and deployment](https://github.com/National-Digital-Twin/aws-integration-testing/blob/main/README.md#curl-local-container)
 
@@ -82,16 +82,18 @@ The table of content below is organised a such a way to help you get to the rele
 
     6.8	[Deploying to Kubernetes](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/Deployment/DeploymentAWS.md#deploying-to-kubernetes)
 
-    [Glossary](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/glossary.md)
+# APPENDICES
 
-# APPENDIX
+## Glossary
+[Glossary of terms, definitions and abbreviations](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/glossary.md)
+
 ## IA Node Repositories
 Here is a list of repositories related to the IA Node that you will find useful for setting up your IA Node.
  |   Repository         |     Description                        | Additional Information | 
 |------------|-----------------------------|---------|
 | [aws-integration-testing](https://github.com/National-Digital-Twin/aws-integration-testing)    |      This repository contains the codebase for testing integration between AWS and GitHub.                 |      -   |        |             |
 |            [data-extractor](https://github.com/National-Digital-Twin/data-extractor)| This repository contains the codebase for data extrator which is a script that can query IA Node and upload the resultant data to an AWS S3 bucket.               | -     |        |
-|            [federator](https://github.com/National-Digital-Twin/federator)| Contains the codebase for the federator service which allows data exchange between Integration Architecture Nodes.                | -    |        |
+|            [federator](https://github.com/National-Digital-Twin/federator)| This repository contains the codebase for the federator service which allows data exchange between Integration Architecture Nodes.                | -    |        |
 |            [fuseki-yaml-config](https://github.com/National-Digital-Twin/fuseki-yaml-config)| This repository contains the codebase for a tool for translating Yaml files to standard Fuseki config files - consists of a Yaml parser and RDF generator.               | -     |        |
 |            [graphql-jena](https://github.com/National-Digital-Twin/graphql-jena)| This repository contains the codebase for an Apache Jena extension that provides GraphQL query capabilities.               | -    |        |
 |            [ianode-access](https://github.com/National-Digital-Twin/ianode-access)| This repository contains the codebase for IA Node APIs and services for mapping identity to user attributes for ABAC (Attribute Based Access Control) purposes.               | -     |        |
