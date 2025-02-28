@@ -60,7 +60,7 @@ Check it's running and account is in place
 ```
 aws --endpoint http://0.0.0.0:9229 cognito-idp initiate-auth --client-id 6967e8jkb0oqcm9brjkrbcrhj --auth-flow USER_PASSWORD_AUTH --auth-parameters USERNAME=test+admin@ndtp.co.uk,PASSWORD=password
 ```
-and note the token id from the output (This will be required to test Access Control)
+and note the token id from the output (This will be required to test access control)
 
 ```
 curl -H "Authorization: bearer <id token>" http://localhost:8091/whoami
