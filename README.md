@@ -20,7 +20,7 @@ The table of content below is organised in such a way to help you get to the rel
 
 	1.7 [Code repositories](#ia-node-repositories)
 
-2. [Ingesting data into an IA Node](https://github.com/National-Digital-Twin/jena-fuseki-kafka?tab=readme-ov-file#jena-fuseki-kafka)
+2. [Ingesting data into an IA Node](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/IANode/DataIngestion.md#data-ingestion-into-the-integration-architecture-node-ia-node)
 
     2.1 [Introduction](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/IANode/InAction.md#ianode-in-action) 
 
@@ -28,21 +28,21 @@ The table of content below is organised in such a way to help you get to the rel
 
     2.2 [Data ingestion with REST API](https://github.com/National-Digital-Twin/node-lib/blob/pre/docs/adapters.md#adapters) 
 
-    2.3 [Data ingestion with Federators](https://github.com/National-Digital-Twin/federator/tree/doc/ia-360-Federator-ducmentation-exchange-of-data-between-ia-nodes?tab=readme-ov-file#table-of-contents)
+    2.3 [Data ingestion with Federators](https://github.com/National-Digital-Twin/federator/blob/main/README.md#table-of-contents)
  
-3. [Exchanging Data between IA Nodes](https://github.com/National-Digital-Twin/federator/tree/doc/ia-360-Federator-ducmentation-exchange-of-data-between-ia-nodes?tab=readme-ov-file#overview-of-approach-to-ia-nodes-exchanging-data) 
+3. [Exchanging Data between IA Nodes](https://github.com/National-Digital-Twin/federator/blob/main/README.md#overview-of-approach-to-ia-nodes-exchanging-data) 
 
-    3.1 [Introduction](https://github.com/National-Digital-Twin/federator/tree/doc/ia-360-Federator-ducmentation-exchange-of-data-between-ia-nodes?tab=readme-ov-file#introduction)
+    3.1 [Introduction](https://github.com/National-Digital-Twin/federator/blob/main/README.md#introduction)
 
-    3.2 [Overview of approach to data exchange between IA Nodes](https://github.com/National-Digital-Twin/federator/tree/doc/ia-360-Federator-ducmentation-exchange-of-data-between-ia-nodes?tab=readme-ov-file#overview-of-approach-to-ia-nodes-exchanging-data)
+    3.2 [Overview of approach to data exchange between IA Nodes](https://github.com/National-Digital-Twin/federator/blob/main/README.md#overview-of-approach-to-ia-nodes-exchanging-data)
 
-    3.3 [Producer configuration](https://github.com/National-Digital-Twin/federator/tree/doc/ia-360-Federator-ducmentation-exchange-of-data-between-ia-nodes?tab=readme-ov-file#server-producer)
+    3.3 [Producer configuration](https://github.com/National-Digital-Twin/federator/blob/main/README.md#server-producer)
 
-	3.4 [Consumer configuration](https://github.com/National-Digital-Twin/federator/tree/doc/ia-360-Federator-ducmentation-exchange-of-data-between-ia-nodes?tab=readme-ov-file#client-consumer)
+	3.4 [Consumer configuration](https://github.com/National-Digital-Twin/federator/blob/main/README.md#client-consumer)
 
-	3.5 [Consumer & producer authentication](https://github.com/National-Digital-Twin/federator/blob/doc/ia-360-Federator-ducmentation-exchange-of-data-between-ia-nodes/docs/authentication.md#authentication-configuration)
+	3.5 [Consumer & producer authentication](https://github.com/National-Digital-Twin/federator/blob/main/authentication.md#authentication-configuration)
  
-4. [Getting data out of an IA node](https://github.com/National-Digital-Twin/graphql-jena/blob/pre/docs/schemas.md#ianode) 
+4. [Getting data out of an IA node](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/IANode/DataExtraction.md#data-extraction-from-the-integration-architecture-node-ia-node)
 
     4.1	[Introduction](https://github.com/National-Digital-Twin/graphql-jena/blob/pre/docs/schemas.md#graphql-for-jena-schemas)
 
@@ -85,7 +85,7 @@ The table of content below is organised in such a way to help you get to the rel
 # APPENDICES
 
 ## Glossary
-[Glossary of terms, definitions and abbreviations](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/glossary.md)
+[Glossary of terms, definitions and abbreviations](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/IANode/Glossary.md#glossary)
 
 ## IA Node Repositories
 Here is a list of repositories you will find useful for setting up your own IA Node.
