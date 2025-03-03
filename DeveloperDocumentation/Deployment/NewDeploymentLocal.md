@@ -15,8 +15,6 @@ Fetch source code (Ensure Docker is running as some of the tests use it)
 ```
 git clone https://github.com/National-Digital-Twin/integration-architecture.git
 git clone https://github.com/National-Digital-Twin/ianode-access
-cd ianode-access
-mvn clean install
 cd ..
 git clone https://github.com/National-Digital-Twin/rdf-abac
 cd rdf-abac
@@ -45,10 +43,20 @@ git clone https://github.com/National-Digital-Twin/secure-agent-graph.git
 cd secure-agent-graph
 mvn clean install
 ```
+### Move Docker Compose and Configuration Files to the Root Directory
 
-Start up IANode using Integration Architecture
+After cloning the repositories, move the following files and directories from the ```integration-architecture/docker-compose``` folder to your root directory (National-Digital-Twin). This step consolidates all necessary Docker configuration files in one place and simplifies relative path references.
+
 ```
-cd integration-architecture/docker-compose
+integration-architecture/docker-compose/docker-compose.yml
+integration-architecture/docker-compose/init-mongo.sh
+integration-architecture/docker-compose/cognito
+integration-architecture/docker-compose/cognito-backup
+```
+
+### Start up IANode using Integration Architecture
+```
+cd National-Digital-Twin
 docker compose up
 ```
 Wait for terminal window to download and install required packages and then start up. 
