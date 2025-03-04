@@ -4,9 +4,9 @@ Getting Started will guide you through the different repositories and the proces
 
 The table of content below is organised in such a way to help you get to the relevant information and repository you need to get you started with your IA Node.
 
-1. [IA Node Background](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/IANode/IANode.md#ianode)
+1. IA Node Background
 
-    1.1	[Introduction](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/IANode/Context.md#ianode-context)
+    1.1	[Introduction](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/IANode/IANode.md#ianode)
 
     1.2 [Overview of IA Node](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/IntegrationArchitecture.md#integration-architecture) 
 
@@ -20,15 +20,15 @@ The table of content below is organised in such a way to help you get to the rel
 
 	1.7 [Code repositories](#ia-node-repositories)
 
-2. [Ingesting data into an IA Node](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/IANode/DataIngestion.md#data-ingestion-into-the-integration-architecture-node-ia-node)
+2. Ingesting data into an IA Node
 
-    2.1 [Introduction](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/IANode/InAction.md#ianode-in-action) 
+    2.1 [Introduction](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/IANode/DataIngestion.md#data-ingestion-into-the-integration-architecture-node-ia-node)
 
     2.2 [Data ingestion approaches](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/IANode/DataIngestion.md#data-ingestion-methods)
 
-    2.2 [Data ingestion with REST API](https://github.com/National-Digital-Twin/node-lib/blob/pre/docs/adapters.md#adapters) 
+    2.3 [Data ingestion with REST API](https://github.com/National-Digital-Twin/node-lib/blob/pre/docs/adapters.md#adapters) 
  
-3. [Exchanging Data between IA Nodes](https://github.com/National-Digital-Twin/federator/blob/main/README.md#overview-of-approach-to-ia-nodes-exchanging-data) 
+3. Exchanging Data between IA Nodes
 
     3.1 [Introduction](https://github.com/National-Digital-Twin/federator/blob/main/README.md#introduction)
 
@@ -40,9 +40,9 @@ The table of content below is organised in such a way to help you get to the rel
 
 	3.5 [Consumer & producer authentication](https://github.com/National-Digital-Twin/federator/blob/main/docs/authentication.md#authentication-configuration)
  
-4. [Getting data out of an IA node](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/IANode/DataExtraction.md#data-extraction-from-the-integration-architecture-node-ia-node)
+4. Getting data out of an IA node
 
-    4.1	[Introduction](https://github.com/National-Digital-Twin/graphql-jena/blob/pre/docs/schemas.md#graphql-for-jena-schemas)
+    4.1	[Introduction](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/IANode/DataExtraction.md#data-extraction-from-the-integration-architecture-node-ia-node)
 
     4.2	[Data extraction API](https://github.com/National-Digital-Twin/graphql-jena?tab=readme-ov-file#graphql-extensions-for-apache-jena)
 
@@ -50,7 +50,7 @@ The table of content below is organised in such a way to help you get to the rel
 
     4.4	[Data extraction tool](https://github.com/National-Digital-Twin/data-extractor?tab=readme-ov-file#data-extractor)
  
-5. [Building and deploying IA Node](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/Deployment/Deployment.md#deployment) 
+5. Building and deploying IA Node
 
     5.1	[Introduction](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/Deployment/Deployment.md#deployment)
 
@@ -62,7 +62,7 @@ The table of content below is organised in such a way to help you get to the rel
 
     5.5 [Testing IA Node scaling](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/Scaling.md#testing-coverage)
  
-6. [Platform Architecture](https://github.com/National-Digital-Twin/integration-architecture/blob/main/README.md#cloudplatform-sample-design-and-iac-implementation)
+6. Platform Architecture
 
     6.1	[Introduction](https://github.com/National-Digital-Twin/integration-architecture/tree/main/CloudPlatform/AWS#cloudplatformaws)
 
