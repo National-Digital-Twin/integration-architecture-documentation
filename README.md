@@ -4,7 +4,7 @@ Getting Started will guide you through the different repositories and the proces
 
 The table of content below is organised in such a way to help you get to the relevant information and repository you need to get you started with your IA Node.
 
-## 1. IA Node Background
+1. IA Node Background
 
     1.1	[Introduction](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/IANode/IANode.md#ianode)
 
@@ -20,13 +20,13 @@ The table of content below is organised in such a way to help you get to the rel
 
 	1.7 [Code repositories](#ia-node-repositories)
 
-## 2. Ingesting data into an IA Node
+2. Ingesting data into an IA Node
 
     2.1 [Introduction](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/IANode/DataIngestion.md#data-ingestion-into-the-integration-architecture-node-ia-node)
 
     2.2 [Data ingestion approaches](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/IANode/DataIngestion.md#data-ingestion-methods)
 
-## 3. Exchanging Data between IA Nodes
+3. Exchanging Data between IA Nodes
 
     3.1 [Introduction](https://github.com/National-Digital-Twin/federator/blob/main/README.md#introduction)
 
@@ -38,7 +38,7 @@ The table of content below is organised in such a way to help you get to the rel
 
 	3.5 [Consumer & producer authentication](https://github.com/National-Digital-Twin/federator/blob/main/docs/authentication.md#authentication-configuration)
  
-## 4. Data extraction from an IA Node
+4. Data extraction from an IA Node
 
     4.1	[Introduction](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/IANode/DataExtraction.md#data-extraction-from-the-integration-architecture-node-ia-node)
 
@@ -46,7 +46,7 @@ The table of content below is organised in such a way to help you get to the rel
 
     4.3	[Data extractor](https://github.com/National-Digital-Twin/data-extractor/blob/main/README.md#data-extractor)
  
-## 5. Building and deploying IA Node
+5. Building and deploying IA Node
 
     5.1	[Introduction](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/Deployment/Deployment.md#deployment)
 
@@ -56,7 +56,7 @@ The table of content below is organised in such a way to help you get to the rel
 
     5.4 [Run basic test for minimal IA Node functionality](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/Deployment/DeploymentLocal.md#run-basic-test-for-minimal-ianode-functionality)
  
-## 6. Platform Architecture
+6. Platform Architecture
 
     6.1	[Introduction](https://github.com/National-Digital-Twin/integration-architecture/tree/main/CloudPlatform/AWS#cloudplatformaws)
 
