@@ -1,11 +1,10 @@
-# Running an IANode locally
+# Build and run an IANode locally
 
 ## Pre-requisites
 
 * AWS CLI
 * Docker (running)
-* Postman/Curl
-* Git cli
+* HTTP client e.g. curl, Postman
 
 ## Minimal IANode
 
@@ -25,7 +24,7 @@ cd jwt-servlet-auth
 mvn clean install
 git clone https://github.com/National-Digital-Twin/secure-agents-lib.git
 cd secure-agents-lib
-mvn clean install -Dlicense.skip=true
+mvn clean install
 cd ..
 git clone https://github.com/National-Digital-Twin/jena-fuseki-kafka
 cd jena-fuseki-kafka
@@ -33,7 +32,7 @@ mvn clean install
 cd ..
 git clone https://github.com/National-Digital-Twin/graphql-jena
 cd graphql-jena
-mvn clean install -Dlicense.skip=true -Dmaven.javadoc.skip=true
+mvn clean install -Dmaven.javadoc.skip=true
 cd ..
 git clone https://github.com/National-Digital-Twin/fuseki-yaml-config
 cd fuseki-yaml-config
@@ -59,8 +58,8 @@ integration-architecture/docker-compose/cognito-backup
 cd National-Digital-Twin
 docker compose up
 ```
-Wait for terminal window to download and install required packages and then start up. 
-(and leave that running). The accounts will be created and added to user groups.
+Wait for terminal window to download and install the required packages, and then start up.
+Leave the terminal window running. The accounts will be created and added to user groups.
 
 You can view more details about each container in your Docker Hub.
 
