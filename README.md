@@ -56,7 +56,7 @@ The table of content below is organised in such a way to help you get to the rel
 
     5.4 [Run basic test for minimal IA Node functionality](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/Deployment/DeploymentLocal.md#run-basic-test-for-minimal-ianode-functionality)
  
-6. Platform Architecture
+**6. Platform Architecture**
 
     6.1	[Introduction](https://github.com/National-Digital-Twin/integration-architecture/tree/main/CloudPlatform/AWS#cloudplatformaws)
 
