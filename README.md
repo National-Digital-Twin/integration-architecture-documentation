@@ -14,7 +14,7 @@ The table of content below is organised in such a way to help you get to the rel
 
     1.4 [IA Node features](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/IANode/Features.md#ianode-features)
 
-	1.5 [IA Node networks](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/NodeNet.md#nodenet)
+	1.5 [How IA Nodes work together in a wider network](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/NodeNet.md#nodenet)
 
     1.6 [Management Node](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/ManagementNode.md#managementnode)
 
@@ -26,17 +26,15 @@ The table of content below is organised in such a way to help you get to the rel
 
     2.2 [Data ingestion approaches](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/IANode/DataIngestion.md#data-ingestion-methods)
 
-    2.3 [Data ingestion with REST API](https://github.com/National-Digital-Twin/node-lib/blob/pre/docs/adapters.md#adapters) 
- 
 3. Exchanging Data between IA Nodes
 
     3.1 [Introduction](https://github.com/National-Digital-Twin/federator/blob/main/README.md#introduction)
 
     3.2 [Overview of approach to data exchange between IA Nodes](https://github.com/National-Digital-Twin/federator/blob/main/README.md#overview-of-approach-to-ia-nodes-exchanging-data)
 
-    3.3 [Producer configuration](https://github.com/National-Digital-Twin/federator/blob/main/README.md#server-producer)
+    3.3 [Producer server configuration]([https://github.com/National-Digital-Twin/federator/blob/main/README.md#server-producer](https://github.com/National-Digital-Twin/federator/blob/main/docs/server-configuration.md#server-configuration))
 
-	3.4 [Consumer configuration](https://github.com/National-Digital-Twin/federator/blob/main/README.md#client-consumer)
+	3.4 [Consumer server configuration](/docs/server-configuration.md#server-configuration)
 
 	3.5 [Consumer & producer authentication](https://github.com/National-Digital-Twin/federator/blob/main/docs/authentication.md#authentication-configuration)
  
