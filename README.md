@@ -4,7 +4,7 @@ Getting Started will guide you through the different repositories and the proces
 
 The table of content below is organised in such a way to help you get to the relevant information and repository you need to get you started with your IA Node.
 
-**1. IA Node Background**
+1. IA Node Background
 
     1.1	[Introduction](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/IANode/IANode.md#ianode)
 
