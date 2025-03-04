@@ -72,7 +72,7 @@ mvn clean install
 git clone https://github.com/National-Digital-Twin/secure-agents-lib.git
 cd secure-agents-lib
 (Ensure Docker is running as the tests use it)
-mvn clean install -Dlicense.skip=true
+mvn clean install
 cd ..
 git clone https://github.com/National-Digital-Twin/jena-fuseki-kafka
 cd jena-fuseki-kafka
@@ -80,7 +80,7 @@ mvn clean install
 cd ..
 git clone https://github.com/National-Digital-Twin/graphql-jena
 cd graphql-jena
-mvn clean install -Dlicense.skip=true -Dmaven.javadoc.skip=true
+mvn clean install -Dmaven.javadoc.skip=true
 cd ..
 git clone https://github.com/National-Digital-Twin/fuseki-yaml-config
 cd fuseki-yaml-config
