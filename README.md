@@ -32,9 +32,9 @@ The table of content below is organised in such a way to help you get to the rel
 
     3.2 [Overview of approach to data exchange between IA Nodes](https://github.com/National-Digital-Twin/federator/blob/main/README.md#overview-of-approach-to-ia-nodes-exchanging-data)
 
-    3.3 [Producer server configuration]([https://github.com/National-Digital-Twin/federator/blob/main/README.md#server-producer](https://github.com/National-Digital-Twin/federator/blob/main/docs/server-configuration.md#server-configuration)
+    3.3 [Producer server configuration](https://github.com/National-Digital-Twin/federator/blob/main/docs/server-configuration.md#server-configuration)
 
-    3.4 [Consumer server configuration](/docs/server-configuration.md#server-configuration)
+    3.4 [Consumer server configuration](https://github.com/National-Digital-Twin/federator/blob/main/docs/client-configuration.md#client-configuration)
 
     3.5 [Consumer & producer authentication](https://github.com/National-Digital-Twin/federator/blob/main/docs/authentication.md#authentication-configuration)
  
