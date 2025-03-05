@@ -66,6 +66,7 @@ The table of content below is organised in such a way to help you get to the rel
     6.6 [Run basic test for minimal IA Node functionality](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/Deployment/DeploymentLocal.md#run-basic-test-for-minimal-ianode-functionality)
  
 7. Platform Architecture
+   
     7.1	[Integration Architecture](https://github.com/National-Digital-Twin/integration-architecture/blob/main/README.md#integration-architecture)
 
 
