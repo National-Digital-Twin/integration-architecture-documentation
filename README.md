@@ -58,7 +58,7 @@ The table of content below is organised in such a way to help you get to the rel
  
 6. Platform Architecture
 
-    6.1	[Introduction](https://github.com/National-Digital-Twin/integration-architecture/tree/main/CloudPlatform/AWS#cloudplatformaws)
+    6.1	[Introduction](https://github.com/National-Digital-Twin/integration-architecture/blob/main/CloudPlatform/AWS/docs/introduction.md#introduction)
 
     6.2	[Overview on AWS development environment](https://github.com/National-Digital-Twin/integration-architecture/blob/main/CloudPlatform/AWS/README.md)
 
