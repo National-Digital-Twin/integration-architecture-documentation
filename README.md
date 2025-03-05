@@ -32,17 +32,17 @@ The table of content below is organised in such a way to help you get to the rel
 
     3.2 [Overview of approach to data exchange between IA Nodes](https://github.com/National-Digital-Twin/federator/blob/main/README.md#overview-of-approach-to-ia-nodes-exchanging-data)
 
-    3.3 [Producer server configuration]([https://github.com/National-Digital-Twin/federator/blob/main/README.md#server-producer](https://github.com/National-Digital-Twin/federator/blob/main/docs/server-configuration.md#server-configuration))
+    3.3 [Producer server configuration]([https://github.com/National-Digital-Twin/federator/blob/main/README.md#server-producer](https://github.com/National-Digital-Twin/federator/blob/main/docs/server-configuration.md#server-configuration)
 
-	3.4 [Consumer server configuration](/docs/server-configuration.md#server-configuration)
+    3.4 [Consumer server configuration](/docs/server-configuration.md#server-configuration)
 
-	3.5 [Consumer & producer authentication](https://github.com/National-Digital-Twin/federator/blob/main/docs/authentication.md#authentication-configuration)
+    3.5 [Consumer & producer authentication](https://github.com/National-Digital-Twin/federator/blob/main/docs/authentication.md#authentication-configuration)
  
 4. Data extraction from an IA Node
 
     4.1	[Introduction](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/IANode/DataExtraction.md#data-extraction-from-the-integration-architecture-node-ia-node)
 
-     4.2	[IA Node Access](https://github.com/National-Digital-Twin/ianode-access/blob/pre/README.md#ianode-access)
+    4.2 [IA Node Access](https://github.com/National-Digital-Twin/ianode-access/blob/pre/README.md#ianode-access)
 
     4.3	[Data extractor](https://github.com/National-Digital-Twin/data-extractor/blob/main/README.md#data-extractor)
  
@@ -50,29 +50,24 @@ The table of content below is organised in such a way to help you get to the rel
 
     5.1	[Introduction](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/Deployment/Deployment.md#deployment)
 
-	5.2 [Running an IA Node locally](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/Deployment/DeploymentLocal.md#running-an-ianode-locally)
+   5.2 [Running an IA Node locally](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/Deployment/DeploymentLocal.md#running-an-ianode-locally)
 
-    5.3 [Deploy to AWS](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/Deployment/DeploymentAWS.md#deploy-to-aws)
+6. Deploy to AWS
+   6.1	[Introduction](https://github.com/National-Digital-Twin/integration-architecture/blob/main/CloudPlatform/AWS/docs/introduction.md#introduction)
 
-    5.4 [Run basic test for minimal IA Node functionality](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/Deployment/DeploymentLocal.md#run-basic-test-for-minimal-ianode-functionality)
+    6.2	[AWS Development Overview](https://github.com/National-Digital-Twin/integration-architecture/blob/main/CloudPlatform/AWS/docs/aws-dev-environment-overview.md#aws-development-environment-overview)
+
+   6.3 [AWS Development Playbook](https://github.com/National-Digital-Twin/integration-architecture/blob/main/CloudPlatform/AWS/docs/aws-dev-playbook.md)
+
+    6.4	[Deploying to EC2 instance](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/Deployment/DeploymentAWS.md#deploying-to-a-ec2-instance)
+
+    6.5	[Deploying to Kubernetes](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/Deployment/DeploymentAWS.md#deploying-to-kubernetes)
+
+    6.6 [Run basic test for minimal IA Node functionality](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/Deployment/DeploymentLocal.md#run-basic-test-for-minimal-ianode-functionality)
  
-6. Platform Architecture
+7. Platform Architecture
+    7.1	[Integration Architecture](https://github.com/National-Digital-Twin/integration-architecture/blob/main/README.md#integration-architecture)
 
-    6.1	[Introduction](https://github.com/National-Digital-Twin/integration-architecture/blob/main/CloudPlatform/AWS/docs/introduction.md#introduction)
-
-    6.2	[Overview on AWS development environment](https://github.com/National-Digital-Twin/integration-architecture/blob/main/CloudPlatform/AWS/README.md)
-
-    6.3	[Building IA Node pipeline](https://github.com/National-Digital-Twin/secure-agents-lib/blob/pre/README.md#secure-agents-lib-java)
-
-    6.4 [Testing IA Node AWS pipeline integration](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/Deployment/DeploymentAWS.md#deploy-to-aws)
-
-    6.5	[Docker image to EC2](https://github.com/National-Digital-Twin/aws-integration-testing/blob/main/README.md#build-tag-push-docker-image-to-ecr)
-
-    6.6	[Container registry and deployment](https://github.com/National-Digital-Twin/aws-integration-testing/blob/main/README.md#curl-local-container)
-
-    6.7	[Deploying to EC2 instance](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/Deployment/DeploymentAWS.md#deploying-to-a-ec2-instance)
-
-    6.8	[Deploying to Kubernetes](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/Deployment/DeploymentAWS.md#deploying-to-kubernetes)
 
 # APPENDICES
 
