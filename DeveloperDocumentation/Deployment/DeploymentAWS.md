@@ -60,6 +60,7 @@ For more details see [AWS Integration Testing](https://github.com/National-Digit
 
 
 ## Deploying to Kubernetes
+Deployment to Kubernetes is handle using Kustomize. The workflow for deployment is detailed within [Deploy-to-kube-kustomize.yml](https://github.com/National-Digital-Twin/integration-architecture/blob/main/.github/workflows/README.md#deploy-to-kube-kustomizeyml)
 
 ```mermaid
 flowchart
