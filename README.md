@@ -53,6 +53,7 @@ The table of content below is organised in such a way to help you get to the rel
    5.2 [Running an IA Node locally](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/Deployment/DeploymentLocal.md#running-an-ianode-locally)
 
 6. Deploy to AWS
+   
    6.1	[Introduction](https://github.com/National-Digital-Twin/integration-architecture/blob/main/CloudPlatform/AWS/docs/introduction.md#introduction)
 
     6.2	[AWS Development Overview](https://github.com/National-Digital-Twin/integration-architecture/blob/main/CloudPlatform/AWS/docs/aws-dev-environment-overview.md#aws-development-environment-overview)
@@ -65,7 +66,7 @@ The table of content below is organised in such a way to help you get to the rel
 
     6.6 [Run basic test for minimal IA Node functionality](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/Deployment/DeploymentLocal.md#run-basic-test-for-minimal-ianode-functionality)
  
-7. Platform Architecture
+8. Platform Architecture
    
     7.1	[Integration Architecture](https://github.com/National-Digital-Twin/integration-architecture/blob/main/README.md#integration-architecture)
 
