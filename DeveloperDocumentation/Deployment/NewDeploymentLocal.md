@@ -46,6 +46,7 @@ cd secure-agent-graph
 mvn clean install
 ```
 
+[Setting up IANode (Simplified Version)](#using-integration-architecture-docker-compose)
 ### 1.1.3 Starting up Identity Provider and Access Control
 ```
 cd ianode-access/cognito-local
@@ -152,7 +153,7 @@ curl -XPOST  -H "Authorization: bearer <id token from previous step>" -H "Conten
 ```
 should output ```{"data":{"node":{"id":"http://example/person4321","properties":[{"predicate":"http://example/phone","value":"0400 111 333"}]}}}```
 
-### 1.1.4 Minimal IANode with Kafka and ABAC
+### 1.1.4 IANode with Kafka and ABAC
 
 ### Start up Kafka
 (based on https://kafka.apache.org/quickstart)
@@ -215,7 +216,8 @@ Running the queries should fetch the data as before e.g.
 curl -XPOST  -H "Authorization: bearer <token-id>" -H "Content-Type: application/json" --data '{"query": "query { node(uri: \"http://example/person4321\") {id properties { predicate value }} }" }' http://localhost:3030/ds/graphql
 ```
 
-## 1.2 Pulling Docker images and using Docker Compose
+## 1.2 Pulling Docker images
+### Using Integration Architecture Docker Compose
 
 This approach is more streamlined and consolidates some of the steps in the above guide into fewer steps, this is best for getting an IANode up and running as quickly as possible. However, the above set of instructions is more useful for debugging.
 
