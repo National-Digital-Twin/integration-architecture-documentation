@@ -4,7 +4,7 @@ Getting Started will guide you through the different repositories and the proces
 
 The table of content below is organised in such a way to help you get to the relevant information and repository you need to get you started with your IA Node.
 
-1. IA Node Background
+1. **IA Node Background**
 
     1.1	[Introduction](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/IANode/IANode.md#ianode)
 
@@ -20,25 +20,35 @@ The table of content below is organised in such a way to help you get to the rel
 
 	1.7 [Code repositories](#ia-node-repositories)
 
-2. Ingesting data into an IA Node
+2. **Ingesting data into an IA Node**
 
     2.1 [Introduction](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/IANode/DataIngestion.md#data-ingestion-into-the-integration-architecture-node-ia-node)
 
     2.2 [Data ingestion approaches](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/IANode/DataIngestion.md#data-ingestion-methods)
 
-3. Exchanging Data between IA Nodes
+3. **Exchanging Data between IA Nodes**
 
     3.1 [Introduction](https://github.com/National-Digital-Twin/federator/blob/main/README.md#introduction)
 
     3.2 [Overview of approach to data exchange between IA Nodes](https://github.com/National-Digital-Twin/federator/blob/main/README.md#overview-of-approach-to-ia-nodes-exchanging-data)
 
-    3.3 [Producer server configuration](https://github.com/National-Digital-Twin/federator/blob/main/docs/server-configuration.md#server-configuration)
+   3.3 [Producer server](https://github.com/National-Digital-Twin/federator/blob/main/README.md#federator-server-producer)
 
-    3.4 [Consumer server configuration](https://github.com/National-Digital-Twin/federator/blob/main/docs/client-configuration.md#client-configuration)
+   3.4 [Adding a Producer server](https://github.com/National-Digital-Twin/federator/blob/main/docs/new-client-server.md#adding-a-new-server)
 
-    3.5 [Consumer & producer authentication](https://github.com/National-Digital-Twin/federator/blob/main/docs/authentication.md#authentication-configuration)
+   3.5 [Producer server configuration](https://github.com/National-Digital-Twin/federator/blob/main/docs/server-configuration.md#server-configuration)
+   
+  3.6 [Consumer server](https://github.com/National-Digital-Twin/federator/blob/main/README.md#federator-client-consumer)
+
+  3.7 [Adding a Consumer server](https://github.com/National-Digital-Twin/federator/blob/main/docs/new-client-server.md#adding-a-new-client)
+    
+ 3.8 [Consumer server](https://github.com/National-Digital-Twin/federator/blob/main/README.md#federator-client-consumer)
+
+3.9 [Consumer server configuration](https://github.com/National-Digital-Twin/federator/blob/main/docs/server-configuration.md#server-configuration)
+
+3.10 [Consumer & producer authentication](https://github.com/National-Digital-Twin/federator/blob/main/docs/authentication.md#authentication-configuration)
  
-4. Data extraction from an IA Node
+5. **Data extraction from an IA Node**
 
     4.1	[Introduction](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/IANode/DataExtraction.md#data-extraction-from-the-integration-architecture-node-ia-node)
 
@@ -46,13 +56,13 @@ The table of content below is organised in such a way to help you get to the rel
 
     4.3	[Data extractor](https://github.com/National-Digital-Twin/data-extractor/blob/main/README.md#data-extractor)
  
-5. Building and deploying IA Node
+6. **Building and deploying IA Node**
 
     5.1	[Introduction](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/Deployment/Deployment.md#deployment)
 
    5.2 [Running an IA Node locally](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/Deployment/DeploymentLocal.md#running-an-ianode-locally)
 
-6. Deploy to AWS
+7. **Deploying to AWS**
    
    6.1	[Introduction](https://github.com/National-Digital-Twin/integration-architecture/blob/main/CloudPlatform/AWS/docs/introduction.md#introduction)
 
@@ -66,7 +76,7 @@ The table of content below is organised in such a way to help you get to the rel
 
     6.6 [Run basic test for minimal IA Node functionality](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/Deployment/DeploymentLocal.md#run-basic-test-for-minimal-ianode-functionality)
  
-8. Platform Architecture
+8. **Platform Architecture**
    
     7.1	[Integration Architecture](https://github.com/National-Digital-Twin/integration-architecture/blob/main/README.md#integration-architecture)
 
