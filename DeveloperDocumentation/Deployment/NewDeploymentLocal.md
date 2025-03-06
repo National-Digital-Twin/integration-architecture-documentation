@@ -219,7 +219,7 @@ curl -XPOST  -H "Authorization: bearer <token-id>" -H "Content-Type: application
 ## 1.2 Pulling Docker images
 ### Using Integration Architecture Docker Compose
 
-This approach is more streamlined and consolidates some of the steps in the above guide into fewer steps, this is best for getting an IANode up and running as quickly as possible. However, the above set of instructions is more useful for debugging.
+This approach consolidates some of the steps in the above guide into fewer steps, this is best for getting an IANode up and running as quickly as possible. However, the above set of instructions is more useful for debugging.
 
 #### 1.2.1 Open ```integration-architecture/docker-compose/docker-compose.yml``` and inspect the following lines:
 ```
