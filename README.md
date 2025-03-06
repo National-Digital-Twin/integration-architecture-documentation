@@ -38,15 +38,15 @@ The table of content below is organised in such a way to help you get to the rel
 
    3.5 [Producer server configuration](https://github.com/National-Digital-Twin/federator/blob/main/docs/server-configuration.md#server-configuration)
    
-  3.6 [Consumer server](https://github.com/National-Digital-Twin/federator/blob/main/README.md#federator-client-consumer)
+  	3.6 [Consumer server](https://github.com/National-Digital-Twin/federator/blob/main/README.md#federator-client-consumer)
 
-  3.7 [Adding a Consumer server](https://github.com/National-Digital-Twin/federator/blob/main/docs/new-client-server.md#adding-a-new-client)
+  	3.7 [Adding a Consumer server](https://github.com/National-Digital-Twin/federator/blob/main/docs/new-client-server.md#adding-a-new-client)
     
- 3.8 [Consumer server](https://github.com/National-Digital-Twin/federator/blob/main/README.md#federator-client-consumer)
+ 	3.8 [Consumer server](https://github.com/National-Digital-Twin/federator/blob/main/README.md#federator-client-consumer)
 
-3.9 [Consumer server configuration](https://github.com/National-Digital-Twin/federator/blob/main/docs/server-configuration.md#server-configuration)
+	3.9 [Consumer server configuration](https://github.com/National-Digital-Twin/federator/blob/main/docs/server-configuration.md#server-configuration)
 
-3.10 [Consumer & producer authentication](https://github.com/National-Digital-Twin/federator/blob/main/docs/authentication.md#authentication-configuration)
+	3.10 [Consumer & producer authentication](https://github.com/National-Digital-Twin/federator/blob/main/docs/authentication.md#authentication-configuration)
  
 5. **Data extraction from an IA Node**
 
