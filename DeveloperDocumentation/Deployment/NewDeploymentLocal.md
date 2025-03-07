@@ -35,7 +35,7 @@ mvn clean install
 cd ..
 git clone https://github.com/National-Digital-Twin/graphql-jena
 cd graphql-jena
-mvn clean install -Dmaven.javadoc.skip=true
+mvn clean install
 cd ..
 git clone https://github.com/National-Digital-Twin/fuseki-yaml-config
 cd fuseki-yaml-config
@@ -46,7 +46,7 @@ cd secure-agent-graph
 mvn clean install
 ```
 
-[Setting up IANode (Simplified Version)](#using-integration-architecture-docker-compose)
+[Setting up IANode (Simplified Version)](#using-docker-compose)
 ### 1.1.3 Starting up Identity Provider and Access Control
 ```
 cd ianode-access/cognito-local
