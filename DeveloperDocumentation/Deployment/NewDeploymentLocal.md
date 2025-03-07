@@ -221,6 +221,57 @@ Testing sending and receiving messages with Kafka without Authentication
 ```
 docker run -p 9092:9092 apache/kafka:3.9.0\
 ```
+Modify the <b>dev-server-kafka.ttl</b> script in ```sag-docker/mnt/config/dev-server-kafka.ttl``` removing references to authentication :
+```
+PREFIX :        <#>
+PREFIX fuseki:  <http://jena.apache.org/fuseki#>
+PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs:    <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX ja:      <http://jena.hpl.hp.com/2005/11/Assembler#>
+PREFIX tdb2:    <http://jena.apache.org/2016/tdb#>
+PREFIX graphql: <https://ndtp.co.uk/fuseki/modules/graphql#>
+
+# PREFIX authz:   <http://ndtp.co.uk/security#>
+
+:service1 rdf:type fuseki:Service ;
+    fuseki:name "ds" ;
+
+    fuseki:endpoint [ fuseki:operation fuseki:query ; ] ;
+    fuseki:endpoint [ fuseki:operation fuseki:gsp-r ; ] ;
+
+    fuseki:endpoint [ fuseki:operation fuseki:query ; fuseki:name "query" ] ;
+    fuseki:endpoint [ fuseki:operation fuseki:query ; fuseki:name "sparql" ] ;
+    fuseki:endpoint [ fuseki:operation fuseki:gsp-r ; fuseki:name "get" ] ;
+
+    fuseki:endpoint [ fuseki:operation fuseki:upload ; fuseki:name "upload" ] ;
+
+    fuseki:endpoint [ fuseki:operation graphql:graphql ;
+                      ja:context [ ja:cxtName "graphql:executor" ;
+                                   ja:cxtValue "uk.gov.dbt.ndtp.jena.graphql.execution.ianode.graph.IANodeGraphExecutor"
+                                 ] ;
+                      fuseki:name "graphql" ];
+
+    fuseki:dataset :dataset ;
+    .
+
+:dataset rdf:type ja:MemoryDataset .
+
+PREFIX fk:      <http://jena.apache.org/fuseki/kafka#>
+
+[] rdf:type fk:Connector ;
+    fk:bootstrapServers    "localhost:9092" ;
+    fk:topic               "RDF" ;
+    fk:fusekiServiceName   "/ds/upload" ;
+    fk:groupId             "test-consumer-group" ;
+
+    #fk:syncTopic        false;
+    fk:replayTopic      true;
+
+    fk:stateFile        "databases/RDF.state" ;
+    .
+
+```
+
 Restart the <b>secure-agent-graph</b> with the same configuration as before but change the JWKS_URL to "disabled". This will allow us to test without authentication.
 ```
 cd <your IA root>/secure-agent-graph
