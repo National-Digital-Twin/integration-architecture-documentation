@@ -32,53 +32,53 @@ The table of content below is organised in such a way to help you get to the rel
 
     3.2 [Overview of approach to data exchange between IA Nodes](https://github.com/National-Digital-Twin/federator/blob/main/README.md#overview-of-approach-to-ia-nodes-exchanging-data)
 
-   3.3 [Producer server](https://github.com/National-Digital-Twin/federator/blob/main/README.md#federator-server-producer)
+    3.3 [Producer server](https://github.com/National-Digital-Twin/federator/blob/main/README.md#federator-server-producer)
 
-   3.4 [Adding a Producer server](https://github.com/National-Digital-Twin/federator/blob/main/docs/new-client-server.md#adding-a-new-server)
+  	3.4 [Consumer server](https://github.com/National-Digital-Twin/federator/blob/main/README.md#federator-client-consumer)
 
-   3.5 [Producer server configuration](https://github.com/National-Digital-Twin/federator/blob/main/docs/server-configuration.md#server-configuration)
+4. **Producer and Consumer Server Configuration**
+
+    4.1 [Adding a Producer server](https://github.com/National-Digital-Twin/federator/blob/main/docs/new-client-server.md#adding-a-new-server)
+
+    4.2 [Producer server configuration](https://github.com/National-Digital-Twin/federator/blob/main/docs/server-configuration.md#server-configuration)
    
-  	3.6 [Consumer server](https://github.com/National-Digital-Twin/federator/blob/main/README.md#federator-client-consumer)
-
-  	3.7 [Adding a Consumer server](https://github.com/National-Digital-Twin/federator/blob/main/docs/new-client-server.md#adding-a-new-client)
+  	4.3 [Adding a Consumer server](https://github.com/National-Digital-Twin/federator/blob/main/docs/new-client-server.md#adding-a-new-client)
     
- 	3.8 [Consumer server](https://github.com/National-Digital-Twin/federator/blob/main/README.md#federator-client-consumer)
+	4.4 [Consumer server configuration](https://github.com/National-Digital-Twin/federator/blob/main/docs/server-configuration.md#server-configuration)
 
-	3.9 [Consumer server configuration](https://github.com/National-Digital-Twin/federator/blob/main/docs/server-configuration.md#server-configuration)
-
-	3.10 [Consumer & producer authentication](https://github.com/National-Digital-Twin/federator/blob/main/docs/authentication.md#authentication-configuration)
+	4.5 [Consumer & Producer authentication](https://github.com/National-Digital-Twin/federator/blob/main/docs/authentication.md#authentication-configuration)
  
 5. **Data extraction from an IA Node**
 
-    4.1	[Introduction](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/IANode/DataExtraction.md#data-extraction-from-the-integration-architecture-node-ia-node)
+    5.1	[Introduction](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/IANode/DataExtraction.md#data-extraction-from-the-integration-architecture-node-ia-node)
 
-    4.2 [IA Node Access](https://github.com/National-Digital-Twin/ianode-access/blob/pre/README.md#ianode-access)
+    5.2 [IA Node Access](https://github.com/National-Digital-Twin/ianode-access/blob/pre/README.md#ianode-access)
 
-    4.3	[Data extractor](https://github.com/National-Digital-Twin/data-extractor/blob/main/README.md#data-extractor)
+    5.3	[Data extractor](https://github.com/National-Digital-Twin/data-extractor/blob/main/README.md#data-extractor)
  
 6. **Building and deploying IA Node**
 
-    5.1	[Introduction](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/Deployment/Deployment.md#deployment)
+    6.1	[Introduction](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/Deployment/Deployment.md#deployment)
 
-   5.2 [Running an IA Node locally](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/Deployment/DeploymentLocal.md#running-an-ianode-locally)
+    6.2 [Running an IA Node locally](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/Deployment/DeploymentLocal.md#running-an-ianode-locally)
 
 7. **Deploying to AWS**
    
-   6.1	[Introduction](https://github.com/National-Digital-Twin/integration-architecture/blob/main/CloudPlatform/AWS/docs/introduction.md#introduction)
+   7.1	[Introduction](https://github.com/National-Digital-Twin/integration-architecture/blob/main/CloudPlatform/AWS/docs/introduction.md#introduction)
 
-    6.2	[AWS Development Overview](https://github.com/National-Digital-Twin/integration-architecture/blob/main/CloudPlatform/AWS/docs/aws-dev-environment-overview.md#aws-development-environment-overview)
+    7.2	[AWS Development Overview](https://github.com/National-Digital-Twin/integration-architecture/blob/main/CloudPlatform/AWS/docs/aws-dev-environment-overview.md#aws-development-environment-overview)
 
-   6.3 [AWS Development Playbook](https://github.com/National-Digital-Twin/integration-architecture/blob/main/CloudPlatform/AWS/docs/aws-dev-playbook.md)
+    7.3 [AWS Development Playbook](https://github.com/National-Digital-Twin/integration-architecture/blob/main/CloudPlatform/AWS/docs/aws-dev-playbook.md)
 
-    6.4	[Deploying to EC2 instance](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/Deployment/DeploymentAWS.md#deploying-to-a-ec2-instance)
+    7.4	[Deploying to EC2 instance](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/Deployment/DeploymentAWS.md#deploying-to-a-ec2-instance)
 
-    6.5	[Deploying to Kubernetes](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/Deployment/DeploymentAWS.md#deploying-to-kubernetes)
+    7.5	[Deploying to Kubernetes](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/Deployment/DeploymentAWS.md#deploying-to-kubernetes)
 
-    6.6 [Run basic test for minimal IA Node functionality](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/Deployment/DeploymentLocal.md#run-basic-test-for-minimal-ianode-functionality)
+    7.6 [Run basic test for minimal IA Node functionality](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/Deployment/DeploymentLocal.md#run-basic-test-for-minimal-ianode-functionality)
  
 8. **Platform Architecture**
    
-    7.1	[Integration Architecture](https://github.com/National-Digital-Twin/integration-architecture/blob/main/README.md#integration-architecture)
+    8.1	[Integration Architecture](https://github.com/National-Digital-Twin/integration-architecture/blob/main/README.md#integration-architecture)
 
 
 # APPENDICES
@@ -108,4 +108,3 @@ Here is a list of repositories you will find useful for setting up your own IA N
 |            [secure-agent-entity-resolution](https://github.com/National-Digital-Twin/secure-agent-entity-resolution)| This repository contains codebase that supports the management and analysis of data that links related records, removes duplication and highlights similar entities.             | This agent helps to pair and link records in the dataset with real-world things such as people, organisations and addresses with the aim of increasing accuracy and reliability.     |        |
 |            [secure-agent-graph](https://github.com/National-Digital-Twin/secure-agent-graph)| This repository contains the codebase that provides the libraries and mechanism for receiving and holding RDF (Resource Description Framework) data. It also provides SPARQL access and integration points such as with ABAC components for security and control over data access.               | It makes use of Apache Jena and includes support for integration with Kafka. These are libraries for building Secure Agent implementations in Java. It also contains an API for defining pipelines as well as admin oriented APIs for invoking and running pipelines and API servers.    |        |
 |            [secure-agents-lib](https://github.com/National-Digital-Twin/secure-agents-lib)| This repository contains libraries intended for rapid Secure Agents implementations in Java.               | It provides a lightweight functional API for defining pipelines as well as more admin/operations oriented APIs for invoking and running Secure Agents pipelines and API Servers.      |        |
-
