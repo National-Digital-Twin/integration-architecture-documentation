@@ -216,14 +216,44 @@ Running the queries should fetch the data as before e.g.
 curl -XPOST  -H "Authorization: bearer <token-id>" -H "Content-Type: application/json" --data '{"query": "query { node(uri: \"http://example/person4321\") {id properties { predicate value }} }" }' http://localhost:3030/ds/graphql
 ```
 
+### Testing Kafka with different configurations
+Testing sending and receiving messages with Kafka without Authentication
+```
+docker run -p 9092:9092 apache/kafka:3.9.0\
+```
+Restart the <b>secure-agent-graph</b> with the same configuration as before but change the JWKS_URL to "disabled". This will allow us to test without authentication.
+```
+cd <your IA root>/secure-agent-graph
+USER_ATTRIBUTES_URL=http://localhost:8091 JWKS_URL=disabled \
+java \
+-Dfile.encoding=UTF-8 \
+-Dsun.stdout.encoding=UTF-8 \
+-Dsun.stderr.encoding=UTF-8 \
+-classpath "sag-server/target/classes:sag-system/target/classes:sag-docker/target/dependency/*" \
+uk.gov.dbt.ndtp.secure.agent.graph.SecureAgentGraph \
+--config sag-docker/mnt/config/dev-server-kafka.ttl
+```
+Create a Kafka topic
+```
+cd kafka_2.13-3.9.0
+./fk send --topic RDF <path-to>/secure-agent-graph/sag-docker/Test/data1.trig
+./fk dump --topic RDF
+```
+should show the data like before.
+
+Run a query without the authentication token:
+```
+curl -XPOST  -H "Content-Type: application/json" --data '{"query": "query { node(uri: \"http://example/person4321\") {id properties { predicate value }} }" }' http://localhost:3030/ds/graphql
+```
+should output ```{"data":{"node":{"id":"http://example/person4321","properties":[{"predicate":"http://www.w3.org/2000/01/rdf-schema#label","value":"Jones"},{"predicate":"http://example/empId","value":"4321"},{"predicate":"http://example/phone","value":"0400 111 333"},{"predicate":"http://example/phone","value":"0400 111 222"}]}}}%```
 ## 1.2 Pulling Docker images
-### Using Integration Architecture Docker Compose
+### Using Docker Compose
 
 This approach consolidates some of the steps in the above guide into fewer steps, this is best for getting an IANode up and running as quickly as possible. However, the above set of instructions is more useful for debugging.
 
 #### 1.2.1 Open ```integration-architecture/docker-compose/docker-compose.yml``` and inspect the following lines:
 ```
-...
+... 
   access-api:
     image: ghcr.io/national-digital-twin/ianode-access:latest
 ...
@@ -254,7 +284,7 @@ integration-architecture/docker-compose/cognito
 integration-architecture/docker-compose/cognito-backup
 ```
 
-### Start up IANode using Integration Architecture
+### Start up IANode
 ```
 cd National-Digital-Twin
 docker compose up
