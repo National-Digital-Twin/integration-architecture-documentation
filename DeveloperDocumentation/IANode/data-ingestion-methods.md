@@ -1,6 +1,7 @@
 # Data Ingestion Methods
+## Provides you with information on the data ingestion methods used by IA Node.
 
-## 1. Ingesting Data via SPARQL Queries
+### 1. Ingesting Data via SPARQL Queries
 
 Secure Agent Graph runs its own **Apache Jena** server, allowing data ingestion via **SPARQL endpoints** accessible over **HTTP**.  
 
@@ -10,20 +11,18 @@ Secure Agent Graph runs its own **Apache Jena** server, allowing data ingestion 
 > curl -X POST -T <path-to>/secure-agent-graph/sag-docker/Test/data1.trig \
 >      --header "Content-type: text/trig" http://localhost:3030/ds/upload
 >```
----
 
-## 2. Ingesting Data via Kafka Topics
+### 2. Ingesting Data via Kafka Topics
 
 Data can also be ingested from **Kafka topics** using the [Jena Fuseki Kafka extension module](https://github.com/National-Digital-Twin/jena-fuseki-kafka).  
 
 > **Note:**  
-> The process for data ingestion via Kafka topics is described in the [Running an IA Node Locally](../Deployment/DeploymentLocal.md) document:
->```
+The process for data ingestion via Kafka topics is described in the [Running an IA Node Locally](../Deployment/DeploymentLocal.md) document:
+``
 > ./fk send --topic RDF <path-to>/secure-agent-graph/sag-docker/Test/data1.trig
->```
----
+``
 
-## 3. Ingesting Data via the Tuple Database (TDB) Command-Line Interface (CLI)
+### 3. Ingesting Data via the Tuple Database (TDB) Command-Line Interface (CLI)
 
 TDB is a native storage component of Apache Jena for RDF (Resource Description Framework) data, optimized for efficient disk-based indexing and querying.  
 
@@ -63,7 +62,7 @@ Using TDB CLI does not require running Secure Agent Graph as it operates directl
 apache-jena-5.3.0/bin/tdbloader --loc=<path-to>/secure-agent-graph/scg-docker/mnt/databases/knowledge dataset.ttl
 ```  
 
-The above is a valid exaple assuming that: 
+The above is a valid example assuming that: 
 * the Docker container was started in `<path-to>/secure-agent-graph` folder as:
     ```
     docker run -d --rm -p 3030:3030 --name secure-agent-graph \
@@ -73,7 +72,7 @@ The above is a valid exaple assuming that:
     -e USER_ATTRIBUTES_URL=http://localhost:8091 secure-agent-graph:latest \
     --config config/config-abac-local.ttl 
     ```
-* the environment variable JWKS_URL is set set to point at local Cognito emulator or alternatively an AWS equivalent. For example using a local setup as in [Running an IA Node Locally](../Deployment/DeploymentLocal.md) document, this will be:
+* the environment variable JWKS_URL is set to point at a local Cognito emulator or alternatively an AWS equivalent. For example using a local setup as in [Running an IA Node Locally](../Deployment/DeploymentLocal.md) document, this will be:
     ```
     export JWKS_URL=http://localhost:9229/local_6GLuhxhD/.well-known/jwks.json
     ```
