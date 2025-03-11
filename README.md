@@ -1,4 +1,4 @@
-# IANode
+# What is IANode?
 IANode (Integration Architecture Node), is an open-source digital component developed as part of the National Digital Twin Programme (NDTP) to support managing and sharing information across organisations by pairing the physical real world objects or assets with a digital representation. The objective is to build a robust and sustainable digital twin ecosystem.  
 
 ## Getting Started
@@ -26,6 +26,12 @@ In encouraging and supporting an open and welcoming community for IANode we adhe
 
 ## Security
 See the [SECURITY](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/SECURITY.md) file for details of security notice.
+
+## Contributing guidance
+Read our [contributing guidance]().
+
+## Contributors
+The AINode project continues to exist thanks to all the people who contribute. Here are [AINode contributors]()
 
 ## License
 See the [LICENSE](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/LICENSE) file for license details.
