@@ -1,4 +1,5 @@
 # Running an IANode locally
+## Outlines how to build, deploy, and test an IA node locally.
 
 ## Pre-requisites
 
@@ -7,7 +8,7 @@
 * Postman/Curl
 * Git cli
 
-## Minimal IANode
+## Minimal IA Node
 
 ### Start up identity provider and access control
 
