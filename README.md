@@ -6,7 +6,7 @@ Getting Started will guide you through the different repositories and the proces
 
 Before planning and starting your own IA node, you should:  
 
-- Read about [background](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/IANode/IANode-Background.md), [introduction](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/IANode/Context.md), and [overview](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/IANode/Components.md) on IA Node.
+- Read about [background](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/IANode/ianode-background.md), [introduction](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/IANode/context.md), and [overview](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/IANode/components.md) on IA Node.
 - Get to know and understand the different [repositories associated with IA Node](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/IANode/Repositories.md).
 - Understand [how data is ingesting into an IA node](../DeveloperDocumentation/IANode/DataIngestion.md).
 - Understand [how data is exchanged between IA nodes](https://github.com/National-Digital-Twin/federator/blob/main/README.md#introduction).
