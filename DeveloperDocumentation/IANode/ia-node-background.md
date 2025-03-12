@@ -4,6 +4,6 @@ IA Node (Integration Architecture Node) is an open-source digital component deve
 
 You can familarise yourself with AI Node, what to expect and learn more by exploring these sections of the documentation:
 -	[Introduction](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/IANode/introduction-context.md)
-- [Overview of IA Node](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/IntegrationArchitecture.md#integration-architecture-overview) 
+- [Overview of IA Node](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/integration-architecture.md#integration-architecture-overview) 
 - [Key functional components](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/IANode/Components.md#key-functional-components-of-an-ia-node) 
 - [IA Node features](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/IANode/Features.md#ianode-features)
