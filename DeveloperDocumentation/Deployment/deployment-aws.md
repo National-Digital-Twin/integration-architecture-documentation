@@ -1,5 +1,6 @@
 # Deploying to AWS
 ## Outlines how to deploy an IA node to an AWS EC2 instance and Kubernetes.
+You can build and deploy an IA node to AWS cloud platform including to an EC2 instance and Kubernetes.
 
 ## Deploying to a EC2 instance
 Below are a few options on how to install and run an IA node on a AWS EC2 instance.
