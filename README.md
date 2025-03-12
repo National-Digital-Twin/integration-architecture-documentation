@@ -1,106 +1,39 @@
-# Getting Started
-## Outlines what you can expect with IANode.
-Getting Started will guide you through the different repositories and the process of integrating, configuring and using an IANode. It will help you with understanding and getting started with spinning up your own IA node. 
+# What is IA Node?
+IA Node (Integration Architecture Node), is an open-source digital component developed as part of the National Digital Twin Programme (NDTP) to support managing and sharing information across organisations. NDTP facilates the pairing of physical real world objects or assets with a digital representation. The objective is to build a robust and sustainable digital twin ecosystem.  
 
-The table of content below is organised in such a way to help you get to the relevant information and repository you need to get you started with your IA node.
+## Getting Started
+Getting Started will guide you through the different repositories and the process of integrating, configuring and using an IA Node. It will help you with understanding and getting started with spinning up your own IA node. 
 
-1. **IANode Background**
+Before planning and starting your own IA node, you should:  
 
-    1.1	[Introduction](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/IANode/IANode.md#ianode)
+- Read about [background](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/IANode/IANode-Background.md), [introduction](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/IANode/Context.md), and [overview](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/IANode/Components.md) on IA Node.
+- Get to know and understand the different [repositories associated with IA Node](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/IANode/Repositories.md).
+- Understand [how data is ingesting into an IA node](../DeveloperDocumentation/IANode/DataIngestion.md).
+- Understand [how data is exchanged between IA nodes](https://github.com/National-Digital-Twin/federator/blob/main/README.md#introduction).
+- Understand the [concept of Producer and Consumer servers](https://github.com/National-Digital-Twin/federator/blob/main/README.md#overview-of-approach-to-ia-nodes-exchanging-data)
+- Understand [how to configure a new Producer and Consumer server](https://github.com/National-Digital-Twin/federator/blob/main/docs/new-client-server.md).
+- Understand [how to extract data from an IA node](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/IANode/DataExtraction.md) and the [data extractor app](https://github.com/National-Digital-Twin/data-extractor/blob/main/README.md#data-extractor).
+- Understand [how to build and deploy an IA node](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/Deployment/Deployment.md#deployment) and [Run a basic test](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/Deployment/DeploymentLocal.md#run-basic-test-for-minimal-ianode-functionality).
+- Understand [how to deploy an IA node to AWS](https://github.com/National-Digital-Twin/integration-architecture/blob/main/CloudPlatform/AWS/docs/terraform-dev-environment-overview.md) and the [AWS Development playbook](https://github.com/National-Digital-Twin/integration-architecture/blob/main/CloudPlatform/AWS/docs/terraform-dev-playbook.md).
+- Understand [how to test an AWS integration](https://github.com/National-Digital-Twin/aws-integration-testing/blob/main/README.md#aws-integration-testing).
+- Understand the [IA Node Platform Integration Architecture](https://github.com/National-Digital-Twin/integration-architecture/blob/main/README.md#integration-architecture).
+- Reference the [IA Node glossary](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/IANode/Glossary.md#glossary) to understand terms, abbreviations and definitions relating to IANode.
+- Know where to get help with the [AI Node community forum]() if you have any questions.
 
-    1.2 [Overview of IANode](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/IntegrationArchitecture.md#integration-architecture) 
+## Need help?
+If you don't find the answers to problems you may encounter with IA Node in our docs, any troubleshooting or Frequently Asked Questions (FAQ)  section, then we encourage you to ask the communityn for further help.
 
-	1.3 [Key functional components](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/IANode/Components.md#key-functional-components-of-an-ia-node) 
+## Code of Conduct
+In encouraging and supporting an open and welcoming community for IA Node we adhere to a [code of conduct]() adapted from the National Digital Twin Programme (NDTP) code of conduct.
 
-    1.4 [IANode features](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/IANode/Features.md#ianode-features)
+## Security
+See the [SECURITY](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/SECURITY.md) file for details of our security notice.
 
-	1.5 [How IA nodes work together in a wider network](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/NodeNet.md#nodenet)
+## Contributing guidance
+Read our [contributing guidance]().
 
-    1.6 [Management Node](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/ManagementNode.md#managementnode)
+## Contributors
+The AI Node project continues to exist thanks to all the people who contribute. Here are [AI Node contributors](https://github.com/National-Digital-Twin/integration-architecture-documentation/graphs/contributors)
 
-	1.7 [Code repositories](#ia-node-repositories)
-
-2. **Ingesting data into an IA node**
-
-    2.1 [Introduction](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/IANode/DataIngestion.md#data-ingestion-into-the-integration-architecture-node-ia-node)
-
-    2.2 [Data ingestion approaches](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/IANode/DataIngestion.md#data-ingestion-methods)
-
-3. **Exchanging Data between IA nodes**
-
-    3.1 [Introduction](https://github.com/National-Digital-Twin/federator/blob/main/README.md#introduction)
-
-    3.2 [Overview of approach to data exchange between IA nodes](https://github.com/National-Digital-Twin/federator/blob/main/README.md#overview-of-approach-to-ia-nodes-exchanging-data)
-
-    3.3 [Producer server](https://github.com/National-Digital-Twin/federator/blob/main/README.md#federator-server-producer)
-
-  	3.4 [Consumer server](https://github.com/National-Digital-Twin/federator/blob/main/README.md#federator-client-consumer)
-
-4. **Producer and Consumer Server Configuration**
-
-    4.1 [Adding a Producer server](https://github.com/National-Digital-Twin/federator/blob/main/docs/new-client-server.md#adding-a-new-server)
-
-	4.2 [Adding a Consumer server](https://github.com/National-Digital-Twin/federator/blob/main/docs/new-client-server.md#adding-a-new-client)
-    
-	4.5 [Consumer & Producer authentication](https://github.com/National-Digital-Twin/federator/blob/main/docs/authentication.md#authentication-configuration)
- 
-5. **Data extraction from an IA node**
-
-    5.1	[Introduction](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/IANode/DataExtraction.md#data-extraction-from-the-integration-architecture-node-ia-node)
-
-    5.2 [IA Node Access](https://github.com/National-Digital-Twin/ianode-access/blob/pre/README.md#ianode-access)
-
-    5.3	[Data extractor](https://github.com/National-Digital-Twin/data-extractor/blob/main/README.md#data-extractor)
- 
-6. **Building and deploying an IA node**
-
-    6.1	[Introduction](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/Deployment/Deployment.md#deployment)
-
-    6.2 [Running an IA Node locally](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/Deployment/DeploymentLocal.md#running-an-ianode-locally)
-
-7. **Deploying to AWS**
-   
-   7.1	[Introduction](https://github.com/National-Digital-Twin/integration-architecture/blob/main/CloudPlatform/AWS/docs/introduction.md#introduction)
-
-    7.2	[AWS Development Overview](https://github.com/National-Digital-Twin/integration-architecture/blob/main/CloudPlatform/AWS/docs/aws-dev-environment-overview.md#aws-development-environment-overview)
-
-    7.3 [AWS Development Playbook](https://github.com/National-Digital-Twin/integration-architecture/blob/main/CloudPlatform/AWS/docs/aws-dev-playbook.md)
-
-    7.4	[Deploying to EC2 instance](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/Deployment/DeploymentAWS.md#deploying-to-a-ec2-instance)
-
-    7.5	[Deploying to Kubernetes](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/Deployment/DeploymentAWS.md#deploying-to-kubernetes)
-
-    7.6 [Run basic test for minimal IA Node functionality](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/Deployment/DeploymentLocal.md#run-basic-test-for-minimal-ianode-functionality)
- 
-8. **Platform Architecture**
-   
-    8.1	[Integration Architecture](https://github.com/National-Digital-Twin/integration-architecture/blob/main/README.md#integration-architecture)
-
-
-# APPENDICES
-
-## Glossary
-[Glossary of terms, definitions and abbreviations](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/IANode/Glossary.md#glossary)
-
-## IANode Repositories
-Here is a list of repositories you will find useful for setting up your own IA node.
- |   Repository         |     Description                        | Additional Information | 
-|------------|-----------------------------|---------|
-| [aws-integration-testing](https://github.com/National-Digital-Twin/aws-integration-testing)    |      This repository contains the codebase for testing integration between AWS and GitHub.                 |      -   |        |             |
-|            [data-extractor](https://github.com/National-Digital-Twin/data-extractor)| This repository contains the codebase for data extrator which is a script that can query qn IA node and upload the resultant data to an AWS S3 bucket.               | -     |        |
-|            [federator](https://github.com/National-Digital-Twin/federator)| This repository contains the codebase for the federator service which allows data exchange between Integration Architecture Nodes.                | -    |        |
-|            [fuseki-yaml-config](https://github.com/National-Digital-Twin/fuseki-yaml-config)| This repository contains the codebase for a tool for translating Yaml files to standard Fuseki config files - consists of a Yaml parser and RDF generator.               | -     |        |
-|            [graphql-jena](https://github.com/National-Digital-Twin/graphql-jena)| This repository contains the codebase for an Apache Jena extension that provides GraphQL query capabilities.               | -    |        |
-|            [ianode-access](https://github.com/National-Digital-Twin/ianode-access)| This repository contains the codebase for IANode APIs and services for mapping identity to user attributes for ABAC (Attribute Based Access Control) purposes.               | -     |        |
-|            [integration-architecture](https://github.com/National-Digital-Twin/integration-architecture)| This repository contains Integration Architecture comprising of IA nodes, associated tools and their interactions. It represents the overall product - stored within the other repositories listed here.               | Workflows for deploying container images into an AWS EKS (kubernetes cluster) using Kustomize can also be found within this repository.   |        |
-|            [jena-fuseki-kafka](https://github.com/National-Digital-Twin/jena-fuseki-kafka)| Provides integration with Kafka streams. This allows RDF (Resource Description Framework) data to be received and manipulated via messages on the Kafta streams.               | -     |        |
-|            [jwt-servlet-auth](https://github.com/National-Digital-Twin/jwt-servlet-auth)| This repository contains a set of libraries that allows the addition of JSON Web Token (JWT) Bearer authentication into Java Servlet applications.               | -     |        |
-|            [label-builder](https://github.com/National-Digital-Twin/label-builder)| This repository contains supports for adding labels for ABAC (Attribute Based Access Control) use on RDF (Resource Description Framework) data via a REST API.               | -     |        |
-|            [label-builder-service](https://github.com/National-Digital-Twin/label-builder-service)| This repository contains a web service for adding a 'security label' to knowledge model for ABAC (Attribute Based Access Control) purposes.               | label-builder-service integrates with label-builder to allow wrapping a model in a rest-api.   |        |
-|            [node-lib](https://github.com/National-Digital-Twin/node-lib)| This repository contains helper libraries for building adaptors, mappers and projectors.               | -     |        |
-|            [rdf-abac](https://github.com/National-Digital-Twin/rdf-abac)| This repository contains the codebase that provides the mechanism for fine-grained ABAC (Attribute Based Access Control) to RDF (Resource Description Framework) data as a plug-in for use by secure-agent-graph.             | -     |        |
-|            [rdf-abac-evaluator](https://github.com/National-Digital-Twin/rdf-abac-evaluator)| This repository contains the codebase that provides a REST service encompassing the RDF (Resource Description Framework) ABAC (Attribute Based Access Control) label evaluation service.              | The evaluator calls the Access Service to retrieve user and hierarchy information, which is cached in an age-off manner. It then makes use of the 'rdf-abac evaluator' to establish whether the given request evaluates to true or false.    |        |
-|            [rdf-libraries](https://github.com/National-Digital-Twin/rdf-libraries)| This repository contains the codebase for libraries that provides 3 services -   Catalog service, Ontology service, and RDF service.              | **1. Catalog service:** Support for working with DCAT data. **2. Ontology service:** Support for working with RDF ontologies and includes CRUD abilities and functions to help navigate an ontology hierarchy. **3. RDF service:** A helper library that abstracts away the complexity of interacting with RDF triplestores and provides CRUD abilities     |        |
-|            [secure-agent-entity-resolution](https://github.com/National-Digital-Twin/secure-agent-entity-resolution)| This repository contains codebase that supports the management and analysis of data that links related records, removes duplication and highlights similar entities.             | This agent helps to pair and link records in the dataset with real-world things such as people, organisations and addresses with the aim of increasing accuracy and reliability.     |        |
-|            [secure-agent-graph](https://github.com/National-Digital-Twin/secure-agent-graph)| This repository contains the codebase that provides the libraries and mechanism for receiving and holding RDF (Resource Description Framework) data. It also provides SPARQL access and integration points such as with ABAC components for security and control over data access.               | It makes use of Apache Jena and includes support for integration with Kafka. These are libraries for building Secure Agent implementations in Java. It also contains an API for defining pipelines as well as admin oriented APIs for invoking and running pipelines and API servers.    |        |
-|            [secure-agents-lib](https://github.com/National-Digital-Twin/secure-agents-lib)| This repository contains libraries intended for rapid Secure Agents implementations in Java.               | It provides a lightweight functional API for defining pipelines as well as more admin/operations oriented APIs for invoking and running Secure Agents pipelines and API Servers.      |        |
+## License
+See the [LICENSE](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/LICENSE) file for license details.
