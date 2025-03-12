@@ -1,11 +1,11 @@
-# IANode Repositories
-IANode has a codebase for different functions and apps spread across various repositories. Here is a list of repositories you will find useful for discovering and setting up your own IA node.
+# IA Node Repositories
+IA Node has a codebase for different functions and apps spread across various repositories. Here is a list of repositories you will find useful for discovering, setting up and configuring your own IA node.
 
  |   Repository         |     Description                        | Additional Information | 
 |------------|-----------------------------|---------|
 | [aws-integration-testing](https://github.com/National-Digital-Twin/aws-integration-testing)    |      This repository contains the codebase for testing integration between AWS and GitHub.                 |      -   |        |             |
 |            [data-extractor](https://github.com/National-Digital-Twin/data-extractor)| This repository contains the codebase for data extrator which is a script that can query qn IA node and upload the resultant data to an AWS S3 bucket.               | -     |        |
-|            [federator](https://github.com/National-Digital-Twin/federator)| This repository contains the codebase for the federator service which allows data exchange between Integration Architecture Nodes.                | -    |        |
+|            [federator](https://github.com/National-Digital-Twin/federator)| This repository contains the codebase for the federator service which allows data exchange between Integration Architecture nodes.                | -    |        |
 |            [fuseki-yaml-config](https://github.com/National-Digital-Twin/fuseki-yaml-config)| This repository contains the codebase for a tool for translating Yaml files to standard Fuseki config files - consists of a Yaml parser and RDF generator.               | -     |        |
 |            [graphql-jena](https://github.com/National-Digital-Twin/graphql-jena)| This repository contains the codebase for an Apache Jena extension that provides GraphQL query capabilities.               | -    |        |
 |            [ianode-access](https://github.com/National-Digital-Twin/ianode-access)| This repository contains the codebase for IANode APIs and services for mapping identity to user attributes for ABAC (Attribute Based Access Control) purposes.               | -     |        |
