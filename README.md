@@ -1,5 +1,5 @@
 # What is IA Node?
-IA Node (Integration Architecture Node), is an open-source digital component developed as part of the National Digital Twin Programme (NDTP) to support managing and sharing information across organisations by pairing the physical real world objects or assets with a digital representation. The objective is to build a robust and sustainable digital twin ecosystem.  
+IA Node (Integration Architecture Node), is an open-source digital component developed as part of the National Digital Twin Programme (NDTP) to support managing and sharing information across organisations. NDTP facilates the pairing of physical real world objects or assets with a digital representation. The objective is to build a robust and sustainable digital twin ecosystem.  
 
 ## Getting Started
 Getting Started will guide you through the different repositories and the process of integrating, configuring and using an IA Node. It will help you with understanding and getting started with spinning up your own IA node. 
