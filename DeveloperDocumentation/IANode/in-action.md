@@ -1,4 +1,5 @@
-# IANode in action
+# IA Node in action
+## Outlines the data ingestion sequence and logical data flow of IA Node in operation.
 
 ## Data ingest pipeline sequence
 ```mermaid
