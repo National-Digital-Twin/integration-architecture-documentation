@@ -1,0 +1,13 @@
+# Node Net
+## Outlines the concept and composition of a Node Network (Node Net). 
+A Node Net is a network composed of multiple [IA nodes](IANode/ia-node.md) (and typically a Management Node) working together. It is a network that can be deployed by any organisation or consortium to address specific digital twin or data needs or services. The Management Node within a Node net handles its lifecycle tasks and ensures alignment with both local and national requirements.
+
+Also known as N2.
+
+```mermaid
+flowchart TD
+  N2[Node Net N2] <--> IA Node1[IA Node 1]
+  N2[Node Net N2] <--> IA Node2[IA Node 2]
+  N2[Node Net N2] <--> IA Node3[IA Node 3]
+  N2[Node Net N2] <--> IA Node More[...]
+```
