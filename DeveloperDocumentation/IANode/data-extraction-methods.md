@@ -90,7 +90,7 @@ curl -X POST -H "Content-Type: application/json" \
 
 TDB is a native storage component of **Apache Jena** for **RDF (Resource Description Framework)** data, optimized for efficient disk-based indexing and querying.  
 
-For details on setting up **Secure Agent Graph** to work with persistent storage and obtaining the necessary Apache Jena binaries for data extraction (`tdbquery`), refer to the [Data Ingestion](./DataIngestion.md) document.
+For details on setting up **Secure Agent Graph** to work with persistent storage and obtaining the necessary Apache Jena binaries for data extraction (`tdbquery`), refer to the [Data Ingestion](./data-ingestion.md).
 
 To query data from a **TDB store**, use the following command:  
 
