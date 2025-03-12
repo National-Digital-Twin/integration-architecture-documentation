@@ -67,7 +67,9 @@ Start up mongo for ianode-access to use
 ```
 cd ianode-access
 docker compose up mongo -d
+docker compose up
 ```
+If you get an error saying you do not have ```access.sbom.json``` use the ```dev-docker-setup.sh``` script to create it.
 
 Start up access support mechanism
 ```
