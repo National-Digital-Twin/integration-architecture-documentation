@@ -32,7 +32,7 @@ See the [SECURITY](https://github.com/National-Digital-Twin/integration-architec
 Read our [contributing guidance]().
 
 ## Contributors
-The AI Node project continues to exist thanks to all the people who contribute. Here are [AI Node contributors]()
+The AI Node project continues to exist thanks to all the people who contribute. Here are [AI Node contributors](https://github.com/National-Digital-Twin/integration-architecture-documentation/graphs/contributors)
 
 ## License
 See the [LICENSE](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/LICENSE) file for license details.
