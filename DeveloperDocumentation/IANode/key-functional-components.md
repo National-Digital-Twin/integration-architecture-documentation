@@ -15,7 +15,7 @@ graph TB
 ```
 
 You can learn more about the levels and features of IA Node in:
-* [Levels of an IA Node](integration-architecture.md#integration-architecture-levels)
+* [Levels of an IA Node](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/integration-architecture.md#integration-architecture-levels)
 * [Features of an IA Node](features.md)
 
 
