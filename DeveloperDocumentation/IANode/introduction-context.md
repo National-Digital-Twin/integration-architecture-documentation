@@ -1,4 +1,4 @@
 # IA Node Introduction
-## Provides you with an introduction and context of IA Node.
+## Provides you with an introduction and context on IA Node.
 
 TODO - Brief history and acknowledgement; more info will be provided from the programme
