@@ -1,7 +1,8 @@
-# Deploy to AWS
+# Deploying to AWS
+## Outlines how to deploy an IA node to an AWS EC2 instance and Kubernetes.
 
 ## Deploying to a EC2 instance
-Below are a few options on how to install and run a IANode on a AWS EC2 instance.
+Below are a few options on how to install and run an IA node on a AWS EC2 instance.
 
 ### Using Docker
 Required Software / Services
@@ -17,7 +18,7 @@ The EC2 instance will need to be able to access the user authentication service 
 This JWT token is used by Secure Agent Graph and IANode access as access control.
 
 Docker images of [Secure Agent Graph](https://github.com/National-Digital-Twin/secure-agent-graph) and [IAnode Access](https://github.com/National-Digital-Twin/ianode-access/) 
-will need be to added to the EC2 instance, use the above links for the Secure Agent Graph and IANode Access for more instructions on how to build and config these images. 
+will need be to added to the EC2 instance, use the above links for the Secure Agent Graph and IA Node Access for more instructions on how to build and config these images. 
 Both repositories have instructions on how to configure MongoDb.
 
 An example of a Docker Compose file can be found at [SAG Docker Compose](https://github.com/National-Digital-Twin/secure-agent-graph/blob/pre/docker-compose/docker-compose-github.yaml) 
@@ -37,7 +38,7 @@ For testing, reference [Access Control Tests](DeploymentLocal.md#run-access-cont
 which will need to be uploaded to the instance
 
 ### Using Java and Git
-Another option is to treat it like another development machine and use [DeploymentLocal.md](DeploymentLocal.md) to install and test.
+Another option is to treat it like another development machine and use [deploying locally](deployment-locally.md) to install and test.
 
 ### Terraform
 Terraform can be used to set up the AWS testing environment with a ECR repository within AWS, 
@@ -54,13 +55,13 @@ can be managed
 * Push tagged images to the ECR
 * Pull docker images to the EC2 instance
 * run docker compose on the EC2 instance
-* Open Tunnel via Bastion to the Ec2 instance, this is useful for testing out the AWS instance locally
+* Open Tunnel via Bastion to the EC2 instance, this is useful for testing out the AWS instance locally
 
 For more details see [AWS Integration Testing](https://github.com/National-Digital-Twin/aws-integration-testing)
 
 
 ## Deploying to Kubernetes
-Deployment to Kubernetes is handled using Kustomize. The workflow for deployment is detailed within [Deploy-to-kube-kustomize.yml](https://github.com/National-Digital-Twin/integration-architecture/blob/main/.github/workflows/README.md#deploy-to-kube-kustomizeyml)
+Deployment to Kubernetes is handled using Kustomize. The workflow for deployment is detailed within [deploy-to-kube-kustomize.yml](https://github.com/National-Digital-Twin/integration-architecture/blob/main/.github/workflows/README.md#deploy-to-kube-kustomizeyml)
 
 ```mermaid
 flowchart
