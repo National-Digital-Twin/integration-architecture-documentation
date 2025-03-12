@@ -1,4 +1,4 @@
-# Running an IANode locally
+# Running an IA node locally
 ## Outlines how to build, deploy, and test an IA node locally.
 
 ## Pre-requisites
@@ -8,7 +8,7 @@
 * Postman/Curl
 * Git cli
 
-## Minimal IA Node
+## Minimal IA node
 
 ### Start up identity provider and access control
 
@@ -106,7 +106,7 @@ uk.gov.dbt.ndtp.secure.agent.graph.SecureAgentGraph \
 --config sag-docker/mnt/config/dev-server-vanilla.ttl
 ```
 
-### Run basic test for minimal IANode functionality
+### Run basic test for minimal IA node functionality
 
 Upload knowledge and fetch data
 ```
@@ -157,7 +157,7 @@ curl -XPOST  -H "Authorization: bearer <id token from previous step>" -H "Conten
 ```
 should output ```{"data":{"node":{"id":"http://example/person4321","properties":[{"predicate":"http://example/phone","value":"0400 111 333"}]}}}```
 
-## Single IANode
+## Single IA node
 
 ### Start up Kafka
 (based on https://kafka.apache.org/quickstart)
@@ -220,4 +220,4 @@ Running the queries should fetch the data as before e.g.
 curl -XPOST  -H "Authorization: bearer <token-id>" -H "Content-Type: application/json" --data '{"query": "query { node(uri: \"http://example/person4321\") {id properties { predicate value }} }" }' http://localhost:3030/ds/graphql
 ```
 
-...more to follow regarding other aspects of Single IANode.
+...more to follow regarding other aspects of a single IA node.
