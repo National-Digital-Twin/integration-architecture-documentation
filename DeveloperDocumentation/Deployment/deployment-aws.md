@@ -8,7 +8,7 @@ Below are a few options on how to install and run an IA node on a AWS EC2 instan
 ### Using Docker
 Required Software / Services
 * A user authentication service (like Cognito)
-* Docker and Docker Compose (to manage the [Secure Agent Graph](https://github.com/National-Digital-Twin/secure-agent-graph) app, [IAnode Access](https://github.com/National-Digital-Twin/ianode-access/) app and the latest MongoDB image)
+* Docker and Docker Compose (to manage the [Secure Agent Graph](https://github.com/National-Digital-Twin/secure-agent-graph) app, [IA node Access](https://github.com/National-Digital-Twin/ianode-access/) app and the latest MongoDB image)
 * Kafka service (which can be a managed service a Docker image)
 
 Optional List
@@ -18,7 +18,7 @@ Optional List
 The EC2 instance will need to be able to access the user authentication service and a user based JWT token will be to be obtainable from this user authentication service.
 This JWT token is used by Secure Agent Graph and IANode access as access control.
 
-Docker images of [Secure Agent Graph](https://github.com/National-Digital-Twin/secure-agent-graph) and [IAnode Access](https://github.com/National-Digital-Twin/ianode-access/) 
+Docker images of [Secure Agent Graph](https://github.com/National-Digital-Twin/secure-agent-graph) and [IA node Access](https://github.com/National-Digital-Twin/ianode-access/) 
 will need be to added to the EC2 instance, use the above links for the Secure Agent Graph and IA Node Access for more instructions on how to build and config these images. 
 Both repositories have instructions on how to configure MongoDb.
 
@@ -39,7 +39,7 @@ For testing, reference [Access Control Tests](DeploymentLocal.md#run-access-cont
 which will need to be uploaded to the instance
 
 ### Using Java and Git
-Another option is to treat it like another development machine and use [deploying locally](deployment-locally.md) to install and test.
+Another option is to treat it like another development machine and use [deploying locally](deployment-local.md) to install and test.
 
 ### Terraform
 Terraform can be used to set up the AWS testing environment with a ECR repository within AWS, 
