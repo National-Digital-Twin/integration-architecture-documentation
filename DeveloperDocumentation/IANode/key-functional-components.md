@@ -1,7 +1,7 @@
-# Overview of an IA Node
+# Key Functional Components
+## Provides an overview of key functional components that make up IA Node and the interactions.
 
-
-An IA Node accepts SPARQL and GraphQL queries as well as actions and data via Kafka. The IANode provides Json in response to GraphQL queries and RDF for SPARQL queries. It integrates with an OAuth handler to provide fine-grained access control to information in the IA Node or connected IA Nodes. It also stores the data and supports sharing of data with other IA Nodes.
+IA Node accepts SPARQL and GraphQL queries as well as actions and data via Kafka. It provides a Json response to GraphQL queries and RDF for SPARQL queries. IA Node also integrates with an OAuth handler to provide fine-grained access control to information within it or connected IA nodes. Additionally, IA Node stores data and supports sharing of data with other IA Nodes.
 
 ```mermaid
 graph TB
@@ -14,14 +14,14 @@ graph TB
     Tools
 ```
 
-The following links list out the main levels and features of IA Node
-* [Levels of an IA Node](IntegrationArchitecture.md)
-* [Features of an IA Node](Features.md)
+You can learn more about the levels and features of IA Node in:
+* [Levels of an IA Node](integration-architecture.md)
+* [Features of an IA Node](features.md)
 
 
 ## Key Functional components of an IA Node
 
-An IA Node comprises many components built on top of Apache Jena.
+IA Node comprises several components built on top of Apache Jena.
 
 ```mermaid
 mindmap
@@ -50,6 +50,6 @@ flowchart TD
 
 ## Detailed working of an IA Node
 
-* [IA Node in Action](InAction.md)
+* [IA Node in Action](in-action.md)
 
 
