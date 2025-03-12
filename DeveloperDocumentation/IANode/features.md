@@ -1,5 +1,7 @@
 # IA Node features
-These are the features of an IANode along with the flavours as more features are included.
+## Outlines the features and capability of IA Node.
+
+The features and capability provided by IA Node are listed below:
 
 |            |                             | Minimal | Single | Distributed |
 |------------|-----------------------------|---------|--------|-------------|
@@ -64,7 +66,7 @@ These are the features of an IANode along with the flavours as more features are
 ### RDF (for SPARQL queries)
 * Responses to SPARQL queries are in RDF format
 * Support for pagination
-### JSON (for GraphQL queries
+### JSON (for GraphQL queries)
 * Responses to GraphQL queries are in JSON format
 * Support for pagination
 ### Kafka
