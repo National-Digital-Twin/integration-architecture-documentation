@@ -6,8 +6,8 @@ Also known as N2.
 
 ```mermaid
 flowchart TD
-  N2[Node Net N2] <--> IA Node1[IA Node 1]
-  N2[Node Net N2] <--> IA Node2[IA Node 2]
-  N2[Node Net N2] <--> IA Node3[IA Node 3]
-  N2[Node Net N2] <--> IA Node More[...]
+  N2[NodeNet N2] <--> IANode1[IANode 1]
+  N2[NodeNet N2] <--> IANode2[IANode 2]
+  N2[NodeNet N2] <--> IANode3[IANode 3]
+  N2[NodeNet N2] <--> IANode More[...]
 ```
