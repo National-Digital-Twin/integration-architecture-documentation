@@ -6,11 +6,11 @@ Getting Started will guide you through the different repositories and the proces
 
 Before planning and starting your own IA node, you should:  
 
-- Get a [background](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/IANode/ia-node-background.md) understanding of IA Node.
-- Get to know and understand the different [repositories associated with IA Node](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/IANode/repositories.md).
+- Get some [background](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/IANode/ia-node-background.md) understanding of IA Node.
+- Get to know the different [repositories associated with IA Node](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/IANode/repositories.md).
 - Understand [how data is ingesting into an IA node](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/IANode/data-ingestion.md).
 - Understand [how data is exchanged between IA nodes](https://github.com/National-Digital-Twin/federator/blob/main/README.md#introduction).
-- Understand the [concept of Producer and Consumer servers](https://github.com/National-Digital-Twin/federator/blob/main/README.md#overview-of-approach-to-ia-nodes-exchanging-data)
+- Understand the [concept of a Producer and Consumer server](https://github.com/National-Digital-Twin/federator/blob/main/README.md#overview-of-approach-to-ia-nodes-exchanging-data)
 - Understand [how to configure a new Producer and Consumer server](https://github.com/National-Digital-Twin/federator/blob/main/docs/new-client-server.md).
 - Understand [how to extract data from an IA node](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/IANode/data-extraction.md) and the [data extractor app](https://github.com/National-Digital-Twin/data-extractor/blob/main/README.md#data-extractor).
 - Understand [how to build and deploy an IA node](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/Deployment/Deployment.md#deployment) and [Run a basic test](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/Deployment/DeploymentLocal.md#run-basic-test-for-minimal-ianode-functionality).
