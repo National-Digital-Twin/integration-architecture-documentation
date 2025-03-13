@@ -17,7 +17,7 @@ Before planning and starting your own IA node, you should:
 - Understand [how to deploy an IA node to AWS](https://github.com/National-Digital-Twin/integration-architecture/blob/main/CloudPlatform/AWS/docs/terraform-dev-environment-overview.md) and the [AWS Development playbook](https://github.com/National-Digital-Twin/integration-architecture/blob/main/CloudPlatform/AWS/docs/terraform-dev-playbook.md).
 - Understand [how to test an AWS integration](https://github.com/National-Digital-Twin/aws-integration-testing/blob/main/README.md#aws-integration-testing).
 - Understand the [IA Node Platform Integration Architecture](https://github.com/National-Digital-Twin/integration-architecture/blob/main/README.md#integration-architecture).
-- Reference the [IA Node glossary](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/IANode/glossary.md#glossary) to understand terms, abbreviations and definitions relating to IANode.
+- Reference the [IA Node glossary](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/IANode/glossary.md#glossary) to understand terms, definitions, and abbreviations relating to IA Node.
 - Know where to get help with the [AI Node community forum]() if you have any questions.
 
 ## Need help?
