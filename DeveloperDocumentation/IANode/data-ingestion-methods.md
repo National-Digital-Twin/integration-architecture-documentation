@@ -6,7 +6,7 @@
 Secure Agent Graph runs its own **Apache Jena** server, allowing data ingestion via **SPARQL endpoints** accessible over **HTTP**.  
 
 > **Note:**  
-> Example SPARQL queries, including data ingestion, are provided in the [Running an IA Node Locally](../Deployment/DeploymentLocal.md) document:
+> Example SPARQL queries, including data ingestion, are provided in the [Running an IA Node Locally](../Deployment/deployment-local.md) document:
 > ```
 > curl -X POST -T <path-to>/secure-agent-graph/sag-docker/Test/data1.trig \
 >      --header "Content-type: text/trig" http://localhost:3030/ds/upload
@@ -17,7 +17,7 @@ Secure Agent Graph runs its own **Apache Jena** server, allowing data ingestion 
 Data can also be ingested from **Kafka topics** using the [Jena Fuseki Kafka extension module](https://github.com/National-Digital-Twin/jena-fuseki-kafka).  
 
 > **Note:**  
-The process for data ingestion via Kafka topics is described in the [Running an IA Node Locally](../Deployment/DeploymentLocal.md) document:
+The process for data ingestion via Kafka topics is described in the [Running an IA Node Locally](../Deployment/deployment-local.md) document:
 ``
 > ./fk send --topic RDF <path-to>/secure-agent-graph/sag-docker/Test/data1.trig
 ``
