@@ -72,7 +72,7 @@ The above is a valid example assuming that:
     -e USER_ATTRIBUTES_URL=http://localhost:8091 secure-agent-graph:latest \
     --config config/config-abac-local.ttl 
     ```
-* the environment variable JWKS_URL is set to point at a local Cognito emulator or alternatively an AWS equivalent. For example using a local setup as in [Running an IA Node Locally](../Deployment/DeploymentLocal.md) document, this will be:
+* the environment variable JWKS_URL is set to point at a local Cognito emulator or alternatively an AWS equivalent. For example using a local setup as in [Running an IA Node Locally](../Deployment/deployment-local.md) document, this will be:
     ```
     export JWKS_URL=http://localhost:9229/local_6GLuhxhD/.well-known/jwks.json
     ```
