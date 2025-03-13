@@ -31,6 +31,6 @@ This is running multiple IA nodes as a Node net as might be done by a group of s
 
 ### Level 3
 This is the tools and environments for the overall product. It includes the tools for external parties to:
-- submit and track change requests
-- support communication about updates and roadmaps
-- view and use live instances
+- Submit and track change requests
+- Support communication about updates and roadmaps
+- View and use live instances
