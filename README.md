@@ -8,7 +8,7 @@ Before planning and starting your own IA node, you should:
 
 - Get some [background](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/IANode/ia-node-background.md) understanding of IA Node.
 - Get to know the different [repositories associated with IA Node](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/IANode/repositories.md).
-- Understand [how data is ingesting into an IA node](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/IANode/data-ingestion.md).
+- Understand [how data is ingested into an IA node](https://github.com/National-Digital-Twin/integration-architecture-documentation/blob/main/DeveloperDocumentation/IANode/data-ingestion.md).
 - Understand [how data is exchanged between IA nodes](https://github.com/National-Digital-Twin/federator/blob/main/README.md#introduction).
 - Understand the [concept of a Producer and Consumer server](https://github.com/National-Digital-Twin/federator/blob/main/README.md#approach-to-data-exchange-between-ia-nodes)
 - Understand [how to configure a new Producer and Consumer server](https://github.com/National-Digital-Twin/federator/blob/main/docs/new-client-server.md).
