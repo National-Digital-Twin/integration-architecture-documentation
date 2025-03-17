@@ -17,7 +17,7 @@ A virtual model of an object, system, or process, connected to its real-world co
 A flexible query language for APIs, allowing clients to request only the data they need, reducing over-fetching and under-fetching of information.
 
 ### Integration Architecture (IA)
-The Integration Architecture is the overarching framework that defines how different nodes (IANode and ManagementNode), NodeNets, and ultimately the National Digital Twin interoperate. It lays out the principles, standards, and technical guidelines governing data sharing, security, and interoperability across all nodes and networks.
+The Integration Architecture is the overarching framework that defines how different nodes (IA node and management node), node nets, and ultimately the National Digital Twin interoperate. It lays out the principles, standards, and technical guidelines governing data sharing, security, and interoperability across all nodes and networks.
 
 ### Knowledge Graph
 A graph-based data model that connects entities and relationships to enable semantic queries and insights, often used to enhance data integration and retrieval.
