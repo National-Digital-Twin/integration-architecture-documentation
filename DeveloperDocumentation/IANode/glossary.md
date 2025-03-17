@@ -1,4 +1,5 @@
 # Glossary
+## Provides you with an explanation of terms, definitions and abbreviations.
 
 ### ABAC (Attribute-Based Access Control)
 A security model that controls access to resources based on attributes (such as user roles, location, time, and device type). It enables dynamic, fine-grained access management to enhance security and compliance.
