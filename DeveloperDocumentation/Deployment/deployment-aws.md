@@ -260,5 +260,65 @@ of the Overlay/Testing section mentioned in [Updates to Services on Kubernetes](
 A Github workflow can be used to push up changes made within Kubernetes, where different services as well as Git 
 branches can be selected [Kubernetes workflow](https://github.com/National-Digital-Twin/integration-architecture/actions/workflows/Deploy-to-kube-kustomize.yml)
 
+### Connecting to AWS Kubernetes cluster locally
+As the Kubernetes cluster is locked down, a tunnel will need to be established to allow access to the cluster, a [tunneling guide](https://github.com/National-Digital-Twin/integration-architecture/blob/main/CloudPlatform/AWS/docs/eks-tunnelling.md)
+has been put together by the Ops team, follow the instructions in the link above to establish a tunnel
 
+#### Download Kubectl
+[Download Kubectl](https://kubernetes.io/docs/tasks/tools/) from the Kubernetes site or if you are on a Mac and use homebrew, you can also use the [Kubectl Homebrew](https://formulae.brew.sh/formula/kubernetes-cli) link
 
+#### Kubectl Commands
+This section assumes you have a tunnel connected via ssm start-session command see [Connecting to Kubernetes locally](#connecting-to-kubernetes-locally).
+
+###### Get Pods
+pulls back all running pods and provides a status of each pod
+
+```
+#get Pods
+kubectl get pods -n ndtp-testing
+
+NAME                                READY   STATUS              RESTARTS   AGE
+federator-client-64f968bffb-jptfd   1/1     Running             0          18m
+federator-server-764d5d7c88-7fpcz   1/1     Running             0          18h
+ianode-access-78d959bfcb-zz89k      0/1     ContainerCreating   0          109m
+secure-agent-graph-server-0         1/1     Running             0          8h
+```
+###### Logs
+pulls back logs of pod by name (names are obtained by running get pods) 
+```
+kubectl logs ianode-access-78d959bfcb-zz89k -n ndtp-testing
+
+Error from server (BadRequest): container "ianode-access" in pod "ianode-access-78d959bfcb-zz89k" is waiting to start: ContainerCreating
+```
+
+###### SSH into container
+Depending on the underlying image within the container you may be able to ssh into, again the name of the pod is obtained by running get pods
+
+```
+kubectl exec --stdin --tty secure-agent-graph-server-0  -n ndtp-testing -- /bin/bash
+
+fuseki@secure-agent-graph-server-0:/fuseki$ ls -la
+total 32
+drwxr-xr-x. 1 fuseki root      20 Mar 18 03:16 .
+drwxr-xr-x. 1 root   root      42 Mar 18 03:16 ..
+drwxr-xr-x. 1 fuseki root      41 Mar 13 16:44 agents
+drwxrwsrwt. 3 root   fuseki   140 Mar 18 03:15 config
+drwxrwsr-x. 3 root   fuseki  4096 Mar 18 03:16 databases
+-rwxr-xr-x. 1 fuseki root     692 Mar 13 16:44 entrypoint.sh
+drwxrwsr-x. 3 root   fuseki  4096 Mar 17 16:45 labels
+drwxr-xr-x. 1 fuseki root   16384 Mar 13 16:44 lib
+-rw-r--r--. 1 fuseki root    2164 Mar 13 16:44 logback.xml
+drwxr-xr-x. 2 fuseki root       6 Mar 13 16:45 logs
+fuseki@secure-agent-graph-server-0:/fuseki$ 
+```
+
+###### Port Forwarding 
+Useful for local testing as all traffic and calls on the forwarded port goes to Kubernetes pod
+```
+kubectl port-forward secure-agent-graph-server-0 3030:3030 -n ndtp-testing
+ 
+Forwarding from 127.0.0.1:3030 -> 3030
+Forwarding from [::1]:3030 -> 3030
+
+```
+now all http requests to port 3030 will be handled by secure-agent-graph-server-0
