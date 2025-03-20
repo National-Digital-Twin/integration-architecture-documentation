@@ -24,7 +24,7 @@ If you don't find the answers to problems you may encounter with IA Node in our 
 See the [SECURITY](./SECURITY.md) file for details of our security notice.
 
 ## Contributors
-The IA Node project continues to exist thanks to all the people who contribute. Here are [IA Node contributors](https://github.com/National-Digital-Twin/integration-architecture-documentation/graphs/contributors)
+The development of these works has been made possible with thanks to our [contributors](https://github.com/National-Digital-Twin/integration-architecture-documentation/graphs/contributors).
 
 ## License
 See the [LICENSE](./LICENSE) file for license details.
