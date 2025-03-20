@@ -15,21 +15,13 @@ Before planning and starting your own IA node, you should:
 - Understand [how to extract data from an IA node](./DeveloperDocumentation/IANode/data-extraction.md) and the [data extractor app](https://github.com/National-Digital-Twin/data-extractor/blob/main/README.md#data-extractor).
 - Understand [how to build and deploy an IA node](./DeveloperDocumentation/Deployment/deployment.md#deployment) and [run a basic test](./DeveloperDocumentation/Deployment/deployment-local.md#run-basic-test-for-minimal-ia-node-functionality).
 - Understand [AWS development environment configuration](https://github.com/National-Digital-Twin/integration-architecture/blob/main/CloudPlatform/AWS/docs/terraform-dev-environment-overview.md) including the [AWS Development playbook](https://github.com/National-Digital-Twin/integration-architecture/blob/main/CloudPlatform/AWS/docs/terraform-dev-playbook.md) and [how to test an AWS integration](https://github.com/National-Digital-Twin/aws-integration-testing/blob/main/README.md#aws-integration-testing).
-- Understand the [IA Node Platform Integration Architecture](https://github.com/National-Digital-Twin/integration-architecture/blob/main/README.md#integration-architecture).
 - Reference the [IA Node glossary](./DeveloperDocumentation/IANode/glossary.md#glossary) to understand terms, definitions, and abbreviations relating to IA Node.
-- Know where to get help with the [IA Node community forum]() if you have any questions.
 
 ## Need help?
-If you don't find the answers to problems you may encounter with IA Node in our docs, any troubleshooting or Frequently Asked Questions (FAQ)  section, then we encourage you to ask the communityn for further help.
-
-## Code of Conduct
-In encouraging and supporting an open and welcoming community for IA Node we adhere to a [code of conduct]() adapted from the National Digital Twin Programme (NDTP) code of conduct.
+If you don't find the answers to problems you may encounter with IA Node in our documents, then we encourage you to ask the community for further help.
 
 ## Security
 See the [SECURITY](./SECURITY.md) file for details of our security notice.
-
-## Contributing guidance
-Read our [contributing guidance]().
 
 ## Contributors
 The IA Node project continues to exist thanks to all the people who contribute. Here are [IA Node contributors](https://github.com/National-Digital-Twin/integration-architecture-documentation/graphs/contributors)
