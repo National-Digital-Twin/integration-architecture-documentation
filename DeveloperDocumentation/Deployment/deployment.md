@@ -8,3 +8,4 @@ You can deploy and configure an IA node across various environments including lo
 - [Deploying to Kubernetes in AWS](deployment-aws.md#deploying-to-kubernetes)
 - [Deploying to Azure](deployment-azure.md)
 
+Although much of the detailed documentation currently focuses on AWS, additional documentation covering other cloud providers will be added soon.
