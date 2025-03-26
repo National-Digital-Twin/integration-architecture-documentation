@@ -1,47 +1,73 @@
-# Security Notice
+# Security Policy
 
-## What?
+**Repository:** integration-architecture-documentation  
+**Description:** Details the responsible disclosure process for security vulnerabilities.  
+<!-- SPDX-License-Identifier: OGL-UK-3.0 -->
 
-This is the security notice for all GDS (Government Digital Service) repositories. The notice explains how vulnerabilities should be reported to GDS. At GDS there are cyber security and information assurance teams, as well as security-conscious people within the programmes, that assess and triage all reported vulnerabilities.
+## Responsible Disclosure
 
-## Reporting a Vulnerability
+The National Digital Twin Programme (NDTP) follows a **Coordinated Vulnerability Disclosure (CVD)** process to ensure security risks are addressed responsibly.  
+By reporting security vulnerabilities through the responsible channels, you agree to:
 
-GDS is an advocate of responsible vulnerability disclosure. If you’ve found a vulnerability, we would like to know so we can fix it. This notice provides details for how you can let us know about vulnerabilities, or alternatively you can view our [security.txt](https://vdp.cabinetoffice.gov.uk/.well-known/security.txt) file which contains quick links to contact us.
+- Not disclose details of the vulnerability publicly until NDTP has had a reasonable opportunity to fix it.
+- Provide NDTP with adequate time to assess and mitigate the risk.
+- Act in good faith and follow ethical security research principles.  
+  NDTP reserves the right to take necessary action against unauthorised or harmful security testing activities.
 
-You can report a vulnerability to GDS through our vulnerability disclosure programme at [HackerOne](https://hackerone.com/44c348eb-e030-4273-b445-d4a2f6f83ba8/embedded_submissions/new). Alternatively, you can send an email to [report@digital.cabinet-office.gov.uk]; if you do this you may get a response from ZenDesk, which is our ticketing system.
+---
 
-When reporting a vulnerability to us, please include:
-- the website, page or repository where the vulnerability can be observed
-- a brief description of the vulnerability
-- details of the steps we need to take to reproduce the vulnerability
-- non-destructive exploitation details
+## Reporting Security Issues
 
-If you are able to, please also include:
-- the type of vulnerability, for example, the [OWASP category](https://owasp.org/www-community/vulnerabilities/)
-- screenshots or logs showing the exploitation of the vulnerability
+NDTP takes security seriously and encourages responsible reporting of vulnerabilities.  
 
-If you are not sure if the vulnerability is genuine and exploitable, or you have found:
-- a non-exploitable vulnerability
-- something you think could be improved - for example, missing security headers
-- TLS configuration weaknesses - for example weak cipher suite support or the presence of TLS1.0 support
+If you believe you have found a security vulnerability in this repository, **please do not report it publicly**. Instead, follow the steps below to disclose the issue responsibly.
 
-Then you can still [reach out via email](mailto:report@digital.cabinet-office.gov.uk) or using the [GOV.UK contact form](https://www.gov.uk/contact/govuk).
+### **How to Report a Security Issue**
 
-## Guidelines for reporting a vulnerability
+1. **Do not open a public issue on GitHub.** Instead, report security concerns via email to **[ndtp@businessandtrade.gov.uk]**.
+2. **Provide detailed information about the vulnerability**, including:
+    - A clear description of the issue.
+    - Steps to reproduce the vulnerability.
+    - Potential impact or risk level.
+    - Any suggested mitigation strategies.
+3. **Allow time for assessment and response.** NDTP will review the report and respond within **10 working days** to acknowledge receipt.
+4. **Cooperate with NDTP to validate and address the issue.**
 
-When you are investigating and reporting the vulnerability on a GDS domain or subdomain, you must not:
-- break the law
-- access unnecessary or excessive amounts of data
-- modify data
-- use high-intensity invasive or destructive scanning tools to find vulnerabilities
-- try a denial of service - for example overwhelming a service on GOV.UK with a high volume of requests
-- disrupt GOV.UK’s services or systems
-- tell other people about the vulnerability you have found until we have disclosed it
-- social engineer, phish or physically attack our staff or infrastructure
-- demand money to disclose a vulnerability
+Once a resolution has been identified, NDTP may choose to:
+- **Release a patch** as part of the next scheduled update.
+- **Issue a security advisory** if the issue is critical.
+- **Provide acknowledgments** where appropriate (subject to NDTP’s disclosure policy).
 
-Only submit reports about exploitable vulnerabilities through HackerOne.
+---
 
-## Bug bounty
+## Scope
 
-Unfortunately, GDS doesn't offer a paid bug bounty programme. GDS will make efforts to show appreciation to people who take the time and effort to disclose vulnerabilities responsibly. We do have [an acknowledgements page for legitimate issues found by researchers](https://vdp.cabinetoffice.gov.uk/thanks.txt).
+This security policy applies to:
+- All NDTP repositories released as open source.
+- Code, configuration files, and infrastructure deployed as part of NDTP’s **Integration Architecture (IA)**.
+- **Third-party dependencies** included within NDTP repositories. If you identify a vulnerability in a third-party component that NDTP relies on (e.g., outdated libraries
+  or known security flaws in dependencies), we encourage you to report it.
+
+Out of scope:
+- Issues related to third-party services or software **not used within NDTP repositories**.
+- Vulnerabilities in user environments that are unrelated to this repository.
+- Unsolicited security testing or penetration testing without NDTP’s explicit permission.
+
+---
+
+## Security Best Practices
+
+To help maintain security across NDTP repositories, we follow these principles:
+- Dependencies are **scanned and updated regularly** (e.g., using automated tools like Dependabot).
+- Sensitive credentials **must not be included** in public repositories.
+- Security patches are applied in a timely manner, with priority given to critical vulnerabilities.  
+
+For more details, refer to our **Secure Development Guidelines** [Link to internal security policy, if available].
+
+---
+
+**Maintained by the National Digital Twin Programme (NDTP).**  
+
+© Crown Copyright 2025. This work has been developed by the National Digital Twin Programme and is legally attributed to the Department for Business and Trade (UK) as the governing entity.  
+Licensed under the Open Government Licence v3.0.  
+For full licensing terms, see [OGL_LICENCE.md](OGL_LICENCE.md).  
