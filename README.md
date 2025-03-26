@@ -32,7 +32,7 @@ IA Node (Integration Architecture Node), is an open-source digital component dev
     - Configurable using Fuseki configuration files and environment variables 
 
 ## Quick Start  
-Follow these steps to get started quickly with this repository. For detailed installation, configuration, and deployment, refer to the relevant README and MD files within each repository.  
+Follow these steps to get started quickly with this repository. For detailed installation, configuration, and deployment, refer to the relevant README and MD files within the respective open-source component [repository](./DeveloperDocumentation/IANode/repositories.md).  
 
 This Quick Start will guide you through the different repositories and the process of integrating, configuring and using IA Node. It will help you with understanding and getting started with spinning up your own IA node. 
 
