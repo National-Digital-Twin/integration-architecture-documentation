@@ -50,12 +50,12 @@ Before planning and starting your own IA node, you should:
 ## Public Funding Acknowledgment  
 This repository has been developed with public funding as part of the National Digital Twin Programme (NDTP), a UK Government initiative. NDTP, alongside its partners, has invested in this work to advance open, secure, and reusable digital twin technologies for any organisation, whether from the public or private sector, irrespective of size.  
 
-## Licence  
-This repository contains documentation which is covered by licenced under the [Open Government Licence (OGL) v3.0](OGL_LICENSE.md).  
+## License  
+This repository contains documentation which is covered by licensed under the [Open Government Licence (OGL) v3.0](OGL_LICENSE.md).  
 
 By contributing to this repository, you agree that your contributions will be licensed under these terms.
 
-See [LICENSE.md](LICENSE.md), [OGL_LICENCE.md](OGL_LICENCE.md), and [NOTICE.md](NOTICE.md) for details.  
+See [LICENSE.md](LICENSE.md), [OGL_LICENSE.md](OGL_LICENSE.md), and [NOTICE.md](NOTICE.md) for details.  
 
 ## Security and Responsible Disclosure  
 We take security seriously. If you believe you have found a security vulnerability in this repository, please follow our responsible disclosure process outlined in [SECURITY.md](SECURITY.md).  
