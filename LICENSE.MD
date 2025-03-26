@@ -1,7 +1,9 @@
 # License  
 
 **Repository:** integration-architecture-documentation
+
 **Description:** Defines the licensing terms for the source code in this repository. 
+
 <!-- SPDX-License-Identifier: OGL-UK-3.0 -->
 
 ## Copyright Notice  
