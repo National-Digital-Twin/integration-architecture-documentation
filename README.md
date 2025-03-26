@@ -42,8 +42,6 @@ Before planning and starting your own IA node, you should:
 - Get to know the different [repositories associated with IA Node](./DeveloperDocumentation/IANode/repositories.md).
 - Understand [how data is ingested into an IA node](./DeveloperDocumentation/IANode/data-ingestion.md).
 - Understand [how data is exchanged between IA nodes](https://github.com/National-Digital-Twin/federator/blob/main/README.md#introduction).
-- Understand the [concept of a Producer and Consumer server](https://github.com/National-Digital-Twin/federator/blob/main/README.md#approach-to-data-exchange-between-ia-nodes)
-- Understand [how to configure a new Producer and Consumer server](https://github.com/National-Digital-Twin/federator/blob/main/docs/new-client-server.md).
 - Understand [how to extract data from an IA node](./DeveloperDocumentation/IANode/data-extraction.md) and the [data extractor app](https://github.com/National-Digital-Twin/data-extractor/blob/main/README.md#data-extractor).
 - Understand [how to build and deploy an IA node](./DeveloperDocumentation/Deployment/deployment.md#deployment) and [run a basic test](./DeveloperDocumentation/Deployment/deployment-local.md#run-basic-test-for-minimal-ia-node-functionality).
 - Reference the [glossary](./DeveloperDocumentation/IANode/glossary.md#glossary) to understand terms, definitions, and abbreviations relating to IA Node.
