@@ -1,7 +1,7 @@
 # Deploying to AWS
 **Repository:** integration-architecture-documentation 
 
-**Description:** This file contains documentation on how to deploy an IA node to an AWS EC2 instance and Kubernetes. 
+**Description:** This file provides documentation on how to deploy an IA node to an AWS EC2 instance and Kubernetes. 
 
 <!-- SPDX-License-Identifier: OGL-UK-3.0 -->
 
