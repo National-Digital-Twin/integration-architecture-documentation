@@ -1,7 +1,7 @@
 # Deployment
 **Repository:** integration-architecture-documentation 
 
-**Description:** This file contains documentation on the deployment options for an Integration Architecture node (IA node). 
+**Description:** This file provides documentation on the deployment options for an Integration Architecture node (IA node). 
 
 <!-- SPDX-License-Identifier: OGL-UK-3.0 -->
 
