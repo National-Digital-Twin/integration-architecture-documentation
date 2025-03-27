@@ -1,5 +1,9 @@
 # Glossary
-## Provides you with an explanation of terms, definitions and abbreviations.
+**Repository:** integration-architecture-documentation 
+
+**Description:** This file provides explanation of terms, definitions and abbreviations. 
+
+<!-- SPDX-License-Identifier: OGL-UK-3.0 -->
 
 ### ABAC (Attribute-Based Access Control)
 A security model that controls access to resources based on attributes (such as user roles, location, time, and device type). It enables dynamic, fine-grained access management to enhance security and compliance.
@@ -34,4 +38,9 @@ A standard model for data interchange on the web, using triples (subject-predica
 ### SPARQL
 A query language for RDF data, allowing users to retrieve and manipulate structured information stored in Resource Description Framework format.
 
+© Crown Copyright 2025. This work has been developed by the National Digital Twin Programme and is legally attributed to the Department for Business and Trade (UK) as the governing entity.  
+Licensed under the Open Government Licence v3.0.  
+
+You can view the full license at:  
+https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
 
