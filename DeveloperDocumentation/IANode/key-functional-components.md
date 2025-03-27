@@ -1,7 +1,7 @@
 # Key Functional Components
 **Repository:** integration-architecture-documentation 
 
-**Description:** This file contains documentation about Integration Architecture Node (IA Node) key functional components. 
+**Description:** This file provides documentation on Integration Architecture Node (IA Node) key functional components. 
 
 <!-- SPDX-License-Identifier: OGL-UK-3.0 -->
 
