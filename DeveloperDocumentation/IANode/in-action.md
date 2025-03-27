@@ -1,7 +1,7 @@
 # IA Node in action
 **Repository:** integration-architecture-documentation 
 
-**Description:** This file contains documentation about data ingestion sequence and logical data flow of Integration Architecture Node (IA Node). 
+**Description:** This file provides documentation on the data ingestion sequence and logical data flow of Integration Architecture Node (IA Node). 
 
 <!-- SPDX-License-Identifier: OGL-UK-3.0 -->
 
