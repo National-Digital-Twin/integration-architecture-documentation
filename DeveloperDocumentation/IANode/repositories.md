@@ -1,4 +1,10 @@
 # IA Node Repositories
+**Repository:** integration-architecture-documentation 
+
+**Description:** This file contains documentation about Integration Architecture repository. 
+
+<!-- SPDX-License-Identifier: OGL-UK-3.0 -->
+
 ## Outlines the repositories for the various IA Node components.
 IA Node has a codebase for different functions and apps spread across various repositories. Here is a list of repositories you will find useful for discovering, setting up and configuring your own IA node.
 
@@ -22,3 +28,9 @@ IA Node has a codebase for different functions and apps spread across various re
 |            [secure-agent-entity-resolution](https://github.com/National-Digital-Twin/secure-agent-entity-resolution)| This repository contains codebase that supports the management and analysis of data that links related records, removes duplication and highlights similar entities.             | This agent helps to pair and link records in the dataset with real-world things such as people, organisations and addresses with the aim of increasing accuracy and reliability.     |        |
 |            [secure-agent-graph](https://github.com/National-Digital-Twin/secure-agent-graph)| This repository contains the codebase that provides the libraries and mechanism for receiving and holding RDF (Resource Description Framework) data. It also provides SPARQL access and integration points such as with ABAC components for security and control over data access.               | It makes use of Apache Jena and includes support for integration with Kafka. These are libraries for building Secure Agent implementations in Java. It also contains an API for defining pipelines as well as admin oriented APIs for invoking and running pipelines and API servers.    |        |
 |            [secure-agents-lib](https://github.com/National-Digital-Twin/secure-agents-lib)| This repository contains libraries intended for rapid Secure Agents implementations in Java.               | It provides a lightweight functional API for defining pipelines as well as more admin/operations oriented APIs for invoking and running Secure Agents pipelines and API Servers.      |        |
+
+© Crown Copyright 2025. This work has been developed by the National Digital Twin Programme and is legally attributed to the Department for Business and Trade (UK) as the governing entity.  
+Licensed under the Open Government Licence v3.0.  
+
+You can view the full license at:  
+https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
