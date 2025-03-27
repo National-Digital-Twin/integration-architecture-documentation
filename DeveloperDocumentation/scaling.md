@@ -2,7 +2,7 @@
 
 **Repository:** integration-architecture-documentation 
 
-**Description:** This file contains documentation about scaling Integration Architecture Node (IA Node). 
+**Description:** This file provides documentation on scaling Integration Architecture Node (IA Node). 
 
 <!-- SPDX-License-Identifier: OGL-UK-3.0 -->
 
