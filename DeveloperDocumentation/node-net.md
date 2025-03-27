@@ -1,7 +1,7 @@
 # Node Net
 **Repository:** integration-architecture-documentation 
 
-**Description:** This file contains documentation about Integration Architecture Node Network (Node Net). 
+**Description:** This file provides documentation on Integration Architecture Node Network (Node Net). 
 
 <!-- SPDX-License-Identifier: OGL-UK-3.0 -->
 
