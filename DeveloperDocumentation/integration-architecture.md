@@ -1,7 +1,7 @@
 # Integration Architecture Overview
 **Repository:** integration-architecture-documentation 
 
-**Description:** This file contains documentation about Integration Architecture overview, developer perspective and the different integration architecture levels. 
+**Description:** This file provides documentation on Integration Architecture overview, developer perspective and the different integration architecture levels. 
 
 <!-- SPDX-License-Identifier: OGL-UK-3.0 -->
 
