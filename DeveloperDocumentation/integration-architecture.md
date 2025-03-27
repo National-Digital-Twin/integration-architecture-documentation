@@ -1,11 +1,10 @@
 # Integration Architecture Overview
 **Repository:** integration-architecture-documentation 
 
-**Description:** This file contains documentation about Integration Architecture overview. 
+**Description:** This file contains documentation about Integration Architecture overview, developer perspective and the different integration architecture levels. 
 
 <!-- SPDX-License-Identifier: OGL-UK-3.0 -->
 
-## Provides you with an integration architecture overview, developer perspective and the different integration architecture levels.
 The Integration Architecture is the overarching framework that defines how different nodes ([IA Node](IANode/ia-node.md) and [Management Node](management-node.md)), [Node Net](node-net.md), and ultimately the National Digital Twin interoperate. It lays out the principles, standards, and technical guidelines governing data sharing, security, and interoperability across all nodes and networks.
 
 ## Developer perspective
