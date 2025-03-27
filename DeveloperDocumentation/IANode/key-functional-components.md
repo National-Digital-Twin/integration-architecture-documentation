@@ -5,8 +5,6 @@
 
 <!-- SPDX-License-Identifier: OGL-UK-3.0 -->
 
-## Provides an overview of key functional components that make up IA Node and the interactions.
-
 IA Node accepts SPARQL and GraphQL queries as well as actions and data via Kafka. It provides a Json response to GraphQL queries and RDF for SPARQL queries. IA Node also integrates with an OAuth handler to provide fine-grained access control to information within it or connected IA nodes. Additionally, IA Node stores data and supports sharing of data with other IA Nodes.
 
 ```mermaid
