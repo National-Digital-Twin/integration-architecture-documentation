@@ -1,7 +1,7 @@
 # IA Node Repositories
 **Repository:** integration-architecture-documentation 
 
-**Description:** This file contains documentation about Integration Architecture repository. 
+**Description:** This file contains documentation about the different Integration Architecture components repositories. 
 
 <!-- SPDX-License-Identifier: OGL-UK-3.0 -->
 
