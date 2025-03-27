@@ -1,7 +1,7 @@
 # Management Node
 **Repository:** integration-architecture-documentation 
 
-**Description:** This file contains documentation about Integration Architecture Management Node. 
+**Description:** This file provides documentation on Integration Architecture Management Node. 
 
 <!-- SPDX-License-Identifier: OGL-UK-3.0 -->
 
