@@ -5,7 +5,6 @@
 
 <!-- SPDX-License-Identifier: OGL-UK-3.0 -->
 
-## Outlines the repositories for the various IA Node components.
 IA Node has a codebase for different functions and apps spread across various repositories. Here is a list of repositories you will find useful for discovering, setting up and configuring your own IA node.
 
  |   Repository         |     Description                        | Additional Information | 
