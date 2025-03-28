@@ -1,8 +1,7 @@
 # Data Extraction Methods
-**Repository:** integration-architecture-documentation 
 
-**Description:** This file provides documentation on data extraction methods used by Integration Architecture Node (IA Node). 
-
+**Repository:** `integration-architecture-documentation`  
+**Description:** `This file provides documentation on data extraction methods used by Integration Architecture Node (IA Node). `  
 <!-- SPDX-License-Identifier: OGL-UK-3.0 -->
 
 ### **1. Extracting Data via SPARQL Queries**  
