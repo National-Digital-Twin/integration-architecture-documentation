@@ -1,8 +1,7 @@
 # Data Ingestion Methods
-**Repository:** integration-architecture-documentation 
 
-**Description:** This file provides documentation on data ingestion methods used by Integration Architecture Node (IA Node). 
-
+**Repository:** `integration-architecture-documentation`  
+**Description:** `This file provides documentation on data ingestion methods used by Integration Architecture Node (IA Node). `  
 <!-- SPDX-License-Identifier: OGL-UK-3.0 -->
 
 ### 1. Ingesting Data via SPARQL Queries
