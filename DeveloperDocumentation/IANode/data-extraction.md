@@ -1,8 +1,7 @@
 # Data Extraction
-**Repository:** integration-architecture-documentation 
 
-**Description:** This file provides documentation on the components and methods used for data extraction from Integration Architecture Node (IA Node). 
-
+**Repository:** `integration-architecture-documentation`  
+**Description:** `This file provides documentation on the components and methods used for data extraction from Integration Architecture Node (IA Node). `  
 <!-- SPDX-License-Identifier: OGL-UK-3.0 -->
 
 Data extraction is the process of retrieving data out of various IA Node data sources for further data processing or storage using a query with a set of criteria. IA Node uses a specific component and 3 available methods to achieve the process of data extraction. 
