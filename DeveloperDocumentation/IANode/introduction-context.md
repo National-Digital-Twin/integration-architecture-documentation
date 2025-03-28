@@ -1,8 +1,7 @@
 # IA Node Introduction
-**Repository:** integration-architecture-documentation 
 
-**Description:** This file provides a detailed introduction to Integration Architecture Node (IA Node). 
-
+**Repository:** `integration-architecture-documentation`  
+**Description:** `This file provides a detailed introduction to Integration Architecture Node (IA Node). `  
 <!-- SPDX-License-Identifier: OGL-UK-3.0 -->
 
 
