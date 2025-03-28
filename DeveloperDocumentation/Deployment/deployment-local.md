@@ -1,8 +1,7 @@
 # Running an IA node locally
-**Repository:** integration-architecture-documentation 
 
-**Description:** This file provides documentation on how to build, deploy and test an Integration Architecture node locally. 
-
+**Repository:** `integration-architecture-documentation`  
+**Description:** `This file provides documentation on how to build, deploy and test an Integration Architecture node locally. `  
 <!-- SPDX-License-Identifier: OGL-UK-3.0 -->
 
 ## Pre-requisites
