@@ -1,8 +1,7 @@
 # IA Node Background
-**Repository:** integration-architecture-documentation 
 
-**Description:** This file provides background information on Integration Architecture Node (IA Node) including introduction, overview and features. 
-
+**Repository:** `integration-architecture-documentation`  
+**Description:** `This file provides background information on Integration Architecture Node (IA Node) including introduction, overview and features.`  
 <!-- SPDX-License-Identifier: OGL-UK-3.0 -->
 
 IA Node (Integration Architecture Node) is an open-source digital component developed as part of the National Digital Twin Programme (NDTP). The programme is intended to support the managing and sharing information across organisations. NDTP facilates the pairing of physical real world objects or assets with a digital representation, with the objective of building a robust and sustainable digital twin ecosystem.
