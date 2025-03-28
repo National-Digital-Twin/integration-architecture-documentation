@@ -1,8 +1,8 @@
 # README  
 
-**Repository:** integration-architecture-documentation 
+**Repository:** `integration-architecture-documentation` 
 
-**Description:** This repository provides the documentation and complete overview of the Integration Architecture (IA) project.  
+**Description:** `This repository provides the documentation and complete overview of the Integration Architecture (IA) project.`  
 
 <!-- SPDX-License-Identifier: OGL-UK-3.0 -->
 
