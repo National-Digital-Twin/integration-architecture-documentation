@@ -1,8 +1,7 @@
 # Data Extraction Components
-**Repository:** integration-architecture-documentation 
 
-**Description:** This file provides documentation on components involved in data extraction from Integration Architecture Node (IA Node). 
-
+**Repository:** `integration-architecture-documentation`  
+**Description:** `This file provides documentation on components involved in data extraction from Integration Architecture Node (IA Node). `  
 <!-- SPDX-License-Identifier: OGL-UK-3.0 -->
 
 The **IA Node** components involved with data extraction are:  
