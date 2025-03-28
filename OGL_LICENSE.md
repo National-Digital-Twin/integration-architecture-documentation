@@ -1,9 +1,7 @@
 # Open Government Licence v3.0
 
-**Repository:** integration-architecture-documentation 
-
-**Description:** Covers all documentation files in this repository that are released under the Open Government Licence v3.0.
-
+**Repository:** `integration-architecture-documentation`  
+**Description:** `Covers all documentation files in this repository that are released under the Open Government Licence v3.0.` 
 <!-- SPDX-License-Identifier: OGL-UK-3.0 -->
 
 This repository contains documentation licensed under the Open Government Licence (OGL) v3.0.  
