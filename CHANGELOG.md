@@ -40,9 +40,8 @@ This is the first public release of this repository under NDTP's open-source gov
 Since this release is **pre-1.0.0**, changes may still occur that are **not fully backward-compatible**.
 
 #### Initial Features
-- Key functionality for [Integration Architecture](README.md)
-- Implementation of [API/component name].
-- Documentation and onboarding guidance.
+- Documentation describing usage of the Integration Architecture and the wider context.
+- Documentation describing how to run an IA Node (including Federator) locally and in cloud environments.
 
 #### Known Limitations
 - Some components are subject to change before `1.0.0`.
