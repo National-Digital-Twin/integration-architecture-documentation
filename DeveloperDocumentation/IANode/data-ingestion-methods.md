@@ -1,5 +1,8 @@
 # Data Ingestion Methods
-## Provides you with information on the data ingestion methods used by IA Node.
+
+**Repository:** `integration-architecture-documentation`  
+**Description:** `This file provides documentation on data ingestion methods used by Integration Architecture Node (IA Node). `  
+<!-- SPDX-License-Identifier: OGL-UK-3.0 -->
 
 ### 1. Ingesting Data via SPARQL Queries
 
@@ -72,6 +75,7 @@ The above is a valid example assuming that:
     -e USER_ATTRIBUTES_URL=http://localhost:8091 secure-agent-graph:latest \
     --config config/config-abac-local.ttl 
     ```
+  
 * the environment variable JWKS_URL is set to point at a local Cognito emulator or alternatively an AWS equivalent. For example using a local setup as in [Running an IA Node Locally](../Deployment/deployment-local.md) document, this will be:
     ```
     export JWKS_URL=http://localhost:9229/local_6GLuhxhD/.well-known/jwks.json
@@ -79,3 +83,8 @@ The above is a valid example assuming that:
 * `config-abac-local.ttl` file is modified to use storage of data on filesystem as described above.
 ---
 
+© Crown Copyright 2025. This work has been developed by the National Digital Twin Programme and is legally attributed to the Department for Business and Trade (UK) as the governing entity.  
+Licensed under the Open Government Licence v3.0.  
+
+You can view the full license at:  
+https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/

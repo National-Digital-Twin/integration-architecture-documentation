@@ -1,5 +1,8 @@
 # Data Extraction Methods
-## Outlines the data extraction methods used by IA Node.
+
+**Repository:** `integration-architecture-documentation`  
+**Description:** `This file provides documentation on data extraction methods used by Integration Architecture Node (IA Node). `  
+<!-- SPDX-License-Identifier: OGL-UK-3.0 -->
 
 ### **1. Extracting Data via SPARQL Queries**  
 
@@ -102,3 +105,9 @@ apache-jena-5.3.0/bin/tdbquery \
 
 ---
 
+
+© Crown Copyright 2025. This work has been developed by the National Digital Twin Programme and is legally attributed to the Department for Business and Trade (UK) as the governing entity.  
+Licensed under the Open Government Licence v3.0.  
+
+You can view the full license at:  
+https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
