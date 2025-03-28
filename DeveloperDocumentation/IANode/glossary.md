@@ -1,8 +1,7 @@
 # Glossary
-**Repository:** integration-architecture-documentation 
 
-**Description:** This file provides explanation of terms, definitions and abbreviations. 
-
+**Repository:** `integration-architecture-documentation`  
+**Description:** `This file provides explanation of terms, definitions and abbreviations. `  
 <!-- SPDX-License-Identifier: OGL-UK-3.0 -->
 
 ### ABAC (Attribute-Based Access Control)
