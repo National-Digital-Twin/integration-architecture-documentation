@@ -1,8 +1,7 @@
 # Data Ingestion
-**Repository:** integration-architecture-documentation 
 
-**Description:** This file provides documentation on components  and methods used for data ingestion into Integration Architecture Node (IA Node). 
-
+**Repository:** `integration-architecture-documentation`  
+**Description:** `This file provides documentation on components  and methods used for data ingestion into Integration Architecture Node (IA Node).`  
 <!-- SPDX-License-Identifier: OGL-UK-3.0 -->
 
 Data ingestion is the process of collecting, importing, and loading data from various sources into IA Node. It is an important aspect of IA Node that uses components and methods to achieve the process of data ingestion. 
