@@ -1,9 +1,7 @@
 # Contribution Guidelines  
 
-**Repository:** integration-architecture-documentation
-
-**Description:** Guidelines for issue reporting, documentation suggestions, and NDTP’s controlled contribution model. 
-
+**Repository:** `integration-architecture-documentation`  
+**Description:** `Guidelines for issue reporting, documentation suggestions, and NDTP’s controlled contribution model. `  
 <!-- SPDX-License-Identifier: OGL-UK-3.0 -->
 
 Thank you for your interest in this repository.  
