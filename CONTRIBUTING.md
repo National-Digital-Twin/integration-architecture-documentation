@@ -92,9 +92,7 @@ To maintain high-quality contributions, NDTP enforces the following **minimum pu
 - **PRs should use "squash and merge" as the preferred merge strategy**, ensuring a clean history.
 - **Feature and bugfix branches should be deleted after merge** to keep the repository tidy.
 - **Force pushing to the `main` branch is strictly prohibited** to protect repository integrity.
-- **CI builds must pass before merging** to enforce basic validation checks.  
-
-For further details, see [CONTRIBUTING.md](CONTRIBUTING.md).
+- **CI builds must pass before merging** to enforce basic validation checks.
 
 ---
 
