@@ -1,9 +1,7 @@
 # NOTICE
 
-**Repository:** integration-architecture-documentation
-
-**Description:** Attribution and legal notices related to the use of this repository, including acknowledgments of external contributions.  
-
+**Repository:** `integration-architecture-documentation`  
+**Description:** `Attribution and legal notices related to the use of this repository, including acknowledgments of external contributions.  `  
 <!-- SPDX-License-Identifier: OGL-UK-3.0 -->
 
 This product includes code originally developed by Telicent.
