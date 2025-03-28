@@ -1,8 +1,7 @@
 # Key Functional Components
-**Repository:** integration-architecture-documentation 
 
-**Description:** This file provides documentation on Integration Architecture Node (IA Node) key functional components. 
-
+**Repository:** `integration-architecture-documentation`  
+**Description:** `This file provides documentation on Integration Architecture Node (IA Node) key functional components. `  
 <!-- SPDX-License-Identifier: OGL-UK-3.0 -->
 
 IA Node accepts SPARQL and GraphQL queries as well as actions and data via Kafka. It provides a Json response to GraphQL queries and RDF for SPARQL queries. IA Node also integrates with an OAuth handler to provide fine-grained access control to information within it or connected IA nodes. Additionally, IA Node stores data and supports sharing of data with other IA Nodes.
