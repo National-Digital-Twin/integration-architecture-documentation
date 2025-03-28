@@ -1,8 +1,7 @@
 # Deploying to AWS
-**Repository:** integration-architecture-documentation 
 
-**Description:** This file provides documentation on how to deploy an IA node to an AWS EC2 instance and Kubernetes. 
-
+**Repository:** `integration-architecture-documentation`  
+**Description:** `This file provides documentation on how to deploy an IA node to an AWS EC2 instance and Kubernetes.`  
 <!-- SPDX-License-Identifier: OGL-UK-3.0 -->
 
 You can build and deploy an IA node to an AWS cloud platform including an EC2 instance and Kubernetes as one of the cloud platform options. Outline below is how to do it.
