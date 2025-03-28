@@ -1,8 +1,7 @@
 # IA Node features
-**Repository:** integration-architecture-documentation 
 
-**Description:** This file provides documentation on features of Integration Architecture Node (IA Node). 
-
+**Repository:** `integration-architecture-documentation`  
+**Description:** `This file provides documentation on features of Integration Architecture Node (IA Node). `  
 <!-- SPDX-License-Identifier: OGL-UK-3.0 -->
 
 ## Outlines the features and capability of IA Node.
