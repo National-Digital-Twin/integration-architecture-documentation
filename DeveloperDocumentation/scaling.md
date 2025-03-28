@@ -1,13 +1,11 @@
 # Scaling
 
-**Repository:** integration-architecture-documentation 
-
-**Description:** This file provides documentation on scaling Integration Architecture Node (IA Node). 
-
+**Repository:** `integration-architecture-documentation`  
+**Description:** `This file provides documentation on scaling Integration Architecture Node (IA Node). `  
 <!-- SPDX-License-Identifier: OGL-UK-3.0 -->
 
 ## Testing coverage
-Testing of the source code covers the [IANode capabilities](IANode/IANode.md#capabilities) and the following level of scale:
+Testing of the source code covers the [IA Node capabilities](IANode/IANode.md#capabilities) and the following level of scale:
 
 * File upload into an IA Node
 * Maximum file size of 20MB
