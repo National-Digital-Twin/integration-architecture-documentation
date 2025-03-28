@@ -1,8 +1,7 @@
 # IA Node
-**Repository:** integration-architecture-documentation 
 
-**Description:** This file provides documentation on the concept of a mininal Integration Architecture Node (IA Node). 
-
+**Repository:** `integration-architecture-documentation`  
+**Description:** `This file provides documentation on the concept of a mininal Integration Architecture Node (IA Node). `  
 <!-- SPDX-License-Identifier: OGL-UK-3.0 -->
 
 An IA Node is a single or minimal integration architecture node that is capable of supporting other IA nodes. It lays out the principles and standards governing data sharing, security, and interoperability across all nodes and networks.
