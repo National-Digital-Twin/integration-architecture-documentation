@@ -1,9 +1,8 @@
 # Data Ingestion Components
-**Repository:** integration-architecture-documentation 
 
-**Description:** This file provides documentation on components involved in data ingestion into Integration Architecture Node (IA Node). 
-
-<!-- SPDX-License-Identifier: OGL-UK-3.0 -->
+**Repository:** `integration-architecture-documentation`  
+**Description:** `This file provides documentation on components involved in data ingestion into Integration Architecture Node (IA Node). `  
+<!-- SPDX-License-Identifier: OGL-UK-3.0 --> 
 
 The **IA Node** components involved with data ingestion are:  
 - [Secure Agent Graph](https://github.com/National-Digital-Twin/secure-agent-graph) – This is the primary component supporting **Apache Jena Fuseki SPARQL** queries which is one of the 3 [data injestion methods](./data-ingestion-methods.md) used by IA Node.  
