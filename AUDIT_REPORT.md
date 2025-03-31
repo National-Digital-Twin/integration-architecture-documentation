@@ -1,11 +1,8 @@
 # Open-Source Compliance & Code Audit Report
 
-**Repository:** integration-architecture-documentation
-
+**Repository:** `integration-architecture-documentation`  
 **Date of Last Audit:** `[YYYY-MM-DD]`  
-
-**Reviewed By:** `[NDTP Supplier]` 
-
+**Reviewed By:** `[NDTP Supplier]`  
 <!-- SPDX-License-Identifier: OGL-UK-3.0 -->
 
 ---

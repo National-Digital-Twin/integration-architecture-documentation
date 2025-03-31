@@ -1,8 +1,7 @@
 # Acknowledgements
-**Repository:** integration-architecture-documentation
 
-**Description:** Recognises suppliers, partner organisations, and other contributors to the repository’s development.
-
+**Repository:** `integration-architecture-documentation`  
+**Description:** `Recognises suppliers, partner organisations, and other contributors to the repository’s development.`  
 <!-- SPDX-License-Identifier: OGL-UK-3.0 -->
 
 The National Digital Twin Programme (NDTP) would like to acknowledge the contributions of various organisations and individuals who have supported the development of this repository.

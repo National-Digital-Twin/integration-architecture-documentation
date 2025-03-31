@@ -1,9 +1,7 @@
 # Code of Conduct
 
-**Repository:** integration-architecture-documentation
-
-**Description:** Defines expected behaviors, rules, and the enforcement process to ensure professional engagement.
-
+**Repository:** `integration-architecture-documentation`  
+**Description:** `Defines expected behaviors, rules, and the enforcement process to ensure professional engagement.`  
 <!-- SPDX-License-Identifier: OGL-UK-3.0 -->
 
 --- 

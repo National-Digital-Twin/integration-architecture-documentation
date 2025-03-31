@@ -1,9 +1,7 @@
 # README  
 
-**Repository:** integration-architecture-documentation 
-
-**Description:** This repository provides the documentation and complete overview of the Integration Architecture (IA) project.  
-
+**Repository:** `integration-architecture-documentation`  
+**Description:** `This repository provides the documentation and complete overview of the Integration Architecture (IA) project.`  
 <!-- SPDX-License-Identifier: OGL-UK-3.0 -->
 
 ## Overview  
@@ -51,7 +49,9 @@ Before planning and starting your own IA node, you should:
 This repository has been developed with public funding as part of the National Digital Twin Programme (NDTP), a UK Government initiative. NDTP, alongside its partners, has invested in this work to advance open, secure, and reusable digital twin technologies for any organisation, whether from the public or private sector, irrespective of size.  
 
 ## License  
-This repository contains documentation which is covered by licensed under the [Open Government Licence (OGL) v3.0](OGL_LICENSE.md).  
+This repository contains both source code and documentation, which are covered by different licenses:   
+- **Code:** Maintained by National Digital Twin Programme. Licensed under the Apache License 2.0.
+- **Documentation:** Licensed under the Open Government Licence v3.0.
 
 By contributing to this repository, you agree that your contributions will be licensed under these terms.
 

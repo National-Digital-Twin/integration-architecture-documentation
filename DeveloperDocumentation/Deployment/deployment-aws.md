@@ -1,9 +1,13 @@
 # Deploying to AWS
-## Outlines how to deploy an IA node to an AWS EC2 instance and Kubernetes.
-You can build and deploy an IA node to an AWS cloud platform including an EC2 instance and Kubernetes.
+
+**Repository:** `integration-architecture-documentation`  
+**Description:** `This file provides documentation on how to deploy an IA node to an AWS EC2 instance and Kubernetes.`  
+<!-- SPDX-License-Identifier: OGL-UK-3.0 -->
+
+You can build and deploy an IA node to an AWS cloud platform including an EC2 instance and Kubernetes as one of the cloud platform options. Outline below is how to do it.
 
 ## Deploying to a EC2 instance
-Below are a few options on how to install and run an IA node on a AWS EC2 instance.
+There are a few options on how to install and run an IA node on a AWS EC2 instance.
 
 ### Using Docker
 Required Software / Services
@@ -322,3 +326,10 @@ Forwarding from [::1]:3030 -> 3030
 
 ```
 now all http requests to port 3030 will be handled by secure-agent-graph-server-0
+
+
+© Crown Copyright 2025. This work has been developed by the National Digital Twin Programme and is legally attributed to the Department for Business and Trade (UK) as the governing entity.  
+Licensed under the Open Government Licence v3.0.  
+
+You can view the full license at:  
+https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
