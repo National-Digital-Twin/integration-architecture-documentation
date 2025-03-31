@@ -13,12 +13,7 @@ This work is licensed under the Apache License, Version 2.0.
 
 ---
 
-# Apache License  
-
-Version 2.0, January 2004  
-http://www.apache.org/licenses/  
-
- Apache License
+# Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -195,7 +190,7 @@ http://www.apache.org/licenses/
 
    END OF TERMS AND CONDITIONS
 
-   APPENDIX: How to apply the Apache License to your work.
+APPENDIX: How to apply the Apache License to your work.
 
       To apply the Apache License to your work, attach the following
       boilerplate notice, with the fields enclosed by brackets "[]"
@@ -206,7 +201,7 @@ http://www.apache.org/licenses/
       same "printed page" as the copyright notice for easier
       identification within third-party archives.
 
-   Copyright 2025 National Digital Twin
+   Copyright [yyyy] [name of copyright owner]
 
    Copyright 2025 Crown Copyright, National Digital Twin Programme,  
    legally attributed to the Department for Business and Trade (UK)

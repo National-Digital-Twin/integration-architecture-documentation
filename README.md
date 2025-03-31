@@ -1,7 +1,9 @@
 # README  
 
-**Repository:** `integration-architecture-documentation`  
-**Description:** `This repository provides the documentation and complete overview of the Integration Architecture (IA) project.`  
+**Repository:** integration-architecture-documentation 
+
+**Description:** This repository provides the documentation and complete overview of the Integration Architecture (IA) project.  
+
 <!-- SPDX-License-Identifier: OGL-UK-3.0 -->
 
 ## Overview  
@@ -9,25 +11,8 @@ This repository contributes to the development of **secure, scalable, and intero
 
 This repository is one of several open-source components that underpin NDTP’s **Integration Architecture (IA)**—a framework designed to allow organisations to manage and exchange data securely while maintaining control over their own information. The IA is actively deployed and tested across multiple sectors, ensuring its adaptability and alignment with real-world needs. 
 
-## What is IA Node?
+### What is IA Node?
 IA Node (Integration Architecture Node), is an open-source digital component developed as part of the National Digital Twin Programme (NDTP) to support managing and sharing information across organisations. NDTP facilates the pairing of physical real world objects or assets with a digital representation. The objective is to build a robust and sustainable digital twin ecosystem.  
-
-## Features  
-- **Core functionality** 
-    - Supports secure and RDF (Resource Description Framework) data-sharing
-    - Implements ABAC (Attribute-Based Access Control) data security
-    - Supports OpenTelemetry
-- **Key integrations** 
-    - Provides REST and GraphQL API interfaces
-    - Integrates with Apache Jena Fuseki server
-    - Includes Fuseki-Kafka bridge for Kafka integration
-    - Multi-cloud platform deployment
-- **Scalability & performance** 
-    - Optimised for high-throughput environments
-    - Supports in-memory datasets for fast data access
-- **Modularity** 
-    - Designed with a plugin-based architecture for extensibility
-    - Configurable using Fuseki configuration files and environment variables 
 
 ## Quick Start  
 Follow these steps to get started quickly with this repository. For detailed installation, configuration, and deployment, refer to the relevant README and MD files within the respective open-source component [repository](./DeveloperDocumentation/IANode/repositories.md).  
@@ -44,18 +29,32 @@ Before planning and starting your own IA node, you should:
 - Understand [how to build and deploy an IA node](./DeveloperDocumentation/Deployment/deployment.md#deployment) and [run a basic test](./DeveloperDocumentation/Deployment/deployment-local.md#run-basic-test-for-minimal-ia-node-functionality).
 - Reference the [glossary](./DeveloperDocumentation/IANode/glossary.md#glossary) to understand terms, definitions, and abbreviations relating to IA Node.
 
+## Features
+- **Core functionality**
+  - Supports secure RDF (Resource Description Framework) data-sharing
+  - Implements ABAC (Attribute-Based Access Control) data security
+  - Supports OpenTelemetry
+- **Key integrations**
+  - Provides REST and GraphQL API interfaces
+  - Integrates with Apache Jena Fuseki server
+  - Includes Fuseki-Kafka bridge for Kafka integration
+  - Multi-cloud platform deployment
+- **Scalability & performance**
+  - Optimised for high-throughput environments
+  - Supports in-memory datasets for fast data access
+- **Modularity**
+  - Designed with a plugin-based architecture for extensibility
+  - Configurable using Fuseki configuration files and environment variables
 
 ## Public Funding Acknowledgment  
 This repository has been developed with public funding as part of the National Digital Twin Programme (NDTP), a UK Government initiative. NDTP, alongside its partners, has invested in this work to advance open, secure, and reusable digital twin technologies for any organisation, whether from the public or private sector, irrespective of size.  
 
 ## License  
-This repository contains both source code and documentation, which are covered by different licenses:   
-- **Code:** Maintained by National Digital Twin Programme. Licensed under the Apache License 2.0.
-- **Documentation:** Licensed under the Open Government Licence v3.0.
+This repository contains documentation which is covered by licensed under the [Open Government Licence (OGL) v3.0](OGL_LICENCE.md).  
 
 By contributing to this repository, you agree that your contributions will be licensed under these terms.
 
-See [LICENSE.md](LICENSE.md), [OGL_LICENSE.md](OGL_LICENSE.md), and [NOTICE.md](NOTICE.md) for details.  
+See [LICENSE.md](LICENSE.md), [OGL_LICENCE.md](OGL_LICENCE.md), and [NOTICE.md](NOTICE.md) for details.  
 
 ## Security and Responsible Disclosure  
 We take security seriously. If you believe you have found a security vulnerability in this repository, please follow our responsible disclosure process outlined in [SECURITY.md](SECURITY.md).  
