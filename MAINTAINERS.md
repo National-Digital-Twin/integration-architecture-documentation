@@ -13,7 +13,7 @@ At present, **there is no actively assigned supplier maintaining this repository
 In the meantime:  
 - **Bug reports and documentation feedback** will still be reviewed by NDTP.  
 - **Security vulnerabilities** should be reported via the [responsible disclosure process](SECURITY.md).  
-- **For any queries, please contact:** **[ndtp-contact@example.com]**  
+- **For any queries, please contact:** **ndtp@businessandtrade.gov.uk**  
 
 Once a new supplier is engaged, this file will be updated with their details.  
 
