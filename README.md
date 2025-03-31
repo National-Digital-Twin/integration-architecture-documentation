@@ -56,7 +56,7 @@ This repository contains both source code and documentation, which are covered b
 
 By contributing to this repository, you agree that your contributions will be licensed under these terms.
 
-See [LICENSE.md](LICENSE.md), [OGL_LICENCE.md](OGL_LICENCE.md), and [NOTICE.md](NOTICE.md) for details.  
+See [LICENSE.md](LICENSE.md), [OGL_LICENSE.md](OGL_LICENSE.md), and [NOTICE.md](NOTICE.md) for details.  
 
 ## Security and Responsible Disclosure  
 We take security seriously. If you believe you have found a security vulnerability in this repository, please follow our responsible disclosure process outlined in [SECURITY.md](SECURITY.md).  
