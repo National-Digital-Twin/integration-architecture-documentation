@@ -16,7 +16,7 @@ This repository contains both source code and documentation, which are covered b
 - **Code:** Originally developed by Telicent, now maintained by National Digital Twin Programme. Licensed under the Apache License 2.0.
 - **Documentation:** Licensed under the Open Government Licence v3.0.
 
-See [LICENSE.md](LICENSE.md) and [OGL_LICENCE.md](OGL_LICENCE.md) for details.
+See [LICENSE.md](LICENSE.md) and [OGL_LICENSE.md](OGL_LICENSE.md) for details.
 
 This project incorporates contributions from various organisations and individuals.
 
