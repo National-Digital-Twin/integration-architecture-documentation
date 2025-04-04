@@ -1,8 +1,7 @@
 # README  
 
-**Repository:** integration-architecture-documentation 
-
-**Description:** This repository provides the documentation and complete overview of the Integration Architecture (IA) project.  
+**Repository:** `integration-architecture-documentation`  
+**Description:** `This repository provides the documentation and complete overview of the Integration Architecture (IA) project.`
 
 <!-- SPDX-License-Identifier: OGL-UK-3.0 -->
 
@@ -30,21 +29,21 @@ Before planning and starting your own IA node, you should:
 - Reference the [glossary](./DeveloperDocumentation/IANode/glossary.md#glossary) to understand terms, definitions, and abbreviations relating to IA Node.
 
 ## Features
-- **Core functionality**
-  - Supports secure RDF (Resource Description Framework) data-sharing
-  - Implements ABAC (Attribute-Based Access Control) data security
-  - Supports OpenTelemetry
+- **Key functionality**
+  - Supports secure RDF (Resource Description Framework) data-sharing.
+  - Implements ABAC (Attribute-Based Access Control) data security.
+  - Supports OpenTelemetry.
 - **Key integrations**
-  - Provides REST and GraphQL API interfaces
-  - Integrates with Apache Jena Fuseki server
-  - Includes Fuseki-Kafka bridge for Kafka integration
-  - Multi-cloud platform deployment
+  - Provides REST and GraphQL API interfaces.
+  - Integrates with Apache Jena Fuseki server.
+  - Includes Fuseki-Kafka bridge for Kafka integration.
+  - Multi-cloud platform deployment.
 - **Scalability & performance**
-  - Optimised for high-throughput environments
-  - Supports in-memory datasets for fast data access
+  - Optimised for high-throughput environments.
+  - Supports in-memory datasets for fast data access.
 - **Modularity**
-  - Designed with a plugin-based architecture for extensibility
-  - Configurable using Fuseki configuration files and environment variables
+  - Designed with a plugin-based architecture for extensibility.
+  - Configurable using Fuseki configuration files and environment variables.
 
 ## Public Funding Acknowledgment  
 This repository has been developed with public funding as part of the National Digital Twin Programme (NDTP), a UK Government initiative. NDTP, alongside its partners, has invested in this work to advance open, secure, and reusable digital twin technologies for any organisation, whether from the public or private sector, irrespective of size.  
