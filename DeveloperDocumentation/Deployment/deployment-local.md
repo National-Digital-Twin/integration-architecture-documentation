@@ -71,6 +71,11 @@ and some details about that user should be shown.
     ```shell
     cd .m2
     ```
+   If the directory does not exist, create it
+    
+    ```shell
+   mkdir .m2
+   ```
 
 3. Copy the xml code block from
 [this document](https://github.com/National-Digital-Twin/federator/blob/main/docs/running-locally.md#maven-setup):
