@@ -62,7 +62,7 @@ curl -H "Authorization: bearer <id token>" http://localhost:8091/whoami
 and some details about that user should be shown.
 
 ### Prepare authentication for fetching GitHub packages
-1. Navigate to the root directory of your machine, then do the following:
+1. Navigate to the home directory of your machine, then do the following:
     ```shell
     ls -a
     ```
@@ -72,8 +72,44 @@ and some details about that user should be shown.
     cd .m2
     ```
 
-3. Go to [this document](https://github.com/National-Digital-Twin/federator/blob/main/docs/running-locally.md#maven-setup)
-   and copy the xml code block
+3. Copy the xml code block from
+[this document](https://github.com/National-Digital-Twin/federator/blob/main/docs/running-locally.md#maven-setup):
+    
+    ```xml
+     <settings>
+         <activeProfiles>
+             <activeProfile>github</activeProfile>
+         </activeProfiles>
+    
+         <!--  Optional as this will also be defined in the pom file  -->
+         <profiles>
+             <profile>
+                 <id>github</id>
+                 <repositories>
+                     <repository>
+                         <id>central</id>
+                         <url>https://repo1.maven.org/maven2</url>
+                     </repository>
+                     <repository>
+                         <id>github</id>
+                         <url>https://maven.pkg.github.com/National-Digital-Twin/*</url>
+                         <snapshots>
+                             <enabled>true</enabled>
+                         </snapshots>
+                     </repository>
+                 </repositories>
+             </profile>
+         </profiles>
+    
+         <servers>
+             <server>
+                 <id>github</id>
+                 <username>YOUR_GITHUB_USERNAME</username>
+                 <password>YOUR_TOKEN</password>
+             </server>
+         </servers>
+     </settings>
+     ```
 
 4. Create a `settings.xml` file and paste the code block into it
 
