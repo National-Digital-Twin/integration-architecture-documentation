@@ -62,49 +62,24 @@ curl -H "Authorization: bearer <id token>" http://localhost:8091/whoami
 and some details about that user should be shown.
 
 ### Prepare authentication for fetching GitHub packages
-Currently, we are using GitHub package repositories to distribute libraries. To ensure that Maven has access to the package repositories we need to update the settings.
-Instructions on how to do this can be found [here](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-apache-maven-registry) which will contain additional information.
+1. Navigate to the root directory of your machine, then do the following:
+    ```shell
+    ls -a
+    ```
 
-You will need to generate a [personal access token](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-apache-maven-registry#authenticating-with-a-personal-access-token) that has at least has access to reading package registries.
-Open up `$MAVEN_HOME/.m2/settings.xml` and add the following, replacing the GitHub username and PAT with your own.
+2. You should see a .m2 directory. Navigate to it
+    ```shell
+    cd .m2
+    ```
 
-```xml
-<settings>
-    <activeProfiles>
-        <activeProfile>github</activeProfile>
-    </activeProfiles>
+3. Go to [this document](https://github.com/National-Digital-Twin/federator/blob/main/docs/running-locally.md#maven-setup)
+   and copy the xml code block
 
-    <!--  Optional as this will also be defined in the pom file  -->
-    <profiles>
-        <profile>
-            <id>github</id>
-            <repositories>
-                <repository>
-                    <id>central</id>
-                    <url>https://repo1.maven.org/maven2</url>
-                </repository>
-                <repository>
-                    <id>github</id>
-                    <url>https://maven.pkg.github.com/National-Digital-Twin/*</url>
-                    <snapshots>
-                        <enabled>true</enabled>
-                    </snapshots>
-                </repository>
-            </repositories>
-        </profile>
-    </profiles>
+4. Create a `settings.xml` file and paste the code block into it
 
-    <servers>
-        <server>
-            <id>github</id>
-            <username>YOUR_GITHUB_USERNAME</username>
-            <password>YOUR_TOKEN</password>
-        </server>
-    </servers>
-</settings>
-```
+5. Replace `YOUR_GITHUB_USERNAME` and `YOUR_GITHUB_TOKEN` with your own credentials
 
-If you have trouble finding your `.m2` folder, do `ls -a` in your root directory (Linux & Mac). You may need to create the `settings.xml` file if it doesn't already exist.
+6. Save the file and exit
 
 ### Fetch source code and build packages
 
