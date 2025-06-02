@@ -62,7 +62,65 @@ curl -H "Authorization: bearer <id token>" http://localhost:8091/whoami
 and some details about that user should be shown.
 
 ### Prepare authentication for fetching GitHub packages
-https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-apache-maven-registry#authenticating-to-github-packages
+1. Navigate to the home directory of your machine, then do the following:
+    ```shell
+    ls -a
+    ```
+
+2. You should see a .m2 directory. Navigate to it
+    ```shell
+    cd .m2
+    ```
+   If the directory does not exist, create it
+    
+   ```shell
+   mkdir .m2
+   ```
+
+3. Copy the xml code block from
+[this document](https://github.com/National-Digital-Twin/federator/blob/main/docs/running-locally.md#maven-setup):
+    
+    ```xml
+     <settings>
+         <activeProfiles>
+             <activeProfile>github</activeProfile>
+         </activeProfiles>
+    
+         <!--  Optional as this will also be defined in the pom file  -->
+         <profiles>
+             <profile>
+                 <id>github</id>
+                 <repositories>
+                     <repository>
+                         <id>central</id>
+                         <url>https://repo1.maven.org/maven2</url>
+                     </repository>
+                     <repository>
+                         <id>github</id>
+                         <url>https://maven.pkg.github.com/National-Digital-Twin/*</url>
+                         <snapshots>
+                             <enabled>true</enabled>
+                         </snapshots>
+                     </repository>
+                 </repositories>
+             </profile>
+         </profiles>
+    
+         <servers>
+             <server>
+                 <id>github</id>
+                 <username>YOUR_GITHUB_USERNAME</username>
+                 <password>YOUR_TOKEN</password>
+             </server>
+         </servers>
+     </settings>
+     ```
+
+4. Create a `settings.xml` file and paste the code block into it
+
+5. Replace `YOUR_GITHUB_USERNAME` and `YOUR_GITHUB_TOKEN` with your own credentials
+
+6. Save the file and exit
 
 ### Fetch source code and build packages
 
