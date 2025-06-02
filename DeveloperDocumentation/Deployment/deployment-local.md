@@ -65,31 +65,62 @@ and some details about that user should be shown.
 https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-apache-maven-registry#authenticating-to-github-packages
 
 ### Fetch source code and build packages
+
+#### rdf-abac
 ```
 git clone https://github.com/National-Digital-Twin/rdf-abac
 cd rdf-abac
 mvn clean install
 cd ..
+```
+
+#### jwt-servlet-auth
+
+```
 git clone https://github.com/National-Digital-Twin/jwt-servlet-auth
 cd jwt-servlet-auth
 mvn clean install
+```
+
+#### secure-agents-lib
+```
 git clone https://github.com/National-Digital-Twin/secure-agents-lib.git
 cd secure-agents-lib
 (Ensure Docker is running as the tests use it)
 mvn clean install
 cd ..
+```
+
+#### jena-fuseki-kafka
+```
 git clone https://github.com/National-Digital-Twin/jena-fuseki-kafka
 cd jena-fuseki-kafka
 mvn clean install
 cd ..
+```
+
+#### graphql-jena
+```
 git clone https://github.com/National-Digital-Twin/graphql-jena
 cd graphql-jena
 mvn clean install -Dmaven.javadoc.skip=true
 cd ..
+```
+
+#### fuseki-yaml-config
+```
 git clone https://github.com/National-Digital-Twin/fuseki-yaml-config
-cd fuseki-yaml-config
-mvn clean install
+```
+
+> [!IMPORTANT]
+> Complete the steps outlined [here](https://github.com/National-Digital-Twin/fuseki-yaml-config/blob/main/INSTALLATION.md#1-build) under the **`1. Build:`** section and then return back to this guide and continue with the setup from this point onwards.
+
+```
 cd ..
+```
+
+#### secure-agent-graph
+```
 git clone https://github.com/National-Digital-Twin/secure-agent-graph.git
 cd secure-agent-graph
 mvn clean install

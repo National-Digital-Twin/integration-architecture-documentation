@@ -23,7 +23,7 @@ This project follows **Semantic Versioning (SemVer)** ([semver.org](https://semv
 - Placeholder for upcoming features and enhancements.
 
 ### Fixed
-- Placeholder for bug fixes and security updates.
+- Updated [local deployment](/DeveloperDocumentation/Deployment/deployment-local.md) documentation clarity (including the correct steps for configuring `fuseki-yaml-config`).
 
 ### Changed
 - Updated MAINTAINERS.md with updated supplier information.
