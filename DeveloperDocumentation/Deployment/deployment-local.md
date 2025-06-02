@@ -73,6 +73,7 @@ cd ..
 git clone https://github.com/National-Digital-Twin/jwt-servlet-auth
 cd jwt-servlet-auth
 mvn clean install
+cd ..
 git clone https://github.com/National-Digital-Twin/secure-agents-lib.git
 cd secure-agents-lib
 (Ensure Docker is running as the tests use it)
