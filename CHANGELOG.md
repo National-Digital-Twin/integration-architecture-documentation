@@ -23,7 +23,7 @@ This project follows **Semantic Versioning (SemVer)** ([semver.org](https://semv
 - Placeholder for upcoming features and enhancements.
 
 ### Fixed
-- Placeholder for bug fixes and security updates.
+- Added missing step to change directory to [local deployment](/DeveloperDocumentation/Deployment//deployment-local.md) documentation when cloning and setting up repositories.
 
 ### Changed
 - Updated MAINTAINERS.md with updated supplier information.
