@@ -73,7 +73,7 @@ and some details about that user should be shown.
     ```
    If the directory does not exist, create it
     
-    ```shell
+   ```shell
    mkdir .m2
    ```
 
