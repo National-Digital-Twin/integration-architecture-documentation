@@ -23,7 +23,9 @@ This project follows **Semantic Versioning (SemVer)** ([semver.org](https://semv
 - Placeholder for upcoming features and enhancements.
 
 ### Fixed
+
 - Added missing step to change directory to [local deployment](/DeveloperDocumentation/Deployment//deployment-local.md) documentation when cloning and setting up repositories.
+- Updated [local deployment](/DeveloperDocumentation/Deployment/deployment-local.md) documentation clarity (including the correct steps for configuring `fuseki-yaml-config`).
 
 ### Changed
 - Updated MAINTAINERS.md with updated supplier information.
