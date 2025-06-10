@@ -44,10 +44,10 @@ docker compose up mongo -d
 
 Start up access support mechanism
 ```
-source ./token_env.sh [Sets some environment variables for local running with tokens]
-export SCIM_ENABLED=true [So that cognito-local is used]
+source ./token_env.sh # Sets some environment variables for local running with tokens
+export SCIM_ENABLED=true # So that cognito-local is used
 yarn install
-OPENID_PROVIDER_URL=development DEPLOYED_DOMAIN="http://localhost:3000" GROUPS_KEY="cognito:groups" yarn dev [Run server providing API]
+OPENID_PROVIDER_URL=development DEPLOYED_DOMAIN="http://localhost:3000" GROUPS_KEY="cognito:groups" yarn dev # Run server providing API
 ```
 (leave that running)
 
