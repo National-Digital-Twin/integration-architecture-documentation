@@ -59,6 +59,8 @@ export COGNITO_ADMIN_PASSWORD=<choose a password>
 sudo sh reset_cognito.sh
 sh config_cognito.sh
 ```
+is you get at message about specifying a region, then youll need to configure aws (or aws login)
+
 Wait for script to complete and window to say "Added users to groups when required".
 
 Start up mongo for ianode-access to use
@@ -76,7 +78,7 @@ OPENID_PROVIDER_URL=development DEPLOYED_DOMAIN="http://localhost:3000" GROUPS_K
 ```
 (leave that running)
 
-Check it's running and account is in place, from another bash terminal
+Check it's running and account is in place, switch to a second shell/bash terminal
 ``` bash
 export COGNITO_ADMIN_PASSWORD=<from above>
 cd ianode-access
@@ -135,7 +137,7 @@ mvn clean install -DskipTests
 
 Start an in-memory secure agent graph with dev config
 ``` bash
-cd root of projects/secure-agent-graph # skip if followed above steps
+cd root of projects/secure-agent-graph # skip if already in secure-agent-graph folder (from above)
 USER_ATTRIBUTES_URL=http://localhost:8091 JWKS_URL=disabled \
 java \
 -Dfile.encoding=UTF-8 \
@@ -148,7 +150,7 @@ uk.gov.dbt.ndtp.secure.agent.graph.SecureAgentGraph \
 
 ### Run basic test for minimal IA node functionality
 
-switch to thrid shell
+with secure graph running, switch to thrid shell/bash terminal
 Upload knowledge and fetch data
 ``` bash
 cd root of projects.
@@ -164,7 +166,8 @@ curl http://localhost:9229/local_6GLuhxhD/.well-known/jwks.json # Should output 
 
 
 ### Run access control test
-Switch to seconf shell/bash with secure-agent-graph still running and stop it with ctrl-c
+Switch to second shell/bash terminal with secure-agent-graph still running and stop it with ctrl-c
+
 Start up IANode with GraphQL and ABAC
 ``` bash
 
@@ -177,13 +180,15 @@ java \
 uk.gov.dbt.ndtp.secure.agent.graph.SecureAgentGraph \
 --config sag-docker/mnt/config/dev-server-graphql.ttl
 ```
-switch back to third shell/bash again
+switch back to third shell/bash terminal again
 Try to upload file, should fail as unauthenticated
 ``` bash
 curl -XPOST -T secure-agent-graph/sag-docker/Test/data1.trig --header "Content-type: text/trig" http://localhost:3030/ds/upload
 ```
 
-Obtain token and try again (replace id token placeholder in second step). This should show person4321 and phone number ending 333.
+Obtain token and try again (script fetch_id_token.sh fetch's the token and sets COGNITO_ID_TOKEN). 
+
+This should show person4321 and phone number ending 333.
 ``` bash
 export COGNITO_ADMIN_PASSWORD=<from above> # should be still set in this shell/bash
 cd root of projects/ianode-access/
@@ -220,7 +225,8 @@ docker run -p 9092:9092 -d apache/kafka:3.9.0
 Download tools from Apache Kafka via https://www.apache.org/dyn/closer.cgi?path=/kafka/3.9.0/kafka_2.13-3.9.0.tgz
 ``` bash
 cd root of projects
-tar -xzf ~/Downloads/kafka_2.13-3.9.0.tgz
+wget wget https://dlcdn.apache.org/kafka/3.9.0/kafka_2.13-3.9.0.tgz # or copy download of the above into the root of projects
+tar -xzf kafka_2.13-3.9.0.tgz
 cd kafka_2.13-3.9.0
 ```
 
@@ -239,7 +245,7 @@ mvn dependency:build-classpath -DincludeScope=runtime -Dmdep.outputFile=fk.class
 ```
 There is a script called 'fk' in the folder 'jena-fuseki-kafka/jena-kafka-client' which will need editing, open the script in your favorite text editor, changing the line ```CPJ="$(echo target/jena-kafka-client-*.jar)"``` to ```CPJ="$(echo target/jena-kafka-client-*.jar | sed 's/ /\:/g')"```
 
-Then, switch to shell/base 2, restart the IANode but with dev-server-kafka.ttl and create somewhere to store topic meta data.
+Then, switch to second shell/bash terminal, restart the IANode but with dev-server-kafka.ttl and create somewhere to store topic meta data.
 ctrl-c to stop the process then
 ``` bash
 # should be here already `<root of projects>/secure-agent-graph`
@@ -253,21 +259,22 @@ java \
 uk.gov.dbt.ndtp.secure.agent.graph.SecureAgentGraph \
 --config sag-docker/mnt/config/dev-server-kafka.ttl
 ```
-switch back to shell/bash 3
+switch back to third shell/bash terminal
 ``` bash
-cd <directory containing 'fk' script>
+cd <directory containing 'fk' script> # root of projects/jena-fuseki-kafka/jena-kafka-client
 ./fk dump --topic RDF
 ```
 should show no entries ```"offset": -1```
 
 Now push a message into Kafka
+
 ``` bash
 ./fk send --topic RDF ../../secure-agent-graph/sag-docker/Test/data1.trig
 ./fk dump --topic RDF
 ```
-show should the data is in Kafka
+should show the data that is in Kafka
 
-Also, the secure-agent-graph app should have picked up the message and the log files show ```Initial sync : Offset = 0```.
+Also, the secure-agent-graph app should have picked up the message and the log files show ```Batch: Finished [-1, 0] in ... ```.
 
 Running the queries should fetch the data as before e.g.
 ``` bash
