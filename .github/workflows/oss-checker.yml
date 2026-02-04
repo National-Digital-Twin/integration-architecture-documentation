@@ -1,0 +1,547 @@
+# SPDX-License-Identifier: Apache-2.0
+# © Crown Copyright 2025. This work has been developed by the National Digital Twin Programme and is legally attributed to the Department for Business and Trade (UK) as the governing entity.
+
+name: Run OSS check helper
+
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+      - labeled
+      - unlabeled
+  workflow_dispatch:
+
+jobs:
+  oss-checks:
+    permissions:
+      contents: read
+    if: github.actor != 'dependabot[bot]' &&
+      (github.event.repository.private == false ||
+      (github.event.repository.private == true &&
+      contains(join(github.event.pull_request.labels.*.name), 'oss-preparation')))
+    runs-on: ubuntu-latest
+    outputs:
+      summary-table: ${{ steps.summarise_results.outputs.summaryTable }}
+      has-results: ${{ steps.summarise_results.outputs.hasResults }}
+
+    steps:
+      - name: Fetch GitHub App token for target repo
+        id: target_token
+        uses: actions/create-github-app-token@29824e69f54612133e76f7eaac726eef6c875baf # v2.2.1
+        with:
+          app-id: ${{ secrets.OSPO_WORKFLOW_APP_ID }}
+          private-key: ${{ secrets.OSPO_WORKFLOW_PRIVATE_KEY }}
+          permission-contents: read
+
+      - name: Fetch GitHub App token for OSPO source repo (read-only)
+        id: ospo_token
+        uses: actions/create-github-app-token@29824e69f54612133e76f7eaac726eef6c875baf # v2.2.1
+        with:
+          app-id: ${{ secrets.OSPO_WORKFLOW_APP_ID }}
+          private-key: ${{ secrets.OSPO_WORKFLOW_PRIVATE_KEY }}
+          owner: National-Digital-Twin
+          repositories: ospo-resources
+          permission-contents: read
+
+      - name: Checkout target repository
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          token: ${{ steps.target_token.outputs.token }}
+
+      - name: Checkout OSPO source repository
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          repository: National-Digital-Twin/ospo-resources
+          path: ospo-resources
+          token: ${{ steps.ospo_token.outputs.token }}
+
+      - name: Checkout archetypes source repository
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          repository: National-Digital-Twin/archetypes
+          path: archetypes
+
+      - name: Fetch Repository Metadata
+        uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8.0.0
+        env:
+          DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+        with:
+          script: |
+            const { owner, repo } = context.repo;
+            const { writeFileSync } = require('fs');
+
+            // Check specifically for 'develop' branch existence
+            let hasDevelopBranch = false;
+            try {
+              await github.rest.repos.getBranch({
+                owner,
+                repo,
+                branch: 'develop',
+              });
+              hasDevelopBranch = true;
+            } catch (error) {
+              if (error.status !== 404) {
+                 core.warning(`Error checking for develop branch: ${error.message}`);
+              }
+            }
+
+            const metadata = {
+              repository: {
+                defaultBranch: process.env.DEFAULT_BRANCH,
+                hasDevelopBranch: hasDevelopBranch
+              }
+            };
+
+            const rawMetadata = JSON.stringify(metadata, null, 2);
+
+            core.info('Content for repository-metadata.json:');
+            core.info(rawMetadata);
+
+            writeFileSync('repository-metadata.json', rawMetadata);
+            core.info('Generated repository-metadata.json for policy context.');
+
+      - name: Install Conftest
+        run: |
+          LATEST_VERSION=$(curl --proto "=https" -s "https://api.github.com/repos/open-policy-agent/conftest/releases/latest" | grep -Po '"tag_name": "v\K[0-9.]+')
+          curl --proto "=https" -L "https://github.com/open-policy-agent/conftest/releases/download/v${LATEST_VERSION}/conftest_${LATEST_VERSION}_Linux_x86_64.tar.gz" | tar -xz
+          sudo mv conftest /usr/local/bin/
+
+      - name: Run Policy Checks
+        id: run_conftest
+        run: |
+          conftest test .github/dependabot.yml \
+            -p ospo-resources/tools/policy-as-code/policy \
+            --data repository-metadata.json \
+            --namespace github.dependabot \
+            --output json > policy-report.json || true
+
+      - name: Process Policy Results
+        uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8.0.0
+        with:
+          script: |
+             const { existsSync, readFileSync, writeFileSync } = require('fs');
+
+             let resultJson = [];
+             if (existsSync('policy-report.json')) {
+               try {
+                 const rawContent = readFileSync('policy-report.json', 'utf8');
+                 if (rawContent.trim()) {
+                    resultJson = JSON.parse(rawContent);
+                 }
+               } catch(e) {
+                 core.error(`Failed to parse policy-report.json: ${e.message}`);
+                 core.setFailed(`Failed to parse policy-report.json: ${e.message}`);
+                 return;
+               }
+             }
+
+             const results = resultJson.map(r => {
+               const failureReasons = (r.failures || []).map(f => f.msg);
+               return {
+                 path: r.filename,
+                 status: failureReasons.length > 0 ? 'failed' : 'passed',
+                 failureReasons: failureReasons,
+                 checks: {
+                   namespace: r.namespace,
+                   successes: r.successes
+                 }
+               };
+             });
+
+             const passed = results.filter((result) => result.status === 'passed').length;
+             const failed = results.length - passed;
+             const score = results.length > 0 ? Number((passed / results.length).toFixed(2)) : 0;
+
+             const prHead = context.payload.pull_request?.head;
+             const repoFullName = prHead?.repo?.full_name ?? process.env.GITHUB_REPOSITORY ?? 'unknown/unknown';
+             const commitSha = prHead?.sha ?? process.env.GITHUB_SHA ?? 'unknown';
+
+             const report = {
+               runMetadata: {
+                 timestamp: new Date().toISOString(),
+                 repo: repoFullName,
+                 commit: commitSha,
+                 checkType: 'policy',
+               },
+               files: results,
+               summary: {
+                 total: results.length,
+                 passed,
+                 failed,
+                 score,
+               },
+             };
+
+             const reportPath = 'policy-results.json';
+             writeFileSync(reportPath, JSON.stringify(report, null, 2));
+             core.info(`Wrote policy summary to ${reportPath}`);
+             
+             if (failed > 0) {
+               core.setFailed('Policy checks failed for one or more files.');
+             } else {
+               core.info('All policy checks passed.');
+             }
+
+      - name: Test for presence of OSS files and variation from templated content
+        uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8.0.0
+        if: success() || failure()
+        with:
+          script: |
+            const { existsSync, readFileSync, writeFileSync } = require('fs');
+
+            const checklistPath = 'ospo-resources/oss-checklist-files.txt';
+            const checklist = readFileSync(checklistPath, 'utf8')
+              .split('\n')
+              .map((line) => line.trim())
+              .filter((line) => line && !line.startsWith('#'));
+
+            const results = [];
+            const prHead = context.payload.pull_request?.head;
+            const repoFullName = prHead?.repo?.full_name ?? process.env.GITHUB_REPOSITORY ?? 'unknown/unknown';
+            const commitSha = prHead?.sha ?? process.env.GITHUB_SHA ?? 'unknown';
+
+            for (const relativePath of checklist) {
+              const record = {
+                path: relativePath,
+                status: 'passed',
+                checks: {
+                  exists: false,
+                  differsFromTemplate: null,
+                },
+                failureReasons: [],
+              };
+
+              const targetPath = relativePath;
+              const archetypePath = `archetypes/${relativePath}`;
+
+              const fileExists = existsSync(targetPath);
+              record.checks.exists = fileExists;
+
+              if (!fileExists) {
+                record.status = 'failed';
+                record.failureReasons.push('missing or misnamed');
+                core.info(`Missing or misnamed OSS file in target repository: ${targetPath}`);
+                results.push(record);
+                continue;
+              }
+
+              const targetContent = readFileSync(targetPath, 'utf8');
+
+              if (existsSync(archetypePath)) {
+                const archetypeContent = readFileSync(archetypePath, 'utf8');
+                const differsFromTemplate = targetContent !== archetypeContent;
+                record.checks.differsFromTemplate = differsFromTemplate;
+
+                if (!differsFromTemplate) {
+                  record.failureReasons.push('unchanged from archetype template');
+                  core.info(`OSS file unchanged from archetypes template: ${targetPath}`);
+                } else {
+                  core.info(`OSS file present and different from the archetypes template: ${targetPath}`);
+                }
+              } else {
+                record.checks.differsFromTemplate = null;
+                core.info(`Template file missing for ${relativePath}; skipping template comparison.`);
+              }
+
+              record.status = record.failureReasons.length > 0 ? 'failed' : 'passed';
+              results.push(record);
+            }
+
+            const passed = results.filter((result) => result.status === 'passed').length;
+            const failed = results.length - passed;
+            const score = results.length > 0 ? Number((passed / results.length).toFixed(2)) : 0;
+
+            const report = {
+              runMetadata: {
+                checklistFile: checklistPath,
+                timestamp: new Date().toISOString(),
+                repo: repoFullName,
+                commit: commitSha,
+                checkType: 'OSS',
+              },
+              files: results,
+              summary: {
+                total: results.length,
+                passed,
+                failed,
+                score,
+              },
+            };
+
+            const reportPath = 'oss-results.json';
+            writeFileSync(reportPath, JSON.stringify(report, null, 2));
+            core.info(`Wrote checklist summary to ${reportPath}`);
+
+            if (failed > 0) {
+              const failedFiles = results
+                .filter((result) => result.status === 'failed')
+                .map((result) => result.path);
+              core.setFailed(`The following files failed checks:\n${failedFiles.join('\n')}`);
+            } else {
+              core.info('All OSS files are present and have been updated from their original templated content.');
+            }
+
+      - name: Check GitHub template files are present
+        uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8.0.0
+        if: success() || failure()
+        with:
+          script: |
+            const { existsSync, writeFileSync  } = require('fs');
+
+            core.info('Checking for pull request and issue template files');
+
+            const filesToCheck = [
+              '.github/PULL_REQUEST_TEMPLATE.md',
+              '.github/ISSUE_TEMPLATE/bug_report.md',
+              '.github/ISSUE_TEMPLATE/feature_request.md',
+            ];
+
+            const results = filesToCheck.map((filePath) => {
+              const exists = existsSync(filePath);
+              return {
+                path: filePath,
+                status: exists ? 'passed' : 'failed',
+                checks: {
+                  exists,
+                  differsFromTemplate: null,
+                },
+                failureReasons: exists ? [] : ['missing or misnamed'],
+              };
+            });
+
+            const passed = results.filter((result) => result.status === 'passed').length;
+            const failed = results.length - passed;
+            const score = results.length > 0 ? Number((passed / results.length).toFixed(2)) : 0;
+
+            const prHead = context.payload.pull_request?.head;
+            const report = {
+              runMetadata: {
+                timestamp: new Date().toISOString(),
+                repo: prHead?.repo?.full_name ?? process.env.GITHUB_REPOSITORY ?? 'unknown/unknown',
+                commit: prHead?.sha ?? process.env.GITHUB_SHA ?? 'unknown',
+                checkType: 'template',
+              },
+              files: results,
+              summary: {
+                total: results.length,
+                passed,
+                failed,
+                score,
+              },
+            };
+
+            const reportPath = 'template-results.json';
+            writeFileSync(reportPath, JSON.stringify(report, null, 2));
+            core.info(`Wrote template checklist summary to ${reportPath}`);
+
+            if (failed > 0) {
+              const missingTemplates = results
+                .filter((result) => result.status === 'failed')
+                .map((result) => result.path);
+
+              core.info('');
+              core.info('Required GitHub template files were not found or did not match expected casing:');
+              missingTemplates.forEach((file) => core.info(`  - ${file}`));
+              core.info('');
+              core.info('These files help improve project collaboration and are considered best practice.');
+              core.info('These need to be included in repository contents to improve the developer and repository consumer experience.');
+              core.setFailed('Missing or misnamed GitHub template files.');
+            } else {
+              core.info('Required pull request and issue template files present.');
+            }
+
+      - name: Generate summary
+        id: summarise_results
+        if: always()
+        uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8.0.0
+        with:
+          script: |
+            const { existsSync, readFileSync } = require('fs');
+
+            const reportFiles = [
+              'oss-results.json',
+              'template-results.json',
+              'policy-results.json',
+            ];
+
+            const reports = reportFiles
+              .filter((reportPath) => {
+                const present = existsSync(reportPath);
+                if (!present) {
+                  core.info(`Summary step skipping missing report: ${reportPath}`);
+                }
+                return present;
+              })
+              .map((reportPath) => JSON.parse(readFileSync(reportPath, 'utf8')));
+
+            if (reports.length === 0) {
+              core.info('No report files found; skipping combined summary.');
+              core.setOutput('hasResults', 'false');
+              return;
+            }
+
+            const allResults = reports.flatMap((report) =>
+              report.files.map((file) => ({
+                ...file,
+                category: report.runMetadata?.checkType ?? 'unknown',
+                repo: report.runMetadata?.repo ?? process.env.GITHUB_REPOSITORY ?? 'unknown/unknown',
+                commit: report.runMetadata?.commit ?? process.env.GITHUB_SHA ?? 'unknown',
+              })),
+            );
+
+            const combinedTableMarkdown = [
+              '| 📄 File | ✅ Result | 🧾 Details |',
+              '| :--- | :---: | :--- |',
+              ...allResults.map((result) => {
+                const href = `https://github.com/${result.repo}/blob/${result.commit}/${result.path}`;
+                const details = result.failureReasons.length > 0
+                  ? result.failureReasons.join('; ')
+                  : 'Compliant';
+                const statusLabel = result.status === 'passed' ? '🟢 Pass' : '🔴 Fail';
+                return `| [${result.path}](${href}) | ${statusLabel} | ${details} |`;
+              }),
+            ].join('\n');
+
+            const total = allResults.length;
+            const passed = allResults.filter((result) => result.status === 'passed').length;
+            const failed = total - passed;
+            const score = total > 0 ? (passed / total) * 100 : 0;
+            const summary = { total, passed, failed, score };
+
+            const overallStatus = summary.failed === 0
+              ? '🎉 Overall status: PASS (all files compliant).'
+              : '⚠️ Overall status: FAIL (see table below for details).';
+
+            const summaryMarkdown = [
+              '| 📊 Total Files | 🟢 Passed | 🔴 Failed | 🧮 Score |',
+              '| ---: | ---: | ---: | ---: |',
+              `| ${summary.total} | ${summary.passed} | ${summary.failed} | ${summary.score.toFixed(0)}% |`
+            ].join('\n');
+
+            const prHead = context.payload.pull_request?.head;
+            const repoFullName = prHead?.repo?.full_name ?? process.env.GITHUB_REPOSITORY ?? 'unknown/unknown';
+            const fullSha = prHead?.sha ?? process.env.GITHUB_SHA ?? '';
+            const shortSha = fullSha?.slice(0, 7) ?? 'unknown';
+            const commitUrl = fullSha
+              ? `https://github.com/${repoFullName}/commit/${fullSha}`
+              : null;
+            const commitLine = commitUrl
+              ? `Results from commit [\`${shortSha}\`](${commitUrl}).`
+              : `Results from commit \`${shortSha}\`.`;
+
+            await core.summary
+              .addRaw('# OSS Check Results ⚙️\n', true)
+              .addRaw(`\n${combinedTableMarkdown}\n`, true)
+              .addRaw('\n# Summary 🏁\n', true)
+              .addRaw(`\n${overallStatus}\n`, true)
+              .addRaw(`\n${summaryMarkdown}\n`, true)
+              .addRaw(`\n${commitLine}\n`, true)
+              .write();
+
+            core.setOutput('hasResults', 'true');
+            core.setOutput('summaryTable', summaryMarkdown);
+
+            if (summary.failed > 0) {
+              core.setFailed('OSS checks detected one or more failing files.');
+            }
+
+      - name: Upload OSS result artifacts
+        if: ${{ steps.summarise_results.outputs.hasResults == 'true' }}
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
+        with:
+          name: oss-checks-${{ github.run_id }}
+          retention-days: 30
+          path: |
+            oss-results.json
+            template-results.json
+            policy-results.json
+
+  comment-on-results:
+    needs: oss-checks
+    if: >-
+      always() &&
+      github.event_name == 'pull_request' &&
+      needs.oss-checks.outputs.has-results == 'true'
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      pull-requests: write
+
+    steps:
+      - name: Comment with OSS summary
+        uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8.0.0
+        env:
+          SUMMARY_TABLE: ${{ needs.oss-checks.outputs.summary-table }}
+          JOB_RESULT: ${{ needs.oss-checks.result }}
+        with:
+          script: |
+            const { owner, repo } = context.repo;
+            const prNumber = context.payload.pull_request?.number;
+
+            if (!prNumber) {
+              core.info('No pull request context; skipping comment step.');
+              return;
+            }
+
+            const jobSummaryUrl = `https://github.com/${owner}/${repo}/actions/runs/${context.runId}`;
+            const prHead = context.payload.pull_request?.head;
+            const headCommitSha = prHead?.sha ?? process.env.GITHUB_SHA ?? '';
+            const shortSha = headCommitSha ? headCommitSha.slice(0, 7) : 'unknown';
+            const runResult = process.env.JOB_RESULT?.toLowerCase() ?? '';
+            const isFailure = runResult === 'failure';
+
+            const marker = '<!-- oss-checks-comment -->';
+            const heading = isFailure
+              ? '## ⚠️ OSS Checks Failed'
+              : '## ✅ OSS Checks Passed';
+            const narration = isFailure
+              ? 'One or more OSS checks failed in this run.'
+              : 'All tracked OSS checks passed in this run.';
+
+            const bodySections = [
+              heading,
+              narration,
+              process.env.SUMMARY_TABLE,
+              `Results from commit ${shortSha}, view the full [job summary↗️](${jobSummaryUrl}) for detailed results.`
+            ];
+
+            const existingComments = await github.paginate(
+              github.rest.issues.listComments,
+              {
+                owner,
+                repo,
+                issue_number: prNumber,
+                per_page: 100,
+              },
+            );
+
+            const previous = existingComments.find((comment) =>
+              comment.body?.includes(marker),
+            );
+
+            if(previous) {
+              bodySections.push(':recycle: This comment has been updated with latest results.');
+            }
+
+            const body = `${marker}\n${bodySections.join('\n\n')}\n${marker}`;
+
+            if (previous) {
+              core.info(`Updating existing OSS summary comment (${previous.id}).`);
+              await github.rest.issues.updateComment({
+                owner,
+                repo,
+                comment_id: previous.id,
+                body,
+              });
+            } else {
+              core.info('Creating new OSS summary comment.');
+              await github.rest.issues.createComment({
+                owner,
+                repo,
+                issue_number: prNumber,
+                body,
+              });
+            }
