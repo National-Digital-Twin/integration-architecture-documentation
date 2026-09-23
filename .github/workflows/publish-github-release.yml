@@ -1,8 +1,9 @@
 # SPDX-License-Identifier: Apache-2.0
-# © Crown Copyright 2026. This work has been developed by the National Digital Twin Programme and is legally attributed to the UK's Department for Business, Innovation, Science and Trade (BIST) as the governing entity.
+# © Crown Copyright 2026. This work has been developed by the National Digital Twin Programme and is legally 
+# attributed to the UK's Department for Business, Innovation, Science and Trade (BIST) as the governing entity.
 
 # This workflow is triggered when a pull request is merged into the main branch
-# from a release/* branch. It extracts the release version from the source branch,
+# from a release/* or hotfix/* branch. It extracts the release version from the source branch,
 # generates a Software Bill of Materials (SBOM) using the GitHub API,
 # creates a Git tag with the version, and publishes a GitHub release including the SBOM file.
 
@@ -15,11 +16,18 @@ on:
     branches:
       - main
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   versioning:
+    if: |
+      github.event.pull_request.merged == true &&
+      (startsWith(github.head_ref, 'release/') || startsWith(github.head_ref, 'hotfix/'))
     permissions:
       contents: read
-    if: github.event.pull_request.merged == true && startsWith(github.head_ref, 'release/')
+
     name: Extract Release Version
     runs-on: ubuntu-latest
     outputs:
@@ -46,7 +54,7 @@ jobs:
           VERSION: ${{ env.VERSION }}
         run: |
           if [[ ! "$VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
-            echo "Error: Invalid version format found. Expected semantic version in release branch name (e.g., release/0.9.0)"
+            echo "Error: Invalid version format found. Expected semantic version in release or hotfix branch name (e.g., release/0.9.0 or hotfix/0.9.1)"
             exit 1
           fi
 
@@ -60,12 +68,13 @@ jobs:
   generate-sbom:
     permissions:
       contents: read
+
     name: Generate SPDX SBOM
     runs-on: ubuntu-latest
     needs: [versioning]
     steps:
       - name: Checkout Code
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Generate SPDX SBOM
         env:
@@ -83,7 +92,7 @@ jobs:
           echo "$api_response" | jq '.sbom' > sbom.spdx.json
 
       - name: Upload SBOM Artifact
-        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: sbom
           path: sbom.spdx.json
@@ -91,12 +100,13 @@ jobs:
   create-git-tag:
     permissions:
       contents: write
+
     name: Create Git Tag
     needs: [versioning, generate-sbom]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0
 
@@ -106,21 +116,27 @@ jobs:
           tag: "v${{ needs.versioning.outputs.version }}"
           message: "Release v${{ needs.versioning.outputs.version }}"
           force_push_tag: true
+          # Tag the HEAD commit from the merged release branch not the merge commit to
+          # ensure the tag points to the correct source code state for the release.
+          # This ensures that the release tag is also visible on any branch which does
+          # not contain the merge commit such as develop.
+          commit_sha: ${{ github.event.pull_request.head.sha }}
 
   create-git-release:
     permissions:
       contents: write
+
     name: Create GitHub Release
     needs: [versioning, generate-sbom, create-git-tag]
     runs-on: ubuntu-latest
     steps:
       - name: Download SBOM Artifact
-        uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7.0.0
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
         with:
           name: sbom
 
       - name: Create GitHub Release
-        uses: softprops/action-gh-release@a06a81a03ee405af7f2048a818ed3f03bbf83c7b # v2.5.0
+        uses: softprops/action-gh-release@efb35369e0ad2afab669f228072c1b0d510eae64 # v3.0.3
         with:
           tag_name: "v${{ needs.versioning.outputs.version }}"
           name: "Release v${{ needs.versioning.outputs.version }}"
@@ -129,4 +145,3 @@ jobs:
           prerelease: false
           files: |
             sbom.spdx.json
-
