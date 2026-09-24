@@ -13,5 +13,5 @@ You can familarise yourself with IA Node, what to expect and learn more by explo
 - [IA Node features](./features.md#ianode-features)
 
 
-© Crown Copyright 2025. This work has been developed by the National Digital Twin Programme and is legally attributed to the Department for Business and Trade (UK) as the governing entity.  
+© Crown Copyright 2026. This work has been developed by the National Digital Twin Programme and is legally attributed to the UK's Department for Business, Innovation, Science and Trade (BIST) as the governing entity.  
 Licensed under the Open Government Licence v3.0.  

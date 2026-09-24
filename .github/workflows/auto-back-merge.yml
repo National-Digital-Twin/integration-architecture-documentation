@@ -1,0 +1,94 @@
+# SPDX-License-Identifier: Apache-2.0
+# © Crown Copyright 2026. This work has been developed by the National Digital Twin Programme and is legally 
+# attributed to the UK's Department for Business, Innovation, Science and Trade (BIST) as the governing entity.
+
+# This workflow is triggered when a pull request is merged into the main branch and automatically merges the main branch back into develop to keep it up to date.
+# If the merge fails (e.g., due to conflicts), a manual intervention is required. The workflow generates a Job summary of the merge attempt.
+name: Auto Back-merge Main to Develop
+
+on:
+  pull_request:
+    types: 
+      - closed
+    branches:
+      - main
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  merge-main-to-develop:
+
+    permissions: {}
+
+    name: Back-merge Main to Develop
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Generate Sync Token
+        id: sync-token
+        uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
+        with:
+          app-id: ${{ secrets.NDTP_REPOSITORY_WRITER_APP_CLIENT_ID }}
+          private-key: ${{ secrets.NDTP_REPOSITORY_WRITER_APP_PRIVATE_KEY }}
+          permission-contents: write
+          permission-workflows: write
+
+      - name: Merge main into develop and Generate Summary
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
+        with:
+          github-token: ${{ steps.sync-token.outputs.token }}
+          script: |
+            const prNumber = context.payload.pull_request.number;
+            const mergedBy = context.payload.sender.login;
+            const prUrl = context.payload.pull_request.html_url;
+
+            try {
+              // Attempt to merge main into develop, use the api to ensure the commit
+              // is gpg signed.
+              await github.rest.repos.merge({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                base: 'develop',
+                head: 'main',
+                commit_message: `Merge branch 'main' into 'develop' (#${prNumber})`
+              });
+
+              let summaryText =
+              `## Sync Main to Develop ✅
+
+              Successfully triggered a merge of \`main\` into \`develop\` following the closure of PR #${prNumber}.
+
+              **Original PR Merged by**: @${mergedBy}
+
+              [View Original PR](${prUrl})
+              `;
+
+              await core.summary.addRaw(summaryText).write();
+            } catch (error) {
+              const finalErrorMessage = error.message || error;
+              // Write failure summary
+              summaryText =
+              `## Sync Main to Develop ❌
+
+              Failed to trigger a merge of \`main\` into \`develop\`! This is usually due to a merge conflict. Please resolve it manually by opening a PR from \`main\` to \`develop\`.
+
+              ### Error Details:
+
+              \`\`\`text
+              ${finalErrorMessage}
+              \`\`\`
+
+              **Original PR Merged by**: @${mergedBy}
+
+              [View Original PR](${prUrl})
+              `;
+
+              await core.summary.addRaw(summaryText).write();
+
+              // Fail the workflow step
+              core.setFailed(`Merge failed: ${finalErrorMessage}`);
+            }

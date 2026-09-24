@@ -22,5 +22,5 @@ Testing of the source code covers the [IA Node capabilities](IANode/IANode.md#ca
 * One IA Node receiving data from up to 10 other nodes and sending out to up to 10 other nodes (with fine-grained access controls in use TBD)
 * Results available within 30 minutes for knowledge collected from up to 10 other nodes (with some level of mapping and complexity TBD)
 
-© Crown Copyright 2025. This work has been developed by the National Digital Twin Programme and is legally attributed to the Department for Business and Trade (UK) as the governing entity.  
+© Crown Copyright 2026. This work has been developed by the National Digital Twin Programme and is legally attributed to the UK's Department for Business, Innovation, Science and Trade (BIST) as the governing entity.  
 Licensed under the Open Government Licence v3.0.  

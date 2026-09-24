@@ -1,5 +1,6 @@
 # SPDX-License-Identifier: Apache-2.0
-# © Crown Copyright 2025. This work has been developed by the National Digital Twin Programme and is legally attributed to the Department for Business and Trade (UK) as the governing entity.
+# © Crown Copyright 2026. This work has been developed by the National Digital Twin Programme and is legally 
+# attributed to the UK's Department for Business, Innovation, Science and Trade (BIST) as the governing entity.
 
 name: Run OSS check helper
 
@@ -29,7 +30,7 @@ jobs:
     steps:
       - name: Fetch GitHub App token for target repo
         id: target_token
-        uses: actions/create-github-app-token@29824e69f54612133e76f7eaac726eef6c875baf # v2.2.1
+        uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
         with:
           app-id: ${{ secrets.OSPO_WORKFLOW_APP_ID }}
           private-key: ${{ secrets.OSPO_WORKFLOW_PRIVATE_KEY }}
@@ -37,7 +38,7 @@ jobs:
 
       - name: Fetch GitHub App token for OSPO source repo (read-only)
         id: ospo_token
-        uses: actions/create-github-app-token@29824e69f54612133e76f7eaac726eef6c875baf # v2.2.1
+        uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
         with:
           app-id: ${{ secrets.OSPO_WORKFLOW_APP_ID }}
           private-key: ${{ secrets.OSPO_WORKFLOW_PRIVATE_KEY }}
@@ -46,25 +47,25 @@ jobs:
           permission-contents: read
 
       - name: Checkout target repository
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           token: ${{ steps.target_token.outputs.token }}
 
       - name: Checkout OSPO source repository
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           repository: National-Digital-Twin/ospo-resources
           path: ospo-resources
           token: ${{ steps.ospo_token.outputs.token }}
 
       - name: Checkout archetypes source repository
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           repository: National-Digital-Twin/archetypes
           path: archetypes
 
       - name: Fetch Repository Metadata
-        uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8.0.0
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
         env:
           DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
         with:
@@ -103,10 +104,27 @@ jobs:
             core.info('Generated repository-metadata.json for policy context.');
 
       - name: Install Conftest
+        env:
+          FALLBACK_VERSION: '0.67.1'
         run: |
-          LATEST_VERSION=$(curl --proto "=https" -s "https://api.github.com/repos/open-policy-agent/conftest/releases/latest" | grep -Po '"tag_name": "v\K[0-9.]+')
-          curl --proto "=https" -L "https://github.com/open-policy-agent/conftest/releases/download/v${LATEST_VERSION}/conftest_${LATEST_VERSION}_Linux_x86_64.tar.gz" | tar -xz
-          sudo mv conftest /usr/local/bin/
+          set -euo pipefail
+
+          install_conftest() {
+            local version="$1"
+            local file_name="conftest_${version}_Linux_x86_64.deb"
+            curl --proto "=https" --fail -sSL "https://github.com/open-policy-agent/conftest/releases/download/v${version}/${file_name}" -o "${file_name}"
+            sudo dpkg -i "${file_name}"
+            rm -f "${file_name}"
+          }
+
+          LATEST_VERSION="$(curl --proto "=https" --fail -s "https://api.github.com/repos/open-policy-agent/conftest/releases/latest" | grep -Po '"tag_name": "v\K[0-9.]+' || true)"
+
+          if [[ -n "${LATEST_VERSION}" ]] && install_conftest "${LATEST_VERSION}"; then
+            echo "Installed latest Conftest version: ${LATEST_VERSION}"
+          else
+            echo "Failed to install latest Conftest. Falling back to version ${FALLBACK_VERSION}."
+            install_conftest "${FALLBACK_VERSION}"
+          fi
 
       - name: Run Policy Checks
         id: run_conftest
@@ -118,7 +136,7 @@ jobs:
             --output json > policy-report.json || true
 
       - name: Process Policy Results
-        uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8.0.0
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
         with:
           script: |
              const { existsSync, readFileSync, writeFileSync } = require('fs');
@@ -185,7 +203,7 @@ jobs:
              }
 
       - name: Test for presence of OSS files and variation from templated content
-        uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8.0.0
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
         if: success() || failure()
         with:
           script: |
@@ -284,7 +302,7 @@ jobs:
             }
 
       - name: Check GitHub template files are present
-        uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8.0.0
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
         if: success() || failure()
         with:
           script: |
@@ -355,7 +373,7 @@ jobs:
       - name: Generate summary
         id: summarise_results
         if: always()
-        uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8.0.0
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
         with:
           script: |
             const { existsSync, readFileSync } = require('fs');
@@ -392,14 +410,14 @@ jobs:
             );
 
             const combinedTableMarkdown = [
-              '| 📄 File | ✅ Result | 🧾 Details |',
+              '| File | Result | Details |',
               '| :--- | :---: | :--- |',
               ...allResults.map((result) => {
                 const href = `https://github.com/${result.repo}/blob/${result.commit}/${result.path}`;
                 const details = result.failureReasons.length > 0
                   ? result.failureReasons.join('; ')
                   : 'Compliant';
-                const statusLabel = result.status === 'passed' ? '🟢 Pass' : '🔴 Fail';
+                const statusLabel = result.status === 'passed' ? 'Pass' : 'Fail';
                 return `| [${result.path}](${href}) | ${statusLabel} | ${details} |`;
               }),
             ].join('\n');
@@ -411,11 +429,11 @@ jobs:
             const summary = { total, passed, failed, score };
 
             const overallStatus = summary.failed === 0
-              ? '🎉 Overall status: PASS (all files compliant).'
-              : '⚠️ Overall status: FAIL (see table below for details).';
+              ? 'Overall status: PASS (all files compliant).'
+              : 'Overall status: FAIL (see table below for details).';
 
             const summaryMarkdown = [
-              '| 📊 Total Files | 🟢 Passed | 🔴 Failed | 🧮 Score |',
+              '| Total Files | Passed | Failed | Score |',
               '| ---: | ---: | ---: | ---: |',
               `| ${summary.total} | ${summary.passed} | ${summary.failed} | ${summary.score.toFixed(0)}% |`
             ].join('\n');
@@ -432,9 +450,9 @@ jobs:
               : `Results from commit \`${shortSha}\`.`;
 
             await core.summary
-              .addRaw('# OSS Check Results ⚙️\n', true)
+              .addRaw('# OSS Check Results\n', true)
               .addRaw(`\n${combinedTableMarkdown}\n`, true)
-              .addRaw('\n# Summary 🏁\n', true)
+              .addRaw('\n# Summary\n', true)
               .addRaw(`\n${overallStatus}\n`, true)
               .addRaw(`\n${summaryMarkdown}\n`, true)
               .addRaw(`\n${commitLine}\n`, true)
@@ -449,7 +467,7 @@ jobs:
 
       - name: Upload OSS result artifacts
         if: ${{ steps.summarise_results.outputs.hasResults == 'true' }}
-        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: oss-checks-${{ github.run_id }}
           retention-days: 30
@@ -472,7 +490,7 @@ jobs:
 
     steps:
       - name: Comment with OSS summary
-        uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8.0.0
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
         env:
           SUMMARY_TABLE: ${{ needs.oss-checks.outputs.summary-table }}
           JOB_RESULT: ${{ needs.oss-checks.result }}
@@ -495,8 +513,8 @@ jobs:
 
             const marker = '<!-- oss-checks-comment -->';
             const heading = isFailure
-              ? '## ⚠️ OSS Checks Failed'
-              : '## ✅ OSS Checks Passed';
+              ? '## OSS Checks Failed'
+              : '## OSS Checks Passed';
             const narration = isFailure
               ? 'One or more OSS checks failed in this run.'
               : 'All tracked OSS checks passed in this run.';
@@ -505,7 +523,7 @@ jobs:
               heading,
               narration,
               process.env.SUMMARY_TABLE,
-              `Results from commit ${shortSha}, view the full [job summary↗️](${jobSummaryUrl}) for detailed results.`
+              `Results from commit ${shortSha}, view the full [job summary](${jobSummaryUrl}) for detailed results.`
             ];
 
             const existingComments = await github.paginate(
