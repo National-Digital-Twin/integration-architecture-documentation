@@ -1,0 +1,93 @@
+# SPDX-License-Identifier: Apache-2.0
+# © Crown Copyright 2026. This work has been developed by the National Digital Twin Programme and is legally 
+# attributed to the UK's Department for Business, Innovation, Science and Trade (BIST) as the governing entity.
+
+# Prerequisites:
+# - Configure Dependabot for the github-actions ecosystem in .github/dependabot.yml.
+# - Enable "Allow auto-merge" and "Allow squash merging" in repository settings.
+# - Grant access to the OSPO GitHub App for this repository with Contents and Pull requests
+#   permissions set to Read and write, and approve any installation permission updates.
+# - Provide OSPO_WORKFLOW_APP_ID and OSPO_WORKFLOW_PRIVATE_KEY as Dependabot secrets
+#   accessible to this repository; Actions secrets alone are not available to
+#   Dependabot-triggered pull_request runs.
+
+name: Dependabot auto-merge
+
+on:
+  pull_request:
+    types: [opened, reopened, synchronize]
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  auto-merge-dependabot-pull-requests:
+    if: >-
+      github.event.pull_request.user.login == 'dependabot[bot]' &&
+      github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    env:
+      GH_REPO: ${{ github.repository }}
+      PR_NUMBER: ${{ github.event.pull_request.number }}
+      HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+
+    steps:
+      - name: Fetch Dependabot metadata
+        id: metadata
+        uses: dependabot/fetch-metadata@25dd0e34f4fe68f24cc83900b1fe3fe149efef98
+        with:
+          github-token: ${{ github.token }}
+
+      - name: Skip non-GitHub Actions updates
+        if: steps.metadata.outputs.package-ecosystem != 'github_actions'
+        run: echo "Skipping approval and auto-merge for a non-GitHub Actions update."
+
+      - name: Fetch GitHub App token for target repo
+        if: steps.metadata.outputs.package-ecosystem == 'github_actions'
+        id: target_token
+        uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
+        with:
+          app-id: ${{ secrets.OSPO_WORKFLOW_APP_ID }}
+          private-key: ${{ secrets.OSPO_WORKFLOW_PRIVATE_KEY }}
+          permission-contents: write
+          permission-pull-requests: write
+
+      # Check whether auto-merge is enabled at the repository level;
+      # otherwise skip approval and auto-merge.
+      - name: Check repository auto-merge setting
+        if: steps.metadata.outputs.package-ecosystem == 'github_actions'
+        id: repository
+        env:
+          GH_TOKEN: ${{ steps.target_token.outputs.token }}
+        shell: bash
+        run: |
+          enabled=$(gh api "repos/$GH_REPO" --jq '.allow_auto_merge')
+          case "$enabled" in
+            true|false)
+              echo "enabled=$enabled" >> "$GITHUB_OUTPUT"
+              ;;
+            *)
+              echo "::error::Cannot determine allow_auto_merge for $GH_REPO; API field is missing or not boolean."
+              exit 1
+              ;;
+          esac
+          if [[ "$enabled" == "false" ]]; then
+            echo "Auto-merge is disabled for $GH_REPO; skipping."
+          fi
+
+      - name: Approve Dependabot pull request
+        if: >-
+          steps.metadata.outputs.package-ecosystem == 'github_actions' &&
+          steps.repository.outputs.enabled == 'true'
+        env:
+          GH_TOKEN: ${{ steps.target_token.outputs.token }}
+        run: gh pr review "$PR_NUMBER" --approve
+
+      # GitHub waits for required checks and any remaining review requirements.
+      # No ruleset bypass is needed for a standard one-approval requirement.
+      - name: Enable auto-merge for the pull request
+        if: steps.metadata.outputs.package-ecosystem == 'github_actions' && steps.repository.outputs.enabled == 'true'
+        env:
+          GH_TOKEN: ${{ steps.target_token.outputs.token }}
+        run: gh pr merge "$PR_NUMBER" --auto --squash --match-head-commit "$HEAD_SHA"
